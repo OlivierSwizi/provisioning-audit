@@ -17,7 +17,6 @@
     "preview": "Aperçu",
     "links": "Liens"
   },
-
   "history_entry": {
     "NOSHOW": " No Show",
     "NOT_WHITE_LISTED": "Ignoré - L'utilisateur n'est pas dans la whitelist",
@@ -34,7 +33,6 @@
     "firsname": "Prénom de l'organisateur de la réunion",
     "lastname": "Prénom de l'organisateur de la réunion"
   },
-
   "audience": {
     "__value": "Audience",
     "day": "Jour",
@@ -101,7 +99,6 @@
     },
     "forms": "Formulaires"
   },
-
   "authorized": {
     "groups": "Groupes autorisés"
   },
@@ -131,7 +128,6 @@
     "flexoffice-user": "Utilisateur",
     "flexoffice-monitor": "Flex Office"
   },
-
   "templateEditor": {
     "addLanguage": "Ajouter une langue",
     "copyFrom": "Copier depuis",
@@ -333,7 +329,9 @@
     "login-error-button": "Réessayer",
     "contact-support": "En cas de problème, contactez",
     "404-subtitle": "Désolé, la page que vous cherchez n'est pas disponible",
-    "404-redirect": "Retour au choix des projets"
+    "404-redirect": "Retour au choix des projets",
+    "generic": "Un erreur s'est produite",
+    "retry": "Réessayer"
   },
   "features-app": {
     "save-success": "Enregistrement effectué avec succès",

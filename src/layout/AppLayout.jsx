@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, Outlet, useMatches } from "react-router-dom";
 import { appRoutes } from "./router";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const LeftSider = () => {
   const { t } = useTranslation();
@@ -107,25 +108,27 @@ const AppLayout = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw", position: "relative" }}>
-      <MainLoader />
+      <ErrorBoundary>
+        <MainLoader />
 
-      <Layout style={{ height: "100%" }}>
-        <Layout.Header style={{ background: "white", zIndex: 1 }}>
-          <TopBar />
-        </Layout.Header>
-
-        <Layout>
-          <Layout.Sider theme="light" width={250} style={{ paddingTop: "1rem" }}>
-            <LeftSider />
-          </Layout.Sider>
+        <Layout style={{ height: "100%" }}>
+          <Layout.Header style={{ background: "white", zIndex: 1 }}>
+            <TopBar />
+          </Layout.Header>
 
           <Layout>
-            <Layout.Content style={{ overflowY: "auto", padding: "2rem" }}>
-              <Layout style={{ width: "100%" }}>{loaded && <Outlet />}</Layout>
-            </Layout.Content>
+            <Layout.Sider theme="light" width={250} style={{ paddingTop: "1rem" }}>
+              <LeftSider />
+            </Layout.Sider>
+
+            <Layout>
+              <Layout.Content style={{ overflowY: "auto", padding: "2rem" }}>
+                <Layout style={{ width: "100%" }}>{loaded && <Outlet />}</Layout>
+              </Layout.Content>
+            </Layout>
           </Layout>
         </Layout>
-      </Layout>
+      </ErrorBoundary>
     </div>
   );
 };
