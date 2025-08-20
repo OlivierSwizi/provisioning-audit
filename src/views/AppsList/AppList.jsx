@@ -61,11 +61,13 @@ export default function AppList() {
         </Col>
       </Row>
 
-      {viewMode === "grid" ? (
-        <AppsGrid items={filtered} onOpen={openApp} />
-      ) : (
-        <AppsListRows items={filtered} onOpen={openApp} />
-      )}
+      <div style={{ marginTop: 16 }}>
+        {viewMode === "grid" ? (
+          <AppsGrid items={filtered} onOpen={openApp} />
+        ) : (
+          <AppsListRows items={filtered} onOpen={openApp} />
+        )}
+      </div>
     </div>
   );
 }
