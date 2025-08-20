@@ -1,6 +1,6 @@
 import ImageSwizi from "@/assets/images/logo_swizi_square.png";
 import { SearchOutlined } from "@ant-design/icons";
-import { Card, Col, Flex, Input, Row, Typography } from "antd";
+import { App, Card, Col, Flex, Input, Row, Typography } from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import NoApps from "./NoApps";
 import { selectApp } from "../../services/features/AppsSlice";
 import { useNavigate } from "react-router-dom";
 import { useWorkDispatch } from "@/services/features/UISlice";
+import AppCard from "./components/AppCard";
 
 const AppList = () => {
   const { t } = useTranslation();
@@ -51,32 +52,7 @@ const AppList = () => {
             }}
           >
             {filtered.map((item, idx) => (
-              <Card
-                hoverable
-                bordered={false}
-                key={idx}
-                style={{ overflow: "hidden", minHeight: 96, align: "center" }}
-                styles={{ body: { padding: "0", height: "100%" } }}
-                onClick={() => handleSelectApp(item.id)}
-              >
-                <Flex align="center" gap={"1rem"} style={{ height: "100%" }}>
-                  <img
-                    style={{ width: 96 }}
-                    alt=""
-                    src={item.logoURL}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = ImageSwizi;
-                    }}
-                  />
-                  <Flex vertical justify="center" gap={"0.5rem"}>
-                    <Typography.Title style={{ margin: 0 }} level={5}>
-                      {item.name}
-                    </Typography.Title>
-                    <Typography.Text copyable>#{item.id}</Typography.Text>
-                  </Flex>
-                </Flex>
-              </Card>
+              <AppCard key={idx} app={item} onClick={handleSelectApp} />
             ))}
           </div>
         </section>
