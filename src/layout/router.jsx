@@ -5,7 +5,7 @@ import withSuspense from "@/utils/withSuspense";
 
 const GroupList = withSuspense(lazy(() => import("@/views/Groups/GroupList")));
 const AdminView = withSuspense(lazy(() => import("@/views/Admin/AdminView")));
-const AppDetails = withSuspense(lazy(() => import("@/views/AppDetails/AppDetails")));
+const AppDetails = withSuspense(lazy(() => import("@/views/AppDetails/AppDetailsView")));
 const AppList = withSuspense(lazy(() => import("@/views/AppsList/AppList")));
 const NotFound = withSuspense(lazy(() => import("@/views/Errors/NotFound")));
 const UserList = withSuspense(lazy(() => import("@/views/Users/UserList")));

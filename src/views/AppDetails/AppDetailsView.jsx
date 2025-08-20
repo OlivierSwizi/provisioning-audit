@@ -1,11 +1,10 @@
-import { EllipsisOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { useWorkDispatch } from "@/services/features/UISlice";
 import {
   Button,
   Card,
   Col,
   DatePicker,
   Divider,
-  Dropdown,
   Form,
   Image,
   Modal,
@@ -15,61 +14,30 @@ import {
   Typography,
   message,
 } from "antd";
-import * as R from "ramda";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import AddSiteModal from "../../modal/AddSite";
-import DeleteApp from "../../modal/DeleteProject";
-import EditApp from "../../modal/EditApp";
-import { exportSPAAS, selectGroup, updateCampus } from "../../services/features/AppsSlice";
 import dayjs from "dayjs";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { exportSPAAS } from "../../services/features/AppsSlice";
 import logger from "@/logger";
+import { useSelectPublicMediaModal } from "@/components/modal/SelectPublicMediaModal";
 
-const AppDetailsView = () => {
+const AppDetails = () => {
   const [formExportSpaas] = Form.useForm();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const workDispatch = useWorkDispatch();
   const { t } = useTranslation();
 
-  const data = useSelector((state) => state.apps.appDetails);
-  const isAppSelected = useSelector((state) => state.apps.isAppSelected);
-  const projectId = useSelector((state) => state.apps.selectedAppId);
-  const { access, tenant, env } = useSelector((state) => state.auth);
+  const selectedApp = useSelector((state) => state.apps.selectedApp);
+  const { isUserGroupAdmin, siteList } = useSelector((state) => state.apps);
 
   const [exportSpaasOpen, setExportSpaasOpen] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const handleSelectSite = async (siteId) => {
-    await dispatch(updateCampus(true));
-    await dispatch(selectGroup(siteId));
-    navigate("/siteDetails/" + siteId);
-  };
-  let canAccess = false;
-  if (
-    R.pathOr([], ["customers", "admin", tenant, env, "all"], access).includes(true) ||
-    R.pathOr([], ["customers", "admin", tenant, env, "apps"], access)
-      .flat()
-      .includes(`${projectId}`)
-  )
-    canAccess = true;
-  useEffect(() => {
-    // unhautorized by keycloak
-    if (!canAccess) navigate("/");
-    // No app selected, force app selection screen
-    if (!isAppSelected) navigate("/apps");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAppSelected, navigate]);
-
-  /*   useEffect(() => {
-    //fetching data of the application
-    dispatch(loadAppDetails(appId));
-  }, [dispatch, appId]); */
+  const [askSelect, SelectPublicMediaModal] = useSelectPublicMediaModal();
 
   const handleExportSPAAS = (values) => {
     logger.log("values", values);
-    dispatch(
+    workDispatch(
       exportSPAAS({
         siteId: values.siteId,
         startDate: values.range[0].toISOString(),
@@ -77,126 +45,107 @@ const AppDetailsView = () => {
       }),
     )
       .then(() => {
-        message.info("Votre export est en cours de création. Il va vous être envoyé par mail");
+        message.success("Votre export est en cours de création. Il va vous être envoyé par mail");
       })
       .catch(() => {
         message.error("Une erreur est survenue lors de l'export. Veuillez réessayer plus tard");
       });
   };
 
-  const items = [
-    {
-      key: "1",
-      label: <EditApp />,
-    },
-    {
-      key: "2",
-      label: <DeleteApp />,
-    },
-  ];
-  if (!data) return null;
+  const handleOpenPublicMedia = () => {
+    askSelect();
+  };
+
+  if (!selectedApp) return null;
   return (
-    <>
-      <Row>
-        <Col span={16} push={2}>
-          <Button type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("app-details.back")}
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={16} push={2}>
-          <Card bordered={false}>
-            <Row>
-              <Col span={22}>
-                <Space direction="vertical" size={"middle"}>
-                  {isError ? null : (
-                    <Image src={data.iconURL} onError={() => setIsError(true)} width={120}></Image>
-                  )}
-                  <Typography.Title>{data.name}</Typography.Title>
-                  <Typography.Text>
-                    {t("app-details.project-id")}: {data.id}
-                  </Typography.Text>
+    <div>
+      {SelectPublicMediaModal}
+      <Row gutter={[20, 20]}>
+        <Col span={24}>
+          <Card style={{ body: { padding: 0 } }} bordered={false}>
+            {/* <PageHeader
+              title={
+                <Space>
+                  <Glyph className={"secondary"} name={"dashboard"} />
+                  <Typography.Text strong>{t("Général")}</Typography.Text>
                 </Space>
-              </Col>
-              <Col span={2}>
-                <Dropdown disabled menu={{ items }} placement="bottomRight" arrow>
-                  <Button disabled shape="circle" size="large" icon={<EllipsisOutlined />} />
-                </Dropdown>
-              </Col>
-            </Row>
-            <Divider />
-            <Row>
-              <Typography.Title level={3}>Sites</Typography.Title>
-            </Row>
-            <Row gutter={[10, 10]}>
-              {canAccess ? (
-                <Col>
-                  <AddSiteModal data={data} />
-                </Col>
-              ) : null}
-              {data.groups.map((site) =>
-                site.prop1 === "campus" ? (
-                  <Col key={site.id}>
-                    <Button
-                      onClick={() => handleSelectSite(site.id)}
-                      type="dashed"
-                      disabled={!canAccess ? true : false}
-                      style={{ width: 200, height: 100, borderRadius: 12 }}
-                    >
-                      <Col span={2}>
-                        <Row>
-                          <Typography.Title level={5}>{site.label} </Typography.Title>{" "}
-                        </Row>
-                        <Row>ID: {site.id}</Row>
-                      </Col>
-                      <Col span={1} push={20}>
-                        <RightOutlined />
-                      </Col>
-                    </Button>
-                  </Col>
-                ) : null,
+              }
+            >
+              <Typography.Paragraph type="secondary"></Typography.Paragraph>
+            </PageHeader> */}
+          </Card>
+        </Col>
+        <Col span={24}>
+          <Card bordered={false}>
+            <Space direction="vertical" size={"middle"}>
+              {isError ? null : (
+                <Image
+                  src={selectedApp.iconURL}
+                  onError={() => setIsError(true)}
+                  width={120}
+                ></Image>
               )}
-            </Row>
+              <Typography.Title level={1} style={{ margin: 0 }}>
+                {selectedApp.name}
+              </Typography.Title>
+              <Typography.Text>
+                {t("app-details.project-id")}: {selectedApp.id}
+              </Typography.Text>
+            </Space>
+
             <Divider />
-            {/* <Typography.Title level={5}>Dernier build</Typography.Title>
-           <Space direction="horizontal" size="middle">
-            <HistoryOutlined />
-            {data[0].date}
-          </Space>
-          <Divider />
-          <Typography.Title level={5}>Numéro de build</Typography.Title>
-          <Space direction="vertical" size="middle">
-            <Space direction="horizontal" size="middle">
-              <InfoCircleFilled /> {data[0].version}
-            </Space>
-            <Space direction="horizontal" size="middle">
-              <CalendarFilled /> {data[0].timeBuild}
-            </Space>
-            <Space direction="horizontal" size="middle">
-              <RocketFilled /> {data[0].labelVersion}
-            </Space> 
-          </Space> */}
+
+            <Typography.Title level={3}>Sites</Typography.Title>
+            <Row gutter={[10, 10]}>
+              {
+                // je garde data.groups le temps que tous les backs soient à jour. c'est à retirer après. (27/01)
+              }
+              {siteList.map((site) => (
+                <Col key={site.id}>
+                  <Card bordered={true} style={{ width: 200 }}>
+                    <Typography.Title level={5} ellipsis={{ tooltip: site.label }}>
+                      {site.label}
+                    </Typography.Title>
+                    <Typography.Text>ID: {site.id}</Typography.Text>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+
+            <Divider />
+
+            <Typography.Title level={3}>{t("app-details.public-media-management")}</Typography.Title>
+            <Button type="primary" onClick={handleOpenPublicMedia}>
+              {t("app-details.got-to-public-media-lib")}
+            </Button>
+
+            <Divider />
+
             <Typography.Title level={3}>Exports</Typography.Title>
             <Button type="primary" onClick={() => setExportSpaasOpen(true)}>
-              Exporter les réservation SPAAS
+              Exporter les réservations SPAAS
             </Button>
           </Card>
         </Col>
       </Row>
       <Modal
         open={exportSpaasOpen}
-        title="Exporter les réservation SPAAS"
+        title="Exporter les réservations SPAAS"
         onCancel={() => setExportSpaasOpen(false)}
         footer={null}
       >
         <Form form={formExportSpaas} layout="vertical" onFinish={handleExportSPAAS}>
           <Form.Item name={["siteId"]} label="Site" rules={[{ required: true }]}>
+            {
+              // je garde data.groups le temps que tous les backs soient à jour. c'est à retirer après. (27/01)
+            }
             <Select
               style={{ width: "100%" }}
-              options={data.groups
-                .filter((site) => site.prop1 === "campus")
-                .map((site) => ({ value: site.id, label: site.label }))}
+              options={siteList
+                .map((site) => ({ value: site.id, label: site.label }))
+                .filter((site) => {
+                  return isUserGroupAdmin || siteList.find((s) => s.id === site.value);
+                })}
             />
           </Form.Item>
           <Form.Item name={["range"]} label="Période" rules={[{ required: true }]}>
@@ -257,8 +206,8 @@ const AppDetailsView = () => {
           </Row>
         </Form>
       </Modal>
-    </>
+    </div>
   );
 };
 
-export default AppDetailsView;
+export default AppDetails;
