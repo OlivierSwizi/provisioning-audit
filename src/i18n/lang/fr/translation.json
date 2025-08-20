@@ -278,7 +278,7 @@
     "Général": "Général",
     "project-id": "ID projet",
     "public-media-management": "Gestion des médias publics",
-    "got-to-public-media-lib": "Accéder à la bibiothèque",
+    "export-spaas": "Export SPAAS",
     "back": "Retour"
   },
   "apps-list": {
@@ -290,7 +290,8 @@
     "ticketing-explanations": "Gestion du référentiel du service ticketing",
     "no-admin-access": "Vous n'avez pas accès aux outils d'administration Swizi.",
     "other-tools-link": "Voici les liens vers les autres outils Swizi",
-    "visit": "Accéder"
+    "visit": "Accéder",
+    "sites-count": "Nb sites"
   },
   "calendars": {
     "calendars": "Agendas",
