@@ -1,64 +1,71 @@
-import ImageSwizi from "@/assets/images/logo_swizi_square.png";
-import { SearchOutlined } from "@ant-design/icons";
-import { App, Card, Col, Flex, Input, Row, Typography } from "antd";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+// FILENAME: src/views/AppsList/AppList.jsx
+import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
-import NoApps from "./NoApps";
-import { selectApp } from "../../services/features/AppsSlice";
+import { Typography, Row, Col, Input } from "antd";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useWorkDispatch } from "@/services/features/UISlice";
-import AppCard from "./components/AppCard";
 
-const AppList = () => {
+import ViewModeToggle from "@/components/ViewModeToggle";
+import { useUserPref } from "@/utils/userPrefs";
+import AppsGrid from "./components/AppsGrid";
+import AppsListRows from "./components/AppsListRows";
+
+const { Title } = Typography;
+
+export default function AppList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const workDispatch = useWorkDispatch();
 
-  const [search, setSearch] = useState("");
+  const apps = useSelector((state) => state.apps.appList);
 
-  const appList = useSelector((state) => state.apps.appList);
+  // Préférences utilisateur: vue grid/list
+  const [viewMode, setViewMode] = useUserPref("appListViewMode", "grid");
 
-  const filtered = appList.filter((d) => new RegExp(search, "i").test(d.name));
+  // Recherche locale (garde ta logique si différente)
+  const [query, setQuery] = useState("");
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return apps;
+    return (apps || []).filter((a) => {
+      const hay = `${a?.name ?? ""} ${String(a?.id ?? "")}`.toLowerCase();
+      return hay.includes(q);
+    });
+  }, [apps, query]);
 
-  const handleSelectApp = async (app) => {
-    await workDispatch(selectApp(app.id));
+  // Ouverture d'une app (garde ta navigation existante)
+  const openApp = (app) => {
+    if (!app) return;
+    // Ex: navigate(`/apps/${app.id}`);
     navigate(`/apps/${app.id}`);
   };
 
-  if (!appList.length) return <NoApps />;
   return (
-    <Row style={{ width: "100%" }}>
-      <Col flex={"auto"}>
-        <Typography.Title style={{ textAlign: "left" }} level={3}>
-          {t("apps-list.apps")}
-        </Typography.Title>
-      </Col>
-      <Col span={8}>
-        <Input
-          onChange={(event) => setSearch(event.target.value)}
-          prefix={<SearchOutlined />}
-          style={{ width: "100%" }}
-          placeholder={t("apps-list.search-app")}
-        />
-      </Col>
-      <Col span={24}>
-        <section style={{ marginTop: "16px", padding: "10px 0" }}>
-          <div
-            style={{
-              display: "grid",
-              gridGap: "10px",
-              gridTemplateColumns: "repeat(auto-fill, 380px)",
-            }}
-          >
-            {filtered.map((item, idx) => (
-              <AppCard key={idx} app={item} onClick={handleSelectApp} />
-            ))}
-          </div>
-        </section>
-      </Col>
-    </Row>
-  );
-};
+    <div style={{ width: "100%" }}>
+      <Row align="middle" gutter={[12, 12]} style={{ marginBottom: 8 }}>
+        <Col flex="auto">
+          <Title level={3} style={{ margin: 0 }}>
+            {t("apps-list.apps", "Projects")}
+          </Title>
+        </Col>
+        <Col>
+          <Input.Search
+            allowClear
+            placeholder={t("apps-list.search-app", "Search a project")}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{ width: 320, maxWidth: "70vw" }}
+          />
+        </Col>
+        <Col>
+          <ViewModeToggle value={viewMode} onChange={setViewMode} />
+        </Col>
+      </Row>
 
-export default AppList;
+      {viewMode === "grid" ? (
+        <AppsGrid items={filtered} onOpen={openApp} />
+      ) : (
+        <AppsListRows items={filtered} onOpen={openApp} />
+      )}
+    </div>
+  );
+}
