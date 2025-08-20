@@ -34,8 +34,8 @@ const ReceptionBadgeList = ({ value, onChange }) => {
 
   const handleRemoveBadge = (badge) => {
     Modal.confirm({
-      title: t("reception-remove-badge"),
-      content: t("reception-remove-badge-confirm"),
+      title: t("components.reception-remove-badge"),
+      content: t("components.reception-remove-badge-confirm"),
       onOk: () => handleChange(badgeTemplates.filter((b) => b.id !== badge.id)),
     });
   };
@@ -57,7 +57,7 @@ const ReceptionBadgeList = ({ value, onChange }) => {
       <Col span={24}>
         <ManagedList
           accordion
-          title={`${t("reception-badge-list")}`}
+          title={`${t("components.reception-badge-list")}`}
           items={badgeTemplates}
           onAdd={handleAddBadge}
           onRemove={handleRemoveBadge}

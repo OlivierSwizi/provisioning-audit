@@ -26,11 +26,11 @@ const UserListSearch = ({ value, onChange, disabled = false, style = {} }) => {
       if (groupId) {
         const groupContentInfo = await api.groups.usersOfGroup(groupId, 1, 1, "");
         if (groupContentInfo.totalItems === 0) {
-          return message.info(t("group-has-no-users"));
+          return message.info(t("components.group-has-no-users"));
         } else {
           await Modal.confirm({
-            title: t("confirm"),
-            content: t("copy-group-confirm", { count: groupContentInfo.totalItems }),
+            title: t("components.confirm"),
+            content: t("components.copy-group-confirm", { count: groupContentInfo.totalItems }),
             onOk: async () => {
               const userList = await api.groups.usersOfGroup(
                 groupId,
@@ -60,7 +60,7 @@ const UserListSearch = ({ value, onChange, disabled = false, style = {} }) => {
       }
     } catch (e) {
       logger.error(e);
-      message.error(t("error-copying-group"));
+      message.error(t("components.error-copying-group"));
     }
   };
 
@@ -148,7 +148,7 @@ const UserListSearch = ({ value, onChange, disabled = false, style = {} }) => {
         disabled={disabled}
       />
       {disabled ? null : (
-        <Tooltip title={t("copy-from-group")}>
+        <Tooltip title={t("components.copy-from-group")}>
           <Button
             type="primary"
             style={{ marginLeft: "10px", float: "right" }}

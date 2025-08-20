@@ -45,7 +45,7 @@ const ZonesTable = ({ value = [], onChange }) => {
     newData.push({
       key: newData.length,
       id: "",
-      label: t("swizi-parking-new-zone"),
+      label: t("features-parking.swizi-parking-new-zone"),
       spaceCount: 0,
       maxReservationsPerWeek: 0,
       maxReservationsPerMonth: 0,
@@ -56,21 +56,21 @@ const ZonesTable = ({ value = [], onChange }) => {
 
   const columns = [
     {
-      title: t("swizi-parking-zone-id"),
+      title: t("features-parking.swizi-parking-zone-id"),
       dataIndex: "id",
       editable: false,
       isNumber: false,
       width: "10%",
     },
     {
-      title: t("swizi-parking-zone-name"),
+      title: t("features-parking.swizi-parking-zone-name"),
       dataIndex: "label",
       editable: true,
       isNumber: false,
       width: "20%",
     },
     {
-      title: t("swizi-parking-zone-groups"),
+      title: t("features-parking.swizi-parking-zone-groups"),
       dataIndex: "groups",
       editable: true,
       isNumber: false,
@@ -78,7 +78,7 @@ const ZonesTable = ({ value = [], onChange }) => {
       isGroupSelector: true,
     },
     {
-      title: t("swizi-parking-number-of-places"),
+      title: t("features-parking.swizi-parking-number-of-places"),
       dataIndex: "spaceCount",
       editable: true,
       isNumber: true,
@@ -86,8 +86,8 @@ const ZonesTable = ({ value = [], onChange }) => {
     },
     {
       title: (
-        <Tooltip title={t("swizi-parking-max-reservations-per-week-tooltip")}>
-          {t("swizi-parking-max-reservations-per-week")}
+        <Tooltip title={t("features-parking.swizi-parking-max-reservations-per-week-tooltip")}>
+          {t("features-parking.swizi-parking-max-reservations-per-week")}
         </Tooltip>
       ),
       dataIndex: "maxReservationsPerWeek",
@@ -97,8 +97,8 @@ const ZonesTable = ({ value = [], onChange }) => {
     },
     {
       title: (
-        <Tooltip title={t("swizi-parking-max-reservations-per-month-tooltip")}>
-          {t("swizi-parking-max-reservations-per-month")}
+        <Tooltip title={t("features-parking.swizi-parking-max-reservations-per-month-tooltip")}>
+          {t("features-parking.swizi-parking-max-reservations-per-month")}
         </Tooltip>
       ),
       dataIndex: "maxReservationsPerMonth",
@@ -108,8 +108,8 @@ const ZonesTable = ({ value = [], onChange }) => {
     },
     {
       title: (
-        <Tooltip title={t("swizi-parking-notice-delay-tooltip")}>
-          {t("swizi-parking-notice-delay")}
+        <Tooltip title={t("features-parking.swizi-parking-notice-delay-tooltip")}>
+          {t("features-parking.swizi-parking-notice-delay")}
         </Tooltip>
       ),
       dataIndex: "noticeDelay",
@@ -118,13 +118,13 @@ const ZonesTable = ({ value = [], onChange }) => {
       width: "10%",
     },
     {
-      title: t("action"),
+      title: t("features-parking.action"),
       dataIndex: "action",
       width: "10%",
       render: (_, record) =>
         value.length >= 1 ? (
-          <Popconfirm title={t("sure-to-delete")} onConfirm={() => handleRemove(record.key)}>
-            <Button type="link">{t("delete")}</Button>
+          <Popconfirm title={t("features-parking.sure-to-delete")} onConfirm={() => handleRemove(record.key)}>
+            <Button type="link">{t("components.delete")}</Button>
           </Popconfirm>
         ) : null,
     },
@@ -211,9 +211,8 @@ const ZonesTable = ({ value = [], onChange }) => {
   return (
     <Form form={form} component={false}>
       <Row justify="start" style={{ marginBottom: 10 }}>
-        <Button onClick={handleAdd}>{t("swizi-parking-add-zone")}</Button>
+        <Button onClick={handleAdd}>{t("features-parking.swizi-parking-add-zone")}</Button>
       </Row>
-
       <Table
         components={{
           body: {

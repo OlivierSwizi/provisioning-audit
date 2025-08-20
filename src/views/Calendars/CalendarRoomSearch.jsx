@@ -38,7 +38,7 @@ const CalendarRoomSearch = () => {
           allowClear
           onChange={(e) => setSearch(e.target.value)}
           prefix={<SearchOutlined />}
-          placeholder={t("search-bookable-space")}
+          placeholder={t("calendars.search-bookable-space")}
           value={search}
         />
       </Col>
@@ -83,7 +83,7 @@ const CalendarRoomSearch = () => {
                 <Row style={{ width: "100%" }}>
                   <Col span={12}>
                     <Typography.Text type={"secondary"}>
-                      <Glyph name={"domain"} /> {t("floor")} {item.floor}
+                      <Glyph name={"domain"} /> {t("calendars.floor")} {item.floor}
                     </Typography.Text>
                   </Col>
                 </Row>

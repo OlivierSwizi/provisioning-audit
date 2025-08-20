@@ -53,7 +53,7 @@ const SiteSettingsView = () => {
         setLon(settings.config.lon);
       } catch (e) {
         logger.error(e);
-        message.error(t("load-error"));
+        message.error(t("audience.load-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -68,10 +68,10 @@ const SiteSettingsView = () => {
       await dispatch(startWorking());
       await api.features.saveSiteConfig(siteId, form.getFieldsValue());
       await api.sites.updateSearchableRoomTypes(siteId, form.getFieldValue("roomTypes"));
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -89,7 +89,7 @@ const SiteSettingsView = () => {
       setLon(latLng.lng);
     } catch (error) {
       logger.error(error);
-      message.error(t("geocode-error"));
+      message.error(t("features-sitesettings.geocode-error"));
     }
   };
 
@@ -117,7 +117,7 @@ const SiteSettingsView = () => {
             </Col>
             <Col span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             <Col span={24}>
@@ -136,17 +136,17 @@ const SiteSettingsView = () => {
               >
                 <Row style={{ marginBottom: 20 }}>
                   <Col span={12}>
-                    <MultiLineFormItem label={t("site-header")} name="headerMediaId">
+                    <MultiLineFormItem label={t("features-sitesettings.site-header")} name="headerMediaId">
                       <MediaSelector />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("site-name")} name="title">
+                    <MultiLineFormItem label={t("features-sitesettings.site-name")} name="title">
                       <Input autoComplete="off" style={{ width: "100%" }} />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("timezone")} name="timeZone">
+                    <MultiLineFormItem label={t("features-places.timezone")} name="timeZone">
                       <TimezoneSelector />
                     </MultiLineFormItem>
                     <MultiLineFormItem
-                      label={t("site-address")}
+                      label={t("features-sitesettings.site-address")}
                       name="address"
                       style={{ marginBottom: "5px" }}
                     >
@@ -165,19 +165,19 @@ const SiteSettingsView = () => {
                       }}
                     >
                       <Button onClick={handleGeocode} variant="text">
-                        {t("convert-address-to-coordinates")}
+                        {t("features-sitesettings.convert-address-to-coordinates")}
                       </Button>
                     </Col>
-                    <MultiLineFormItem label={t("site-lat")} name="lat">
+                    <MultiLineFormItem label={t("features-sitesettings.site-lat")} name="lat">
                       <InputNumber style={{ width: "100%" }} />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("site-lon")} name="lon">
+                    <MultiLineFormItem label={t("features-sitesettings.site-lon")} name="lon">
                       <InputNumber style={{ width: "100%" }} />
                     </MultiLineFormItem>
                     <MultiLineFormItem
-                      label={t("searchable-room-types")}
+                      label={t("features-sitesettings.searchable-room-types")}
                       name="roomTypes"
-                      tooltip={t("site-lat-lon-tooltip")}
+                      tooltip={t("features-sitesettings.site-lat-lon-tooltip")}
                     >
                       <MultiRoomTypesSelector style={{ width: "100%" }} siteId={siteId} />
                     </MultiLineFormItem>

@@ -11,13 +11,13 @@ const OpeningHoursSelector = ({ value = [], onChange }) => {
 
   const weekDays = useMemo(() => {
     return [
-      i18n.t("monday", { lng }),
-      i18n.t("tuesday", { lng }),
-      i18n.t("wednesday", { lng }),
-      i18n.t("thursday", { lng }),
-      i18n.t("friday", { lng }),
-      i18n.t("saturday", { lng }),
-      i18n.t("sunday", { lng }),
+      i18n.t("components.monday", { lng }),
+      i18n.t("components.tuesday", { lng }),
+      i18n.t("components.wednesday", { lng }),
+      i18n.t("components.thursday", { lng }),
+      i18n.t("components.friday", { lng }),
+      i18n.t("components.saturday", { lng }),
+      i18n.t("components.sunday", { lng }),
     ];
   }, [i18n, lng]);
 

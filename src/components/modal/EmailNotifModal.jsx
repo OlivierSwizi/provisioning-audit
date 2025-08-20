@@ -58,10 +58,9 @@ const EmailNotifModal = ({
         value={editorType}
         style={{ marginBottom: "15px" }}
       >
-        <Radio value={"email"}>{t("email")}</Radio>
-        <Radio value={"pushNotification"}>{t("push-notification")}</Radio>
+        <Radio value={"email"}>{t("components.email")}</Radio>
+        <Radio value={"pushNotification"}>{t("components.push-notification")}</Radio>
       </Radio.Group>
-
       <Form
         form={form}
         wrapperCol={{

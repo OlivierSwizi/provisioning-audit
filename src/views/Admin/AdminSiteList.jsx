@@ -28,8 +28,8 @@ const AdminSiteList = ({
 
   const handleAddSite = async () => {
     const toAdd = await askSelect(
-      t("select-site"),
-      t("select-site-to-add"),
+      t("admin.select-site"),
+      t("admin.select-site-to-add"),
       availableSites.map((site) => ({ value: site.value, label: site.label })),
     );
     if (toAdd) {
@@ -47,12 +47,12 @@ const AdminSiteList = ({
       title={
         <Row style={{ width: "100%" }}>
           <Col span={16}>
-            <Typography.Text>{t("provisioning-user-sites")}</Typography.Text>
+            <Typography.Text>{t("admin.provisioning-user-sites")}</Typography.Text>
           </Col>
           <Col span={6}>
             {availableSites.length > 0 && (
               <Button size="small" onClick={handleAddSite}>
-                {t("provisioning-user-add-site")}
+                {t("admin.provisioning-user-add-site")}
               </Button>
             )}
           </Col>

@@ -34,15 +34,15 @@ const SpaasView = () => {
   const PARKING_TYPES = [
     {
       key: "NONE",
-      value: t("parking-none"),
+      value: t("features-parking.parking-none"),
     },
     {
       key: "IZIX",
-      value: t("parking-izix"),
+      value: t("features-parking.parking-izix"),
     },
     {
       key: "SWIZI",
-      value: t("parking-swizi"),
+      value: t("features-parking.parking-swizi"),
     },
   ];
 
@@ -76,7 +76,7 @@ const SpaasView = () => {
       config = await api.features.getParkingConfig(siteId);
     } catch (e) {
       logger.error(e);
-      message.error(t("load-error"));
+      message.error(t("audience.load-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -137,10 +137,10 @@ const SpaasView = () => {
 
       await api.features.saveParkingConfig(siteId, newValues);
       if (type === "SWIZI") await handleSaveSwiziConfig();
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.log(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -156,7 +156,7 @@ const SpaasView = () => {
 
   const swiziTabs = [
     {
-      label: t("swizi-parking-zones"),
+      label: t("features-parking.swizi-parking-zones"),
       key: "zones",
       children: (
         <Form.Item name="zones" label={null} labelCol={null} wrapperCol={{ span: 24 }}>
@@ -165,7 +165,7 @@ const SpaasView = () => {
       ),
     },
     {
-      label: t("swizi-parking-notificaions-tempplate"),
+      label: t("features-parking.swizi-parking-notificaions-tempplate"),
       key: "notifications",
       children: (
         <Form.Item name="pushTemplate" label={null} labelCol={null} wrapperCol={{ span: 24 }}>
@@ -190,7 +190,7 @@ const SpaasView = () => {
             </Col>
             <Col span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             <Col span={24}>
@@ -209,7 +209,7 @@ const SpaasView = () => {
               >
                 <Row style={{ marginBottom: 20 }}>
                   <Col span={24}>
-                    <MultiLineFormItem label={t("spaas-type")} name="provider">
+                    <MultiLineFormItem label={t("features-parking.spaas-type")} name="provider">
                       <Select style={{ width: "100%", maxWidth: "350px" }}>
                         {PARKING_TYPES.map((item) => (
                           <Select.Option key={item.key} value={item.key}>
@@ -219,18 +219,18 @@ const SpaasView = () => {
                       </Select>
                     </MultiLineFormItem>
                     <MultiLineFormItem
-                      label={t("parking-days")}
+                      label={t("features-parking.parking-days")}
                       name="days"
                       hidden={type === "NONE"}
                     >
                       <DaysOfWeekPeeker />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("timeslot")} name="hours" hidden={type === "NONE"}>
+                    <MultiLineFormItem label={t("features-parking.timeslot")} name="hours" hidden={type === "NONE"}>
                       <DayHoursPicker />
                     </MultiLineFormItem>
 
                     <MultiLineFormItem
-                      label={t("parking-push-before")}
+                      label={t("features-parking.parking-push-before")}
                       name="beforePushDelay"
                       hidden={type === "NONE"}
                     >
@@ -241,7 +241,7 @@ const SpaasView = () => {
                       />
                     </MultiLineFormItem>
                     <MultiLineFormItem
-                      label={t("parking-organization-id")}
+                      label={t("features-parking.parking-organization-id")}
                       name="organizationId"
                       hidden={type === "NONE"}
                     >

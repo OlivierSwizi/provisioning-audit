@@ -17,7 +17,7 @@ const NotificationEditor = ({ value, onChange }) => {
   return (
     <Row style={{ width: "100%" }}>
       <Col span={24}>
-        <Typography.Text>{t("notification-template-title")}</Typography.Text>
+        <Typography.Text>{t("components.notification-template-title")}</Typography.Text>
       </Col>
       <Col span={24} style={{ maxWidth: "550px" }}>
         <Input
@@ -27,7 +27,7 @@ const NotificationEditor = ({ value, onChange }) => {
         />
       </Col>
       <Col span={24} style={{ marginTop: "15px" }}>
-        <Typography.Text>{t("notification-template-body")}</Typography.Text>
+        <Typography.Text>{t("components.notification-template-body")}</Typography.Text>
       </Col>
       <Col span={24} style={{ maxWidth: "550px" }}>
         <Input.TextArea

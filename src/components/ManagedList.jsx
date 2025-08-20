@@ -59,7 +59,7 @@ const ManagedList = ({
           )}
           <Col span={24} style={{ maxHeight: "700px", overflow: "auto" }}>
             <List
-              locale={{ emptyText: <Text>{t("empty-list")}</Text> }}
+              locale={{ emptyText: <Text>{t("components.empty-list")}</Text> }}
               style={{ minHeight: "350px" }}
             >
               {items.map((item, idx) => (

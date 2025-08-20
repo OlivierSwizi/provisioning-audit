@@ -151,11 +151,11 @@ const EventModal = ({
       bodyStyle={{ height: "500px", overflow: "auto" }}
       footer={[
         <Button key="back" onClick={handleCancel} style={{ width: "180px" }}>
-          {t("close")}
+          {t("components.close")}
         </Button>,
         event?.id && !readOnly ? (
-          <Popconfirm onConfirm={handleDelete} title={t("confirm-delete-event")}>
-            <Button style={{ width: "180px" }}>{t("delete")}</Button>
+          <Popconfirm onConfirm={handleDelete} title={t("components.confirm-delete-event")}>
+            <Button style={{ width: "180px" }}>{t("components.delete")}</Button>
           </Popconfirm>
         ) : null,
         !readOnly ? (
@@ -165,7 +165,7 @@ const EventModal = ({
             onClick={() => form.submit()}
             style={{ width: "180px" }}
           >
-            {t("save")}
+            {t("components.save")}
           </Button>
         ) : null,
       ]}
@@ -181,7 +181,7 @@ const EventModal = ({
           <Col span={19}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("slot")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.slot")}</div>}
               name={"period"}
               style={{ marginBottom: "0" }}
             >
@@ -191,7 +191,7 @@ const EventModal = ({
           <Col span={4}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-color")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-color")}</div>}
               name={"color"}
               style={{ marginBottom: "0", width: "100%" }}
             >
@@ -203,13 +203,13 @@ const EventModal = ({
           <Col span={18}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-title")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-title")}</div>}
               name={"title"}
               style={{ marginBottom: "0", width: "100%" }}
               rules={[
                 {
                   required: true,
-                  message: t("required-field"),
+                  message: t("components.required-field"),
                 },
               ]}
             >
@@ -227,7 +227,7 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-subtitle")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-subtitle")}</div>}
               name={"subtitle"}
               style={{ marginBottom: "0", width: "100%" }}
             >
@@ -244,13 +244,13 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-location")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-location")}</div>}
               name={"location"}
               style={{ marginBottom: "0", width: "100%" }}
               rules={[
                 {
                   required: true,
-                  message: t("required-field"),
+                  message: t("components.required-field"),
                 },
               ]}
             >
@@ -277,7 +277,7 @@ const EventModal = ({
             <Row style={{ width: "100%" }}>
               <Col span={24} style={{ textAlign: "center" }}>
                 <Typography.Text type="warning" strong>
-                  {t("room-busy")}
+                  {t("components.room-busy")}
                 </Typography.Text>
               </Col>
             </Row>
@@ -287,7 +287,7 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-master-id")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-master-id")}</div>}
               name={"masterId"}
               style={{ marginBottom: "0", width: "100%" }}
             >
@@ -315,13 +315,13 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-organizer")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-organizer")}</div>}
               name={"organizer"}
               style={{ marginBottom: "0", width: "100%" }}
               rules={[
                 {
                   required: true,
-                  message: t("required-field"),
+                  message: t("components.required-field"),
                 },
               ]}
             >
@@ -333,7 +333,7 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-description")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-description")}</div>}
               name={"description"}
               style={{ marginBottom: "0", width: "100%" }}
             >
@@ -345,7 +345,7 @@ const EventModal = ({
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("event-attendees")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.event-attendees")}</div>}
               name={"attendees"}
               style={{ marginBottom: "0", width: "100%" }}
             >

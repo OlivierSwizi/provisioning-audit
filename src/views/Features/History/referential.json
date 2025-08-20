@@ -1,45 +1,45 @@
 {
   "SERVICES": [
     {
-      "i18nKey": "noShow",
+      "i18nKey": "history_entry.noShow",
       "key": "NOSHOW"
     },
     {
-      "i18nKey": "wildbooking",
+      "i18nKey": "history_entry.wildbooking",
       "key": "wildbooking"
     }
   ],
   "ACTIONS": [
     {
-      "i18nKey": "notWhiteListed",
+      "i18nKey": "history_entry.notWhiteListed",
       "key": "NOT_WHITE_LISTED"
     },
     {
-      "i18nKey": "maxDurationExceeded",
+      "i18nKey": "history_entry.maxDurationExceeded",
       "key": "MAX_DURATION_EXCEEDED"
     },
     {
-      "i18nKey": "userInExcludedGroup",
+      "i18nKey": "history_entry.userInExcludedGroup",
       "key": "USER_IN_EXCLUDED_GROUP"
     },
     {
-      "i18nKey": "roomUnderConstruction",
+      "i18nKey": "history_entry.roomUnderConstruction",
       "key": "ROOM_UNDER_CONSTRUCTION"
     },
     {
-      "i18nKey": "roomNotDisplayOccupancy",
+      "i18nKey": "history_entry.roomNotDisplayOccupancy",
       "key": "ROOM_NOT_DISPLAY_OCCUPANCY"
     },
     {
-      "i18nKey": "roomNotAllowNoShow",
+      "i18nKey": "history_entry.roomNotAllowNoShow",
       "key": "ROOM_NOT_ALLOW_NO_SHOW"
     },
     {
-      "i18nKey": "userNotified",
+      "i18nKey": "history_entry.userNotified",
       "key": "USER_NOTIFIED"
     },
     {
-      "i18nKey": "getPlanning",
+      "i18nKey": "history_entry.getPlanning",
       "key": "getPlanning"
     }
   ]

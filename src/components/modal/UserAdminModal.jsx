@@ -25,7 +25,7 @@ const UserAdminModal = ({ isVisible, setIsVisible, promiseResolve }) => {
 
   return (
     <Modal open={isVisible} onOk={form.submit} onCancel={handleCancel}>
-      <Typography.Title level={4}>{t("add-user")}</Typography.Title>
+      <Typography.Title level={4}>{t("components.add-user")}</Typography.Title>
       <Form form={form} autocomplete="off" onFinish={handleOk} layout="vertical">
         <Form.Item
           label="Nom"
@@ -33,7 +33,7 @@ const UserAdminModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           rules={[
             {
               required: true,
-              message: t("required-field"),
+              message: t("components.required-field"),
             },
           ]}
         >
@@ -45,7 +45,7 @@ const UserAdminModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           rules={[
             {
               required: true,
-              message: t("required-field"),
+              message: t("components.required-field"),
             },
           ]}
         >
@@ -58,7 +58,7 @@ const UserAdminModal = ({ isVisible, setIsVisible, promiseResolve }) => {
             {
               required: true,
               type: "email",
-              message: t("incorrect-format"),
+              message: t("components.incorrect-format"),
             },
           ]}
         >

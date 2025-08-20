@@ -73,12 +73,12 @@ const HistoryView = () => {
             data: !item.data
               ? ""
               : item.data?.lastOccupancy === undefined
-              ? t("meeting-infos", {
+              ? t("features-history.meeting-infos", {
                   start: new Date(item.data.startDate).toLocaleString(),
                   end: new Date(item.data.endDate).toLocaleString(),
                   organizer: item.data.organizer,
                 })
-              : t("meeting-infos-occupancy", {
+              : t("features-history.meeting-infos-occupancy", {
                   start: new Date(item.data.startDate).toLocaleString(),
                   end: new Date(item.data.endDate).toLocaleString(),
                   organizer: item.data.organizer,
@@ -89,7 +89,7 @@ const HistoryView = () => {
       } catch (error) {
         logger.error(error);
         setLoadingFailed(true);
-        message.error(t("error"));
+        message.error(t("features-history.error"));
         setPage(1);
         setPageSize(10);
         setFilter({});
@@ -114,7 +114,7 @@ const HistoryView = () => {
         setRoomList(result);
       } catch (error) {
         logger.error(error);
-        message.error(t("error-loading-rooms"));
+        message.error(t("features-history.error-loading-rooms"));
       }
     };
 
@@ -147,14 +147,14 @@ const HistoryView = () => {
 
   const columns = [
     {
-      title: <span>{t("date")}</span>,
+      title: <span>{t("features-history.date")}</span>,
       dataIndex: "timestamp",
       render: (value) => {
         return <span>{new Date(value).toLocaleString()}</span>;
       },
     },
     {
-      title: <span>{t("service")}</span>,
+      title: <span>{t("features-history.service")}</span>,
       dataIndex: "service",
       filters: referential.SERVICES.map((service) => ({
         text: t(service.i18nKey),
@@ -164,17 +164,17 @@ const HistoryView = () => {
       render: (value) => <span>{t(value)}</span>,
     },
     {
-      title: <span>{t("event")}</span>,
+      title: <span>{t("features-history.event")}</span>,
       dataIndex: "action",
       render: (value) => <span>{t(value)}</span>,
     },
     {
-      title: <span>{t("room")}</span>,
+      title: <span>{t("features-history.room")}</span>,
       dataIndex: "room",
       filters: roomList.map((room) => ({ text: room, value: room })),
     },
     {
-      title: <span>{t("data")}</span>,
+      title: <span>{t("features-history.data")}</span>,
       dataIndex: "data",
       width: "250",
       render: (value, record) => <HistoryData value={value} record={record} />,
@@ -198,7 +198,7 @@ const HistoryView = () => {
             <Col span={24}>
               <Row style={{ width: "100%" }}>
                 <Col span={24}>
-                  <Title level={3}>{t("history")}</Title>
+                  <Title level={3}>{t("features-history.history")}</Title>
                 </Col>
                 <Col span={22}>
                   <RangePicker

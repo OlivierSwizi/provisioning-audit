@@ -40,7 +40,7 @@ const GroupSelector = ({
             .sort((a, b) => a.label.localeCompare(b.label)),
         );
       } catch (err) {
-        message.error(t("api-error"));
+        message.error(t("components.api-error"));
         logger.error(err);
       }
     };

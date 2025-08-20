@@ -30,7 +30,7 @@ const AppList = () => {
     <Row style={{ width: "100%" }}>
       <Col flex={"auto"}>
         <Typography.Title style={{ textAlign: "left" }} level={3}>
-          {t("apps")}
+          {t("apps-list.apps")}
         </Typography.Title>
       </Col>
       <Col span={8}>
@@ -38,7 +38,7 @@ const AppList = () => {
           onChange={(event) => setSearch(event.target.value)}
           prefix={<SearchOutlined />}
           style={{ width: "100%" }}
-          placeholder={t("search-app")}
+          placeholder={t("apps-list.search-app")}
         />
       </Col>
       <Col span={24}>

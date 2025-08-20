@@ -59,7 +59,7 @@ const ChildrenGroups = ({ group }) => {
           await api.groups.addChildren(group.id, [g]);
         } catch (error) {
           logger.error(error);
-          message.error(t("error-occurred"));
+          message.error(t("audience.error-occurred"));
         }
       });
       loadChildren();
@@ -77,7 +77,7 @@ const ChildrenGroups = ({ group }) => {
         await api.groups.removeChildren(group.id, child.id);
       } catch (error) {
         logger.error(error);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       }
     });
     loadChildren();
@@ -102,7 +102,7 @@ const ChildrenGroups = ({ group }) => {
       <Row gutter={[10, 10]}>
         <Col span={19}>
           <Typography.Title level={4} style={{ margin: 0 }}>
-            {t("children-of-group")}
+            {t("groups.children-of-group")}
           </Typography.Title>
         </Col>
 
@@ -120,7 +120,7 @@ const ChildrenGroups = ({ group }) => {
             onClick={handleAddChildren}
             block
           >
-            {t("add-children")}
+            {t("groups.add-children")}
           </Button>
         </Col>
 
@@ -142,21 +142,21 @@ const ChildrenGroups = ({ group }) => {
             </Col>
             <Col span={6}>
               <Glyph name="person" style={{ fontSize: "24px", color: colors.grey_60 }} />
-              {child.nb_users} {t("users")}
+              {child.nb_users} {t("groups.users")}
             </Col>
             <Col span={5}>
               <Typography.Link onClick={() => handleMoveToGroup(child.id)}>
-                {t("check-group")}
+                {t("groups.check-group")}
               </Typography.Link>
             </Col>
             <Col span={3}>
-              <Tooltip title={t("remove_from_group")}>
+              <Tooltip title={t("groups.remove_from_group")}>
                 <Popconfirm
-                  title={t("remove-from-group-children", { groupName: child.label })}
+                  title={t("groups.remove-from-group-children", { groupName: child.label })}
                   onConfirm={() => handleRemoveChildrenFromGroup(child)}
                   placement="left"
-                  okText={t("yes")}
-                  cancelText={t("no")}
+                  okText={t("flexoffice.yes")}
+                  cancelText={t("flexoffice.no")}
                 >
                   <Glyph
                     name="delete_forever"

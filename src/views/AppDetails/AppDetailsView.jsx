@@ -100,7 +100,7 @@ const AppDetailsView = () => {
       <Row>
         <Col span={16} push={2}>
           <Button type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("back")}
+            {t("app-details.back")}
           </Button>
         </Col>
       </Row>
@@ -115,7 +115,7 @@ const AppDetailsView = () => {
                   )}
                   <Typography.Title>{data.name}</Typography.Title>
                   <Typography.Text>
-                    {t("project-id")}: {data.id}
+                    {t("app-details.project-id")}: {data.id}
                   </Typography.Text>
                 </Space>
               </Col>

@@ -42,7 +42,7 @@ const MediaSelector = ({ value, onChange }) => {
       onChange(id);
     } catch (error) {
       logger.error("Failed to upload file", error);
-      message.error(t("upload-error"));
+      message.error(t("components.upload-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -54,13 +54,12 @@ const MediaSelector = ({ value, onChange }) => {
       <div style={{ position: "absolute", bottom: 12, right: 12, zIndex: 2 }}>
         <Button size="small" icon={<SwapOutlined />} type="primary" onClick={handleSelectFile} />
       </div>
-
       {value ? (
         <Image width={258} height={102} src={headerUrl} />
       ) : (
         <Empty
           image={<div style={{ height: 60, backgroundColor: "#f0f0f0" }} />}
-          description={<span>{t("no-header")}</span>}
+          description={<span>{t("components.no-header")}</span>}
         />
       )}
     </div>

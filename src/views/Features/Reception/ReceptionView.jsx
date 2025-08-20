@@ -83,7 +83,7 @@ const ReceptionView = () => {
         setDisablePrinter(!!config.disablePrinter);
       } catch (e) {
         logger.error(e);
-        message.error(t("load-scim-history--error"));
+        message.error(t("features-reception.load-scim-history--error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -97,10 +97,10 @@ const ReceptionView = () => {
     try {
       await dispatch(startWorking());
       await api.features.saveReceptionConfig(siteId, form.getFieldsValue());
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -112,8 +112,8 @@ const ReceptionView = () => {
       if (changedFields[0].value) {
         form.setFieldsValue({ useKeyCard: true });
         Modal.warn({
-          title: t("printer-disabled"),
-          content: t("printer-disabled-warning"),
+          title: t("features-reception.printer-disabled"),
+          content: t("features-reception.printer-disabled-warning"),
         });
       }
     }
@@ -134,7 +134,7 @@ const ReceptionView = () => {
             </Col>
             <Col span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             <Col span={24}>
@@ -151,21 +151,21 @@ const ReceptionView = () => {
                 layout="horizontal"
                 onFieldsChange={handleFieldsChange}
               >
-                <MultiLineFormItem label={t("visitor-group-list")} name="visitorGroups">
+                <MultiLineFormItem label={t("features-reception.visitor-group-list")} name="visitorGroups">
                   <GroupSelector mode="tags" size="middle" />
                 </MultiLineFormItem>
-                <MultiLineFormItem label={t("appname-reception")} name="appName">
+                <MultiLineFormItem label={t("features-reception.appname-reception")} name="appName">
                   <Input autoComplete="off" />
                 </MultiLineFormItem>
                 <MultiLineFormItem
-                  label={t("disable-printer")}
+                  label={t("features-reception.disable-printer")}
                   name="disablePrinter"
                   valuePropName="checked"
                 >
                   <Checkbox />
                 </MultiLineFormItem>
                 <MultiLineFormItem
-                  label={t("default-ip-address")}
+                  label={t("features-reception.default-ip-address")}
                   name="printerIp"
                   hidden={disablePrinter}
                 >
@@ -174,7 +174,7 @@ const ReceptionView = () => {
                 <Row style={{ width: "100%" }}>
                   <Col span={12}>
                     <MultiLineFormItem
-                      label={t("allow-residents-badges")}
+                      label={t("features-reception.allow-residents-badges")}
                       name="allowBadgeLost"
                       valuePropName="checked"
                     >
@@ -183,7 +183,7 @@ const ReceptionView = () => {
                   </Col>
                   <Col span={12}>
                     <MultiLineFormItem
-                      label={t("allow-keycard")}
+                      label={t("features-reception.allow-keycard")}
                       name="useKeyCard"
                       valuePropName="checked"
                     >
@@ -191,21 +191,21 @@ const ReceptionView = () => {
                     </MultiLineFormItem>
                   </Col>
                   <Col span={12}>
-                    <MultiLineFormItem label={t("max-duration-visit")} name="maxVisitDuration">
+                    <MultiLineFormItem label={t("features-reception.max-duration-visit")} name="maxVisitDuration">
                       <InputNumber step={1} />
                     </MultiLineFormItem>
                   </Col>
                 </Row>
                 <Tabs defaultActiveKey="1">
                   {!disablePrinter && (
-                    <TabPane tab={t("badges")} key="1">
+                    <TabPane tab={t("features-reception.badges")} key="1">
                       <Form.Item name="badgeTemplates" wrapperCol={{ span: 24 }}>
                         <ReceptionBadgeList />
                       </Form.Item>
                     </TabPane>
                   )}
 
-                  <TabPane tab={t("email-templates")} key="2">
+                  <TabPane tab={t("features-reception.email-templates")} key="2">
                     <Form.Item name="mailTemplate" wrapperCol={{ span: 24 }}>
                       <TemplateListEditor keywords={keywords} />
                     </Form.Item>

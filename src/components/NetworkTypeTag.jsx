@@ -12,7 +12,7 @@ const NETWORK_COLORS = {
 const NetworkTypeTag = ({ type }) => {
   const { t } = useTranslation();
   return (
-    <Tooltip title={t("group-user-type")}>
+    <Tooltip title={t("components.group-user-type")}>
       <Tag
         color={NETWORK_COLORS[type]?.color}
         style={{

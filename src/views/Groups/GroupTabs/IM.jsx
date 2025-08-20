@@ -19,28 +19,28 @@ const IM = ({ group, messageList, onActiveIM, onPublishMessage, onUpdateMessage 
 
   const columns = [
     {
-      title: t("type"),
+      title: t("groups.type"),
       dataIndex: "type",
       key: "type",
       render: (text) => (
         <Tag color={text === "ANNOUNCEMENT" ? "blue" : "green"}>
-          {text === "ANNOUNCEMENT" ? t("announcement") : t("message")}
+          {text === "ANNOUNCEMENT" ? t("groups.announcement") : t("groups.message")}
         </Tag>
       ),
     },
     {
-      title: t("created-at"),
+      title: t("groups.created-at"),
       dataIndex: "createdAt",
       key: "createdAt",
     },
     {
-      title: t("updated-at"),
+      title: t("groups.updated-at"),
       dataIndex: "updatedAt",
       key: "updatedAt",
       render: (text) => (text ? text : "-"),
     },
     {
-      title: t("announcement"),
+      title: t("groups.announcement"),
       dataIndex: "message",
       key: "message",
     },
@@ -75,7 +75,7 @@ const IM = ({ group, messageList, onActiveIM, onPublishMessage, onUpdateMessage 
     >
       <div style={{ display: "flex", gap: 10 }}>
         <Typography.Title level={4} style={{ margin: 0, flexGrow: 1 }}>
-          {t("instant-messaging")}
+          {t("groups.instant-messaging")}
         </Typography.Title>
 
         {isChatChannel && (
@@ -87,13 +87,13 @@ const IM = ({ group, messageList, onActiveIM, onPublishMessage, onUpdateMessage 
             >
               <Space size="small">
                 <Glyph name={"message"} style={{ fontSize: "18px" }} />
-                {t("publish-im-announce")}
+                {t("groups.publish-im-announce")}
               </Space>
             </Button>
             <Button type="primary" size="small" onClick={() => handleCreateAnnouncement("ADMIN")}>
               <Space size="small">
                 <Glyph name={"message"} style={{ fontSize: "18px" }} />
-                {t("publish-im-message")}
+                {t("groups.publish-im-message")}
               </Space>
             </Button>
           </Space>
@@ -103,7 +103,7 @@ const IM = ({ group, messageList, onActiveIM, onPublishMessage, onUpdateMessage 
         <div style={{ flexGrow: 1, overflowY: "auto" }}>
           {messageList.length === 0 ? (
             <Typography.Title level={5} style={{ textAlign: "center" }}>
-              {t("no-announcements-yet")}
+              {t("groups.no-announcements-yet")}
             </Typography.Title>
           ) : (
             <Table columns={columns} dataSource={messageList} />
@@ -112,7 +112,7 @@ const IM = ({ group, messageList, onActiveIM, onPublishMessage, onUpdateMessage 
       ) : (
         <Row justify="center">
           <Button type="primary" onClick={onActiveIM}>
-            {t("create-im-channel")}
+            {t("groups.create-im-channel")}
           </Button>
         </Row>
       )}

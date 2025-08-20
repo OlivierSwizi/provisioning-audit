@@ -36,7 +36,7 @@ const Features = ({ group, onUpdateFeaturesConfig }) => {
       extra={
         <Space>
           <Button type="primary" onClick={() => form.submit()} icon={<Glyph type="save" />}>
-            {t("save")}
+            {t("components.save")}
           </Button>
         </Space>
       }
@@ -44,12 +44,12 @@ const Features = ({ group, onUpdateFeaturesConfig }) => {
       <Row gutter={[10, 10]}>
         <Col span={22}>
           <Typography.Title level={4} style={{ margin: 0 }}>
-            {t("authorized-features")}
+            {t("groups.authorized-features")}
           </Typography.Title>
         </Col>
         <Col span={22} style={{ padding: "15px 0 0 0" }}>
           <Form layout="inline" onFinish={handleUpdateFeatureConfig} form={form}>
-            <Form.Item label={t("unifiedQRCode")} name="unifiedQRCode" valuePropName="checked">
+            <Form.Item label={t("groups.unifiedQRCode")} name="unifiedQRCode" valuePropName="checked">
               <Checkbox />
             </Form.Item>
           </Form>

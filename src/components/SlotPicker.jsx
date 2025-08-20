@@ -24,14 +24,14 @@ const SlotPicker = ({ value, onChange }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-      <Typography.Text style={{ marginRight: "5px" }}>{t("from")}</Typography.Text>
+      <Typography.Text style={{ marginRight: "5px" }}>{t("components.from")}</Typography.Text>
       <TimePicker
         format="HH:mm"
         value={start}
         onChange={(v) => handleChange(v, end)}
         minuteStep={15}
       />
-      <Typography.Text style={{ marginRight: "5px", marginLeft: "5px" }}>{t("to")}</Typography.Text>
+      <Typography.Text style={{ marginRight: "5px", marginLeft: "5px" }}>{t("components.to")}</Typography.Text>
       <TimePicker
         format="HH:mm"
         value={end}

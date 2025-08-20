@@ -61,12 +61,12 @@ const UserModal = ({ user = undefined, isVisible, setIsVisible, promiseResolve }
           form.getFieldValue("email"),
         );
         if (!isValid) {
-          message.error(t("user-invalid-login-email"));
+          message.error(t("components.user-invalid-login-email"));
           return;
         }
       } catch (error) {
         logger.error("Failed to check user validity", error);
-        message.error(t("an-error-occurred"));
+        message.error(t("components.an-error-occurred"));
         return;
       }
     }
@@ -82,11 +82,11 @@ const UserModal = ({ user = undefined, isVisible, setIsVisible, promiseResolve }
     const rules = [
       {
         required,
-        message: t("required-field"),
+        message: t("components.required-field"),
       },
     ];
 
-    if (isEmail) rules.push({ type: "email", message: t("invalid-email") });
+    if (isEmail) rules.push({ type: "email", message: t("components.invalid-email") });
 
     return (
       <Form.Item
@@ -125,30 +125,30 @@ const UserModal = ({ user = undefined, isVisible, setIsVisible, promiseResolve }
         <Row gutter={16}>
           <Col span={24}>
             <Typography.Title level={4}>
-              {user ? t("user-informations") : t("user-creation")}
+              {user ? t("components.user-informations") : t("components.user-creation")}
             </Typography.Title>
           </Col>
           <Col span={12}>
             <Item
-              label={t("user-login")}
+              label={t("components.user-login")}
               name={"login"}
               disabled={!isCreationForm}
               required={true}
             />
-            <Item label={t("user-email")} name={"email"} required={true} isEmail={true} />
-            <Item label={t("user-external-id")} name={"brokerExtId"} />
-            <Item label={t("user-firstname")} name={"firstname"} required={true} />
-            <Item label={t("user-lastname")} name={"lastname"} required={true} />
-            <Item label={t("user-company")} name={"company"} />
+            <Item label={t("components.user-email")} name={"email"} required={true} isEmail={true} />
+            <Item label={t("components.user-external-id")} name={"brokerExtId"} />
+            <Item label={t("components.user-firstname")} name={"firstname"} required={true} />
+            <Item label={t("components.user-lastname")} name={"lastname"} required={true} />
+            <Item label={t("components.user-company")} name={"company"} />
           </Col>
           <Col span={12}>
-            <Item label={t("user-entity")} name={"entity"} />
-            <Item label={t("user-phone")} name={"phone"} />
-            <Item label={t("user-mobile-phone")} name={"mobilePhone"} />
-            <Item label={t("user-function")} name={"function"} />
-            <Item label={t("user-business-address")} name={"businessAddress"} />
+            <Item label={t("components.user-entity")} name={"entity"} />
+            <Item label={t("components.user-phone")} name={"phone"} />
+            <Item label={t("components.user-mobile-phone")} name={"mobilePhone"} />
+            <Item label={t("components.user-function")} name={"function"} />
+            <Item label={t("components.user-business-address")} name={"businessAddress"} />
             <Form.Item
-              label={<div style={{ whiteSpace: "normal" }}>{t("user-allow-access")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.user-allow-access")}</div>}
               name={"enabled"}
               style={{ marginBottom: "0" }}
               valuePropName="checked"
@@ -156,7 +156,7 @@ const UserModal = ({ user = undefined, isVisible, setIsVisible, promiseResolve }
               <Checkbox size="small" />
             </Form.Item>
             <Form.Item
-              label={<div style={{ whiteSpace: "normal" }}>{t("confidential-user")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.confidential-user")}</div>}
               name={"confidential"}
               style={{ marginBottom: "0" }}
               valuePropName="checked"

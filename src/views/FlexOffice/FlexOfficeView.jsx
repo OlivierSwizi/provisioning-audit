@@ -68,7 +68,7 @@ const FlexOfficeView = () => {
 
         const { user, from } = values;
         if (isNil(user)) {
-          message.error(t("flexoffice-user-required"));
+          message.error(t("flexoffice.flexoffice-user-required"));
           return;
         }
         const userId = user.id;
@@ -86,11 +86,11 @@ const FlexOfficeView = () => {
         setTotalPageCount(totalPageCount);
         setCurrentUser(user);
         if (items.length === 0) {
-          message.info(t("flexoffice-no-results"));
+          message.info(t("flexoffice.flexoffice-no-results"));
         }
       } catch (error) {
         logger.error(error);
-        message.error(t("flexoffice-search-error"));
+        message.error(t("flexoffice.flexoffice-search-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -104,7 +104,7 @@ const FlexOfficeView = () => {
       <>
         <Row style={{ marginTop: 20 }}>
           <Col span={24}>
-            <Typography.Title level={3}>{t("flexoffice-search-by-user")}</Typography.Title>
+            <Typography.Title level={3}>{t("flexoffice.flexoffice-search-by-user")}</Typography.Title>
           </Col>
           <Col span={24}>
             <Form form={form} onFinish={search} layout="vertical" style={{ width: "100%" }}>
@@ -112,8 +112,8 @@ const FlexOfficeView = () => {
                 <Col span={6}>
                   <Form.Item
                     name="user"
-                    label={t("user")}
-                    rules={[{ required: true, message: t("required") }]}
+                    label={t("flexoffice.user")}
+                    rules={[{ required: true, message: t("flexoffice.required") }]}
                   >
                     <UserSearch showEmail size="large" />
                   </Form.Item>
@@ -121,8 +121,8 @@ const FlexOfficeView = () => {
                 <Col>
                   <Form.Item
                     name="from"
-                    label={t("from")}
-                    rules={[{ required: true, message: t("required") }]}
+                    label={t("components.from")}
+                    rules={[{ required: true, message: t("flexoffice.required") }]}
                   >
                     <DatePicker size="large" />
                   </Form.Item>
@@ -130,7 +130,7 @@ const FlexOfficeView = () => {
                 <Col>
                   <Form.Item>
                     <Button type="primary" htmlType="submit" size="large">
-                      {t("search")}
+                      {t("flexoffice.search")}
                     </Button>
                   </Form.Item>
                 </Col>
@@ -143,7 +143,7 @@ const FlexOfficeView = () => {
           <Row style={{ marginTop: 20 }}>
             <Col span={24}>
               <Typography.Title level={3}>
-                {t("flexoffice-booking-of-user")} {currentUser.firstname} {currentUser.lastname}
+                {t("flexoffice.flexoffice-booking-of-user")} {currentUser.firstname} {currentUser.lastname}
               </Typography.Title>
             </Col>
             <Col span={24}>
@@ -158,27 +158,27 @@ const FlexOfficeView = () => {
                 }}
                 columns={[
                   {
-                    title: t("date"),
+                    title: t("features-history.date"),
                     dataIndex: "date",
                     key: "date",
                     render: (_, record) => <span>{dayjs(record.date).format("DD/MM/YYYY")}</span>,
                   },
                   {
-                    title: t("flexoffice-period"),
+                    title: t("flexoffice.flexoffice-period"),
                     dataIndex: "period",
                     key: "period",
                     render: (_, record) => (
                       <span>
                         {record.morning && record.afternoon
-                          ? t("flex-office-all-day")
+                          ? t("flexoffice.flex-office-all-day")
                           : record.morning
                           ? "flex-office-morning"
-                          : t("flex-office-afternoon")}
+                          : t("flexoffice.flex-office-afternoon")}
                       </span>
                     ),
                   },
                   {
-                    title: t("flexoffice-desk"),
+                    title: t("flexoffice.flexoffice-desk"),
                     dataIndex: "desk",
                     key: "desk",
                     render: (_, record) => (
@@ -189,13 +189,13 @@ const FlexOfficeView = () => {
                   },
 
                   {
-                    title: t("flexoffice-confirmed"),
+                    title: t("flexoffice.flexoffice-confirmed"),
                     dataIndex: "confirmed",
                     key: "confirmed",
-                    render: (_, record) => <span>{record.confirmed ? t("yes") : t("no")}</span>,
+                    render: (_, record) => <span>{record.confirmed ? t("flexoffice.yes") : t("flexoffice.no")}</span>,
                   },
                   {
-                    title: t("flexoffice-booking-date"),
+                    title: t("flexoffice.flexoffice-booking-date"),
                     dataIndex: "bookingDate",
                     key: "bookingDate",
                     render: (_, record) => (
@@ -238,7 +238,7 @@ const FlexOfficeView = () => {
 
         const { desk, from } = values;
         if (isNil(desk)) {
-          message.error(t("flexoffice-desk-required"));
+          message.error(t("flexoffice.flexoffice-desk-required"));
           return;
         }
         const fromStartOfDay = dayjs(from).startOf("day").toISOString();
@@ -260,11 +260,11 @@ const FlexOfficeView = () => {
         setTotalPageCount(totalPageCount);
         setCurrentDesk(desk);
         if (items.length === 0) {
-          message.info(t("flexoffice-no-results"));
+          message.info(t("flexoffice.flexoffice-no-results"));
         }
       } catch (error) {
         logger.error(error);
-        message.error(t("flexoffice-search-error"));
+        message.error(t("flexoffice.flexoffice-search-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -278,7 +278,7 @@ const FlexOfficeView = () => {
       <>
         <Row style={{ marginTop: 20 }}>
           <Col span={24}>
-            <Typography.Title level={3}>{t("flexoffice-search-by-desk")}</Typography.Title>
+            <Typography.Title level={3}>{t("flexoffice.flexoffice-search-by-desk")}</Typography.Title>
           </Col>
           <Col span={24}>
             <Form form={form} onFinish={search} layout="vertical" style={{ width: "100%" }}>
@@ -286,8 +286,8 @@ const FlexOfficeView = () => {
                 <Col span={6}>
                   <Form.Item
                     name="desk"
-                    label={t("flex-office-desk")}
-                    rules={[{ required: true, message: t("flexoffice-required") }]}
+                    label={t("flexoffice.flex-office-desk")}
+                    rules={[{ required: true, message: t("flexoffice.flexoffice-required") }]}
                   >
                     <DeskSearch siteId={siteId} />
                   </Form.Item>
@@ -295,8 +295,8 @@ const FlexOfficeView = () => {
                 <Col>
                   <Form.Item
                     name="from"
-                    label={t("from")}
-                    rules={[{ required: true, message: t("flexoffice-required") }]}
+                    label={t("components.from")}
+                    rules={[{ required: true, message: t("flexoffice.flexoffice-required") }]}
                   >
                     <DatePicker size="large" />
                   </Form.Item>
@@ -304,7 +304,7 @@ const FlexOfficeView = () => {
                 <Col>
                   <Form.Item>
                     <Button type="primary" htmlType="submit" size="large">
-                      {t("search")}
+                      {t("flexoffice.search")}
                     </Button>
                   </Form.Item>
                 </Col>
@@ -317,7 +317,7 @@ const FlexOfficeView = () => {
           <Row style={{ marginTop: 20 }}>
             <Col span={24}>
               <Typography.Title level={3}>
-                {t("flexoffice-booking-of-desk")} {currentDesk.title} ({currentDesk.reference})
+                {t("flexoffice.flexoffice-booking-of-desk")} {currentDesk.title} ({currentDesk.reference})
               </Typography.Title>
             </Col>
             <Col span={24}>
@@ -332,40 +332,40 @@ const FlexOfficeView = () => {
                 }}
                 columns={[
                   {
-                    title: t("date"),
+                    title: t("features-history.date"),
                     dataIndex: "date",
                     key: "date",
                     render: (_, record) => <span>{dayjs(record.date).format("DD/MM/YYYY")}</span>,
                   },
                   {
-                    title: t("flexoffice-period"),
+                    title: t("flexoffice.flexoffice-period"),
                     dataIndex: "period",
                     key: "period",
                     render: (_, record) => (
                       <span>
                         {record.morning && record.afternoon
-                          ? t("flex-office-all-day")
+                          ? t("flexoffice.flex-office-all-day")
                           : record.morning
                           ? "flex-office-morning"
-                          : t("flex-office-afternoon")}
+                          : t("flexoffice.flex-office-afternoon")}
                       </span>
                     ),
                   },
                   {
-                    title: t("flexoffice-user"),
+                    title: t("flexoffice.flexoffice-user"),
                     dataIndex: "user",
                     key: "user",
                     render: (_, record) => <span>{record.email}</span>,
                   },
 
                   {
-                    title: t("flexoffice-confirmed"),
+                    title: t("flexoffice.flexoffice-confirmed"),
                     dataIndex: "confirmed",
                     key: "confirmed",
-                    render: (_, record) => <span>{record.confirmed ? t("yes") : t("no")}</span>,
+                    render: (_, record) => <span>{record.confirmed ? t("flexoffice.yes") : t("flexoffice.no")}</span>,
                   },
                   {
-                    title: t("flexoffice-booking-date"),
+                    title: t("flexoffice.flexoffice-booking-date"),
                     dataIndex: "bookingDate",
                     key: "bookingDate",
                     render: (_, record) => (
@@ -385,7 +385,7 @@ const FlexOfficeView = () => {
     <>
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
-          <Typography.Title level={2}>{t("flexoffice-monitor")}</Typography.Title>
+          <Typography.Title level={2}>{t("flexoffice.flexoffice-monitor")}</Typography.Title>
         </Col>
         <Col span={24}>
           <Row style={{ width: "100%" }}>
@@ -406,12 +406,12 @@ const FlexOfficeView = () => {
                 onChange={(key) => setActiveTab(key)}
                 items={[
                   {
-                    label: t("flexoffice-search-by-user"),
+                    label: t("flexoffice.flexoffice-search-by-user"),
                     key: "search-by-user",
                     children: <SearchByUser />,
                   },
                   {
-                    label: t("flexoffice-search-by-desk"),
+                    label: t("flexoffice.flexoffice-search-by-desk"),
                     key: "search-by-desk",
                     children: <SearchByDesk />,
                   },

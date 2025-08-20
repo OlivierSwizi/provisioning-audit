@@ -53,12 +53,12 @@ const CompositGroupCreation = () => {
       );
       /* if (createIMChannel)
         await workDispatch(publishIMAnnouncement(newGroupId, imChannelWelcomeMessage));*/
-      message.success(t("group-created"));
+      message.success(t("groups.group-created"));
 
       navigate(`/apps/${appId}/groups/${newGroupId}`);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
@@ -69,7 +69,7 @@ const CompositGroupCreation = () => {
       <>
         <Row style={{ width: "100%", marginTop: "15px" }}>
           <Col span={8}>
-            <Text>{t("group-displayname")}</Text>
+            <Text>{t("groups.group-displayname")}</Text>
           </Col>
           <Col span={8}>
             <Input
@@ -83,7 +83,7 @@ const CompositGroupCreation = () => {
         {!isUserGroupAdmin ? (
           <Row style={{ width: "100%", marginTop: "15px" }}>
             <Col span={8}>
-              <Text>{t("group-site-link")}</Text>
+              <Text>{t("groups.group-site-link")}</Text>
             </Col>
             <Col span={8}>
               <Select value={siteId} onChange={(value) => setSiteId(value)}>
@@ -99,7 +99,7 @@ const CompositGroupCreation = () => {
 
         <Row justify="center" style={{ width: "100%", marginTop: "25px" }}>
           {alreadyExists ? (
-            <Typography.Text type="danger">{t("swizi-group-already-exists")}</Typography.Text>
+            <Typography.Text type="danger">{t("groups.swizi-group-already-exists")}</Typography.Text>
           ) : (
             <Button
               type="primary"
@@ -112,7 +112,7 @@ const CompositGroupCreation = () => {
                 (createIMChannel && !imChannelWelcomeMessage)*/
               }
             >
-              {t("add")}
+              {t("components.add")}
             </Button>
           )}
         </Row>

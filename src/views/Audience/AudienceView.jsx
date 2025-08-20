@@ -39,10 +39,10 @@ const AudienceView = ({ admin = false }) => {
 
   const pathOptions = useMemo(() => {
     return [
-      { label: t("day"), value: "day" },
-      { label: t("week"), value: "week" },
-      { label: t("month"), value: "month" },
-      { label: t("year"), value: "year" },
+      { label: t("audience.day"), value: "day" },
+      { label: t("audience.week"), value: "week" },
+      { label: t("audience.month"), value: "month" },
+      { label: t("audience.year"), value: "year" },
     ];
   }, [t]);
 
@@ -63,7 +63,7 @@ const AudienceView = ({ admin = false }) => {
       setData(data);
     } catch (e) {
       logger.error(e);
-      message.error(t("load-error"));
+      message.error(t("audience.load-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -82,10 +82,10 @@ const AudienceView = ({ admin = false }) => {
       a.href = url;
       a.download = `${app.name}-audience-${timestamp}.xlsx`;
       a.click();
-      message.success(t("download-success"));
+      message.success(t("audience.download-success"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
@@ -101,12 +101,12 @@ const AudienceView = ({ admin = false }) => {
       title={
         <Row justify="space-between" align="middle" style={{ width: "100%" }}>
           <Col>
-            <Typography.Text>{t("unique-user-graph")}</Typography.Text>
+            <Typography.Text>{t("audience.unique-user-graph")}</Typography.Text>
           </Col>
           {access.superAdmin && (
             <Col>
               <Button size="middle" onClick={handleDownloadExcel}>
-                {t("download-analytics-users")}
+                {t("audience.download-analytics-users")}
               </Button>
             </Col>
           )}
@@ -117,7 +117,7 @@ const AudienceView = ({ admin = false }) => {
     >
       <Row width="100%">
         <Col span={8} style={{ display: "flex", alignItems: "center" }}>
-          <Typography.Text>{t("period")}</Typography.Text>
+          <Typography.Text>{t("audience.period")}</Typography.Text>
 
           <RangePicker
             style={{ marginLeft: "20px" }}
@@ -130,7 +130,7 @@ const AudienceView = ({ admin = false }) => {
           />
         </Col>
         <Col span={8} style={{ display: "flex", alignItems: "center" }}>
-          <Typography.Text>{t("analytic-path")}</Typography.Text>
+          <Typography.Text>{t("audience.analytic-path")}</Typography.Text>
           <Select
             style={{ marginLeft: "10px", width: "100px" }}
             options={pathOptions}

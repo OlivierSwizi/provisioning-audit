@@ -19,10 +19,10 @@ const NotFound = () => {
         <Result
           status="404"
           title="404"
-          subTitle={t("404-subtitle")}
+          subTitle={t("errors.404-subtitle")}
           extra={
             <Button block onClick={() => navigate("/")} type="primary">
-              {t("404-redirect")}
+              {t("errors.404-redirect")}
             </Button>
           }
         />

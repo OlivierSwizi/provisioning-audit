@@ -27,7 +27,7 @@ const SelectUserModal = ({ isVisible, setIsVisible, promiseResolve }) => {
   return (
     <Modal open={isVisible} onOk={handleOk} onCancel={handleCancel} style={{ height: "500px" }}>
       <Row>
-        <Typography.Title level={4}>{t("choose-users")}</Typography.Title>
+        <Typography.Title level={4}>{t("components.choose-users")}</Typography.Title>
       </Row>
       <Row style={{ width: "100%" }}>
         <UserListSelect

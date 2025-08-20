@@ -66,14 +66,14 @@ const UserDetails = () => {
 
   const accessColumns = [
     {
-      title: <BoldTitle title={t("site")} />,
+      title: <BoldTitle title={t("components.site")} />,
       dataIndex: "siteName",
       key: "siteName",
       width: 200,
       align: "center",
     },
     {
-      title: <BoldTitle title={t("access-code")} />,
+      title: <BoldTitle title={t("components.access-code")} />,
       dataIndex: "accessCode",
       key: "accessCode",
       width: 300,
@@ -81,30 +81,30 @@ const UserDetails = () => {
       render: (accessCode) => (accessCode ? <Text copyable>{accessCode}</Text> : <Text>-</Text>),
     },
     {
-      title: <BoldTitle title={t("access-code-expiration-date")} />,
+      title: <BoldTitle title={t("components.access-code-expiration-date")} />,
       dataIndex: "expiresAt",
       key: "expiresAt",
       width: 200,
       align: "center",
-      render: (v) => <Text>{v ? dayjs(v).format(t("date-hour-format")) : "-"}</Text>,
+      render: (v) => <Text>{v ? dayjs(v).format(t("users.date-hour-format")) : "-"}</Text>,
     },
     {
-      title: <BoldTitle title={t("is-present")} />,
+      title: <BoldTitle title={t("components.is-present")} />,
       dataIndex: "is-present",
       key: "isPresent",
       width: 100,
       align: "center",
-      render: (v, d) => <Text>{d.isPresent ? t("yes") : t("no")}</Text>,
+      render: (v, d) => <Text>{d.isPresent ? t("flexoffice.yes") : t("flexoffice.no")}</Text>,
     },
     {
-      title: <BoldTitle title={t("presence-expiration-date")} />,
+      title: <BoldTitle title={t("components.presence-expiration-date")} />,
       dataIndex: "presence-expiration-date",
       key: "presence-expiration-date",
       width: 200,
       align: "center",
       render: (v, d) => (
         <Text>
-          {d.presenceExpiration ? dayjs(d.presenceExpiration).format(t("date-hour-format")) : "-"}
+          {d.presenceExpiration ? dayjs(d.presenceExpiration).format(t("users.date-hour-format")) : "-"}
         </Text>
       ),
     },
@@ -116,11 +116,11 @@ const UserDetails = () => {
       align: "center",
       render: (v, d) => (
         <Popconfirm
-          title={t("remove-access-confirmation", { groupName: "" })}
+          title={t("users.remove-access-confirmation", { groupName: "" })}
           onConfirm={() => handleRemoveAccess(d)}
           placement="left"
-          okText={t("yes")}
-          cancelText={t("no")}
+          okText={t("flexoffice.yes")}
+          cancelText={t("flexoffice.no")}
         >
           <Glyph
             name={"delete_forever"}
@@ -162,10 +162,10 @@ const UserDetails = () => {
             access.presenceExpirationDate,
           ),
         );
-        message.success(t("access-added-success"));
+        message.success(t("users.access-added-success"));
       } catch (error) {
         logger.error(error);
-        message.error(t("access-added-error"));
+        message.error(t("users.access-added-error"));
       }
       loadUser(user.id);
     }
@@ -174,10 +174,10 @@ const UserDetails = () => {
   const handleRemoveAccess = async (access) => {
     try {
       await workDispatch(removeUserAccess(user.id, access.siteId));
-      message.success(t("access-remove-success"));
+      message.success(t("users.access-remove-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("access-remove-error"));
+      message.error(t("users.access-remove-error"));
     }
     loadUser(user.id);
   };
@@ -189,16 +189,16 @@ const UserDetails = () => {
   const handleUpdateUser = async () => {
     if (
       user.fromNetwork !== "SWIZI" &&
-      !(await confirm(t("sync-origin-user"), t("update-sync-user-confirmation")))
+      !(await confirm(t("users.sync-origin-user"), t("users.update-sync-user-confirmation")))
     )
       return;
     try {
       const userInfo = await updateUser(user);
       await workDispatch(updateUserDetails(user.id, userInfo));
-      message.success(t("user-update-success"));
+      message.success(t("users.user-update-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("user-update-error"));
+      message.error(t("users.user-update-error"));
     }
 
     loadUser(user.id);
@@ -207,10 +207,10 @@ const UserDetails = () => {
   const handleRemoveFromGroup = async (group) => {
     try {
       await workDispatch(removeSelectedUserFromGroup(group.id, user.id));
-      message.success(t("group-remove-user-success"));
+      message.success(t("users.group-remove-user-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("group-remove-user-error"));
+      message.error(t("users.group-remove-user-error"));
     }
     loadUser(user.id);
   };
@@ -224,10 +224,10 @@ const UserDetails = () => {
     if (groupId) {
       try {
         await workDispatch(addUsersToGroup({ id: groupId }, [user.id]));
-        message.success(t("group-add-user-success"));
+        message.success(t("users.group-add-user-success"));
       } catch (error) {
         logger.error(error);
-        message.error(t("group-add-user-error"));
+        message.error(t("users.group-add-user-error"));
       }
       loadUser(user.id);
     }
@@ -264,7 +264,7 @@ const UserDetails = () => {
           >
             <Space size="small">
               <Glyph name={"fingerprint"} style={{ fontSize: "18px" }} />
-              {t("add-access")}
+              {t("users.add-access")}
             </Space>
           </Button>
         </Col>
@@ -279,48 +279,48 @@ const UserDetails = () => {
     <>
       <Row style={{ width: "100%" }}>
         <Col span={12} style={{ borderRight: "1px solid #DDDDDD" }}>
-          <UserDetail title={t("user-email")} value={user.email} />
-          <UserDetail title={t("user-login")} value={user.login} />
-          <UserDetail title={t("user-external-id")} value={user.brokerExtId} />
-          <UserDetail title={t("user-firstname")} value={user.firstname} />
-          <UserDetail title={t("user-lastname")} value={user.lastname} />
-          <UserDetail title={t("user-company")} value={user.company} />
-          <UserDetail title={t("user-entity")} value={user.entity} />
-          <UserDetail title={t("user-phone")} value={user?.phone || ""} />
-          <UserDetail title={t("user-mobile-phone")} value={user?.mobilePhone || ""} />
+          <UserDetail title={t("components.user-email")} value={user.email} />
+          <UserDetail title={t("components.user-login")} value={user.login} />
+          <UserDetail title={t("components.user-external-id")} value={user.brokerExtId} />
+          <UserDetail title={t("components.user-firstname")} value={user.firstname} />
+          <UserDetail title={t("components.user-lastname")} value={user.lastname} />
+          <UserDetail title={t("components.user-company")} value={user.company} />
+          <UserDetail title={t("components.user-entity")} value={user.entity} />
+          <UserDetail title={t("components.user-phone")} value={user?.phone || ""} />
+          <UserDetail title={t("components.user-mobile-phone")} value={user?.mobilePhone || ""} />
         </Col>
 
         <Col offset={1} span={11}>
-          <UserDetail title={t("user-function")} value={user?.function || ""} />
-          <UserDetail title={t("user-business-address")} value={user?.businessAddress || ""} />
+          <UserDetail title={t("components.user-function")} value={user?.function || ""} />
+          <UserDetail title={t("components.user-business-address")} value={user?.businessAddress || ""} />
           <UserDetail
-            title={t("confidential-user")}
-            value={user?.confidential ? t("yes") : t("no")}
+            title={t("components.confidential-user")}
+            value={user?.confidential ? t("flexoffice.yes") : t("flexoffice.no")}
           />
 
-          <UserDetail title={t("user-allow-access")} value={user?.enabled ? t("yes") : t("no")} />
+          <UserDetail title={t("components.user-allow-access")} value={user?.enabled ? t("flexoffice.yes") : t("flexoffice.no")} />
           <UserDetail
-            title={t("user-photo-update-date")}
-            value={user?.photo_date ? dayjs(user?.photo_date).format("DD/MM/YY") : t("never")}
+            title={t("users.user-photo-update-date")}
+            value={user?.photo_date ? dayjs(user?.photo_date).format("DD/MM/YY") : t("users.never")}
           />
           <UserDetail
-            title={t("user-origin")}
-            value={user?.isManaged ? t("user-api-origin") : "Swizi"}
+            title={t("users.user-origin")}
+            value={user?.isManaged ? t("users.user-api-origin") : "Swizi"}
           />
           <UserDetail
-            title={t("user-cgu-read")}
-            value={user?.cguReadAt ? dayjs(user?.cguReadAt).format("DD/MM/YY") : t("never")}
+            title={t("users.user-cgu-read")}
+            value={user?.cguReadAt ? dayjs(user?.cguReadAt).format("DD/MM/YY") : t("users.never")}
           />
           <UserDetail
-            title={t("user-campus")}
-            value={user?.siteId ? siteList.find((s) => s.id === user.siteId)?.label : t("none")}
+            title={t("users.user-campus")}
+            value={user?.siteId ? siteList.find((s) => s.id === user.siteId)?.label : t("users.none")}
           />
         </Col>
       </Row>
       <Row style={{ width: "100%", marginTop: "25px" }}>
         <Col span={4} offset={10}>
           <Button block onClick={handleUpdateUser}>
-            {t("modify")}
+            {t("users.modify")}
           </Button>
         </Col>
       </Row>
@@ -360,19 +360,19 @@ const UserDetails = () => {
               </Flex>
               <Flex width="100%" vertical={false} justify="left" align="middle" gap="middle">
                 <Flex vertical gap="small" style={{ width: "500px" }}>
-                  <UserDetail title={t("swizi-user-id")} value={user.id} copyable />
+                  <UserDetail title={t("groups.swizi-user-id")} value={user.id} copyable />
 
                   {!R.isNil(user.creationDate) ? (
                     <UserDetail
-                      title={t("creation-date")}
-                      value={dayjs(user.creationDate).format(t("date-format"))}
+                      title={t("features-scim.creation-date")}
+                      value={dayjs(user.creationDate).format(t("users.date-format"))}
                     />
                   ) : null}
 
                   {!R.isNil(user.lastvisit) ? (
                     <UserDetail
-                      title={t("last-visit")}
-                      value={dayjs(user.lastvisit).format(t("date-format"))}
+                      title={t("users.last-visit")}
+                      value={dayjs(user.lastvisit).format(t("users.date-format"))}
                     />
                   ) : null}
                 </Flex>
@@ -395,8 +395,8 @@ const UserDetails = () => {
                     <Tabs
                       defaultActiveKey="1"
                       items={[
-                        { label: t("user-attributes"), key: "1", children: <UserInfos /> },
-                        { label: t("user-access"), key: "2", children: <SiteAccess /> },
+                        { label: t("users.user-attributes"), key: "1", children: <UserInfos /> },
+                        { label: t("users.user-access"), key: "2", children: <SiteAccess /> },
                       ]}
                     />
                   </Col>
@@ -406,7 +406,7 @@ const UserDetails = () => {
           </Card>
           <Card bordered={false}>
             <Row style={{ display: "flex" }}>
-              <Typography.Title level={3}>{t("groups-of-user")}</Typography.Title>
+              <Typography.Title level={3}>{t("users.groups-of-user")}</Typography.Title>
               <Button
                 type="primary"
                 style={{ float: "right", marginLeft: "auto" }}
@@ -415,13 +415,13 @@ const UserDetails = () => {
               >
                 <Space size="small">
                   <Glyph name={"group_add"} style={{ fontSize: "18px" }} />
-                  {t("add-to-group")}
+                  {t("users.add-to-group")}
                 </Space>
               </Button>
             </Row>
             {
               <Typography.Text style={{ fontSize: "12px", color: colors.grey_60 }}>
-                {!user.fullGroups || user.fullGroups.length === 0 ? t("user-has-no-group") : null}
+                {!user.fullGroups || user.fullGroups.length === 0 ? t("users.user-has-no-group") : null}
               </Typography.Text>
             }
             {user?.fullGroups.map((info, idx) => (
@@ -452,21 +452,21 @@ const UserDetails = () => {
                 </Col>
                 <Col span={6}>
                   <Glyph name="person" style={{ fontSize: "24px", color: colors.grey_60 }} />
-                  {info.nb_users} {t("users")}
+                  {info.nb_users} {t("groups.users")}
                 </Col>
                 <Col span={5}>
                   <Typography.Link onClick={() => handleMoveToGroup(info.id)}>
-                    {t("check-group")}
+                    {t("groups.check-group")}
                   </Typography.Link>
                 </Col>
                 <Col span={3}>
-                  <Tooltip title={t("remove_from_group")}>
+                  <Tooltip title={t("groups.remove_from_group")}>
                     <Popconfirm
-                      title={t("remove-from-group-confirmation", { groupName: info.label })}
+                      title={t("groups.remove-from-group-confirmation", { groupName: info.label })}
                       onConfirm={() => handleRemoveFromGroup(info)}
                       placement="left"
-                      okText={t("yes")}
-                      cancelText={t("no")}
+                      okText={t("flexoffice.yes")}
+                      cancelText={t("flexoffice.no")}
                     >
                       <Glyph
                         name="delete_forever"

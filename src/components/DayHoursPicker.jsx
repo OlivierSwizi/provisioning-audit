@@ -36,7 +36,7 @@ const DayHoursPicker = ({ value, onChange }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-      <Typography.Text style={{ marginRight: "5px" }}>{t("day-start")}</Typography.Text>
+      <Typography.Text style={{ marginRight: "5px" }}>{t("components.day-start")}</Typography.Text>
       <TimePicker
         format="HH:mm"
         value={start}
@@ -44,7 +44,7 @@ const DayHoursPicker = ({ value, onChange }) => {
         minuteStep={15}
       />
       <Typography.Text style={{ marginRight: "5px", marginLeft: "5px" }}>
-        {t("day-start-afternoon")}
+        {t("components.day-start-afternoon")}
       </Typography.Text>
       <TimePicker
         format="HH:mm"
@@ -53,7 +53,7 @@ const DayHoursPicker = ({ value, onChange }) => {
         minuteStep={15}
       />
       <Typography.Text style={{ marginRight: "5px", marginLeft: "5px" }}>
-        {t("day-end")}
+        {t("components.day-end")}
       </Typography.Text>
       <TimePicker
         format="HH:mm"

@@ -174,9 +174,9 @@ const UsersView = () => {
     let user = await askUserInfos();
     try {
       await workDispatch(createUser(user));
-      message.success(t("user-created"));
+      message.success(t("users.user-created"));
     } catch (error) {
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
       logger.log(error);
     }
   };
@@ -191,10 +191,10 @@ const UsersView = () => {
             selectedUsers.map((su) => su.id),
           ),
         );
-        message.success(t("users-added-to-group"));
+        message.success(t("groups.users-added-to-group"));
       } catch (e) {
         logger.error("error during move to group", e);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       }
     }
   };
@@ -207,9 +207,9 @@ const UsersView = () => {
           enable,
         ),
       );
-      enable ? message.success(t("users-enabled")) : message.success(t("users-disabled"));
+      enable ? message.success(t("users.users-enabled")) : message.success(t("users.users-disabled"));
     } catch (error) {
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
       logger.log(error);
     }
   };
@@ -234,19 +234,19 @@ const UsersView = () => {
   };
 
   const actionsMenu = [
-    { label: t("actions"), value: "actions" },
-    { label: t("add-user"), value: "add-user", disabled: selectedUsers.length > 0 },
+    { label: t("calendars.actions"), value: "actions" },
+    { label: t("components.add-user"), value: "add-user", disabled: selectedUsers.length > 0 },
     {
-      label: selectedUsers.length > 1 ? t("disable-users") : t("disable-user"),
+      label: selectedUsers.length > 1 ? t("users.disable-users") : t("users.disable-user"),
       value: "disable-user",
       disabled: selectedUsers.length === 0,
     },
     {
-      label: selectedUsers.length > 1 ? t("enable-users") : t("enable-user"),
+      label: selectedUsers.length > 1 ? t("users.enable-users") : t("users.enable-user"),
       value: "enable-user",
       disabled: selectedUsers.length === 0,
     },
-    { label: t("move-to-group"), value: "move-to-group", disabled: selectedUsers.length === 0 },
+    { label: t("users.move-to-group"), value: "move-to-group", disabled: selectedUsers.length === 0 },
   ];
 
   return (
@@ -257,7 +257,7 @@ const UsersView = () => {
         <Col span={24}>
           <Row style={{ marginBottom: "15px" }}>
             <Col span={18}>
-              <Typography.Title level={3}>{t("users")}</Typography.Title>
+              <Typography.Title level={3}>{t("groups.users")}</Typography.Title>
             </Col>
           </Row>
           <Row>
@@ -269,7 +269,7 @@ const UsersView = () => {
                   setFilter(e.target.value);
                 }}
                 prefix={<SearchOutlined />}
-                placeholder={t("search-user")}
+                placeholder={t("components.search-user")}
                 addonAfter={
                   <Glyph name={"refresh"} style={{ cursor: "pointer" }} onClick={handleRefresh} />
                 }
@@ -288,7 +288,7 @@ const UsersView = () => {
                     setSelectedUsers(users);
                   }}
                 >
-                  {t("select-all")}
+                  {t("calendars.select-all")}
                 </Button>
               </Col>
               <Col span={4} offset={1}>
@@ -299,7 +299,7 @@ const UsersView = () => {
                     setSelectedUsers([]);
                   }}
                 >
-                  {t("unselect-all")}
+                  {t("calendars.unselect-all")}
                 </Button>
               </Col>
               <Col span={4} offset={1}>

@@ -64,7 +64,7 @@ const TopBar = () => {
   const menuProps = {
     items: [
       {
-        label: t("about"),
+        label: t("header.about"),
         key: "about",
       },
       {
@@ -73,7 +73,7 @@ const TopBar = () => {
       },
 
       {
-        label: t("quit"),
+        label: t("header.quit"),
         key: "quit",
         icon: <LogoutOutlined />,
       },
@@ -89,15 +89,15 @@ const TopBar = () => {
       },
 
       {
-        label: t("monitor"),
+        label: t("header.monitor"),
         key: "monitor",
       },
       {
-        label: t("simulator"),
+        label: t("header.simulator"),
         key: "simulator",
       },
       {
-        label: t("ticketing"),
+        label: t("header.ticketing"),
         key: "ticketing",
       },
     ],
@@ -114,7 +114,7 @@ const TopBar = () => {
   return (
     <Row gutter={[20, 20]} align="middle" style={{ width: "100%", height: "100%" }}>
       <Modal
-        title={t("about")}
+        title={t("header.about")}
         open={aboutVisible}
         onOk={() => setAboutVisible(false)}
         onCancel={() => setAboutVisible(false)}
@@ -192,12 +192,12 @@ const TopBar = () => {
         <>
           <Col>
             <Button size={"middle"} onClick={() => navigate("/admin/audience")}>
-              {t("global-tenant-audience")}
+              {t("header.global-tenant-audience")}
             </Button>
           </Col>
           <Col>
             <Button size={"middle"} onClick={() => navigate("/admin")}>
-              {t("provisioning-users-management")}
+              {t("header.provisioning-users-management")}
             </Button>
           </Col>
         </>

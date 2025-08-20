@@ -52,8 +52,8 @@ const CalendarMasterSearch = () => {
   const handleRenameCategory = async () => {
     if (selectedCategories.length === 1) {
       const newName = await askPrompt(
-        t("rename-category"),
-        t("rename-category"),
+        t("calendars.rename-category"),
+        t("calendars.rename-category"),
         selectedCategories[0].label,
       );
       if (newName) {
@@ -63,7 +63,7 @@ const CalendarMasterSearch = () => {
   };
 
   const handleCreateCategory = async () => {
-    const newName = await askPrompt(t("create-category"), t("create-category"), "");
+    const newName = await askPrompt(t("calendars.create-category"), t("calendars.create-category"), "");
     if (newName) {
       await workDispatch(createMasterId(newName));
     }
@@ -78,11 +78,11 @@ const CalendarMasterSearch = () => {
 
       if (eventCount > 0)
         await Modal.confirm({
-          title: t("confirm"),
+          title: t("components.confirm"),
           content:
             eventCount === 1
-              ? t("delete-category-with-event-confirm")
-              : t("delete-category-with-events-confirm", { count: eventCount }),
+              ? t("calendars.delete-category-with-event-confirm")
+              : t("calendars.delete-category-with-events-confirm", { count: eventCount }),
           onOk: async () => {
             await Promise.all(
               selectedCategories.map(async (category) => {
@@ -93,8 +93,8 @@ const CalendarMasterSearch = () => {
         });
       else
         await Modal.confirm({
-          title: t("confirm"),
-          content: t("delete-category-confirm"),
+          title: t("components.confirm"),
+          content: t("calendars.delete-category-confirm"),
           onOk: async () => {
             await Promise.all(
               selectedCategories.map(async (category) => {
@@ -126,20 +126,20 @@ const CalendarMasterSearch = () => {
   };
 
   const actionsMenu = [
-    { label: t("actions"), value: "actions" },
-    { label: t("add-category"), value: "add-category", disabled: selectedCategories.length > 0 },
+    { label: t("calendars.actions"), value: "actions" },
+    { label: t("calendars.add-category"), value: "add-category", disabled: selectedCategories.length > 0 },
     {
-      label: masterList.length > 1 ? t("delete-categories") : t("delete-category"),
+      label: masterList.length > 1 ? t("calendars.delete-categories") : t("calendars.delete-category"),
       value: "delete-category",
       disabled: selectedCategories.length === 0,
     },
     {
-      label: t("rename-category"),
+      label: t("calendars.rename-category"),
       value: "rename-category",
       disabled: selectedCategories.length !== 1,
     },
     {
-      label: t("refresh-category"),
+      label: t("calendars.refresh-category"),
       value: "refresh",
     },
   ];
@@ -154,7 +154,7 @@ const CalendarMasterSearch = () => {
             allowClear
             onChange={(e) => dispatch(setSearchTextMaster(e.target.value))}
             prefix={<SearchOutlined />}
-            placeholder={t("search-master-event")}
+            placeholder={t("calendars.search-master-event")}
             value={searchTextMaster}
           />
         </Col>
@@ -169,7 +169,7 @@ const CalendarMasterSearch = () => {
               setSelectedCategories(masterList);
             }}
           >
-            {t("select-all")}
+            {t("calendars.select-all")}
           </Button>
         </Col>
         <Col span={4} offset={1}>
@@ -180,7 +180,7 @@ const CalendarMasterSearch = () => {
               setSelectedCategories([]);
             }}
           >
-            {t("unselect-all")}
+            {t("calendars.unselect-all")}
           </Button>
         </Col>
         <Col span={4} offset={1}>
@@ -249,8 +249,8 @@ const CalendarMasterSearch = () => {
                           <Typography.Text type={"secondary"}>
                             <Glyph name={"today"} style={{ marginRight: "5px" }} />
                             {item.upcomingCount > 0
-                              ? t("upcoming-events", item)
-                              : t("no-upcoming-events")}
+                              ? t("calendars.upcoming-events", item)
+                              : t("calendars.no-upcoming-events")}
                           </Typography.Text>
                         </Col>
                       </Row>

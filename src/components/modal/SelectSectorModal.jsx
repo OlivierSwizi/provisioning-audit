@@ -57,15 +57,15 @@ const SelectSectorModal = ({
       onOk={handleOk}
       onCancel={handleCancel}
       style={{ height: "500px" }}
-      okText={t("add")}
+      okText={t("components.add")}
       okButtonProps={{ disabled: !selectedSector }}
     >
       <Row>
-        <Typography.Title level={4}>{t("add-sector")}</Typography.Title>
+        <Typography.Title level={4}>{t("components.add-sector")}</Typography.Title>
       </Row>
       <Row style={{ width: "100%" }} align="middle">
         <Col span={6}>
-          <Text>{t("site")}</Text>
+          <Text>{t("components.site")}</Text>
         </Col>
         <Col span={18}>
           <Select value={selectedSite} onChange={(key) => setSelectedSite(key)}>
@@ -79,7 +79,7 @@ const SelectSectorModal = ({
       </Row>
       <Row style={{ width: "100%", marginTop: "15px" }} align="middle">
         <Col span={6}>
-          <Text>{t("sector")}</Text>
+          <Text>{t("components.sector")}</Text>
         </Col>
         <Col span={18}>
           <Select

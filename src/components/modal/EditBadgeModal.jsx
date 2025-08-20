@@ -57,7 +57,7 @@ const EditBadgeModal = ({ badge, isVisible, setIsVisible, promiseResolve }) => {
       onCancel={handleCancel}
       footer={[
         <Button key="submit" type="primary" onClick={handleOk} disabled={!isValid}>
-          {t("save")}
+          {t("components.save")}
         </Button>,
       ]}
     >
@@ -74,10 +74,10 @@ const EditBadgeModal = ({ badge, isVisible, setIsVisible, promiseResolve }) => {
         }}
         layout="horizontal"
       >
-        <MultiLineFormItem label={t("reception-badge-name")} name="title">
+        <MultiLineFormItem label={t("components.reception-badge-name")} name="title">
           <Input autoComplete="off" />
         </MultiLineFormItem>
-        <MultiLineFormItem label={t("reception-badge-groupId")} name="groupId">
+        <MultiLineFormItem label={t("components.reception-badge-groupId")} name="groupId">
           <GroupSelector size="middle" />
         </MultiLineFormItem>
         <Form.Item name="template" label="" wrapperCol={{ span: 24 }}>

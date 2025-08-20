@@ -102,7 +102,7 @@ const RangePicker = ({ value, onChange }) => {
       .second(0);
 
     if (newEnd.isSameOrBefore(newStart)) {
-      message.error(t("end-time-before-start"));
+      message.error(t("components.end-time-before-start"));
       return;
     }
 
@@ -142,7 +142,7 @@ const RangePicker = ({ value, onChange }) => {
             handleChange({ start: d });
           }}
         />
-        <p style={{ margin: 0 }}>{t("to")}</p>
+        <p style={{ margin: 0 }}>{t("components.to")}</p>
         <TimePicker
           value={end}
           onChange={(d) => {

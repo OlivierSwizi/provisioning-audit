@@ -43,7 +43,7 @@ const DomainList = ({ value = [], onChange }) => {
   const handleInputConfirm = () => {
     if (inputValue && value.indexOf(inputValue) === -1) {
       if (!domainRegex.test(inputValue)) {
-        return message.error(t("invalid-domain-format"));
+        return message.error(t("components.invalid-domain-format"));
       }
       onChange([...value, inputValue]);
     }
@@ -109,7 +109,6 @@ const DomainList = ({ value = [], onChange }) => {
           tagElem
         );
       })}
-
       {inputVisible && (
         <Input
           ref={inputRef}
@@ -125,7 +124,7 @@ const DomainList = ({ value = [], onChange }) => {
       {!inputVisible && (
         <Tag className="site-tag-plus" onClick={showInput}>
           <PlusOutlined />
-          {t("new-domain")}
+          {t("components.new-domain")}
         </Tag>
       )}
     </div>

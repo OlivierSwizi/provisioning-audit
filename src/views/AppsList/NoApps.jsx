@@ -6,21 +6,21 @@ const NoApps = () => {
   const { t } = useTranslation();
 
   const websites = [
-    { title: "DBRM", url: import.meta.env.REACT_APP_DBRM_URL, description: t("dbrm-explanations") },
+    { title: "DBRM", url: import.meta.env.REACT_APP_DBRM_URL, description: t("apps-list.dbrm-explanations") },
     {
       title: "Monitor",
       url: import.meta.env.REACT_APP_MONITOR_URL,
-      description: t("monitor-explanations"),
+      description: t("apps-list.monitor-explanations"),
     },
     {
       title: "Simulator",
       url: import.meta.env.REACT_APP_SIMULATOR_URL,
-      description: t("simulator-explanations"),
+      description: t("apps-list.simulator-explanations"),
     },
     {
       title: "Ticketing",
       url: import.meta.env.REACT_APP_TICKETING_URL,
-      description: t("ticketing-explanations"),
+      description: t("apps-list.ticketing-explanations"),
     },
 
     // Add more websites here
@@ -31,8 +31,8 @@ const NoApps = () => {
       <div style={{ textAlign: "center" }}>
         <img src={logo} alt="logo" style={{ width: "250px" }} />
       </div>
-      <Typography.Title level={3}>{t("no-admin-access")}</Typography.Title>
-      <Typography.Paragraph>{t("other-tools-link")}</Typography.Paragraph>
+      <Typography.Title level={3}>{t("apps-list.no-admin-access")}</Typography.Title>
+      <Typography.Paragraph>{t("apps-list.other-tools-link")}</Typography.Paragraph>
       <Row gutter={16} style={{ marginTop: "32px" }}>
         {websites.map((website, index) => (
           <Col span={8} key={index} style={{ marginBottom: "16px" }}>
@@ -42,7 +42,7 @@ const NoApps = () => {
               cover={<></>}
               actions={[
                 <a key="url" href={website.url} target="_blank" rel="noopener noreferrer">
-                  {t("visit")}
+                  {t("apps-list.visit")}
                 </a>,
               ]}
               bordered={false}

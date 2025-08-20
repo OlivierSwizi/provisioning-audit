@@ -30,7 +30,7 @@ const AppSettingsView = () => {
         form.setFieldsValue({ items: config });
       } catch (e) {
         logger.error(e);
-        message.error(t("load-error"));
+        message.error(t("audience.load-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -44,10 +44,10 @@ const AppSettingsView = () => {
     try {
       await dispatch(startWorking());
       await api.features.updateAppVersions(form.getFieldsValue().items);
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -59,15 +59,15 @@ const AppSettingsView = () => {
         <Row style={{ width: "100%" }}>
           <Col span={20}>
             <Typography.Title level={3} style={{ margin: 0 }}>
-              {t("mobile-apps-versions")}
+              {t("features-app.mobile-apps-versions")}
             </Typography.Title>
             <Typography.Text type="secondary" style={{ marginLeft: 10 }}>
-              {t("mobile-apps-versions-description")}
+              {t("features-app.mobile-apps-versions-description")}
             </Typography.Text>
           </Col>
           <Col span={4}>
             <Button block type="primary" onClick={handleSave}>
-              {t("save")}
+              {t("components.save")}
             </Button>
           </Col>
           <Col span={22} style={{ marginTop: "50px" }}>
@@ -88,7 +88,7 @@ const AppSettingsView = () => {
                           <Form.Item
                             {...restField}
                             name={[name, "bundleId"]}
-                            label={t("bundle-id")}
+                            label={t("features-app.bundle-id")}
                             rules={[{ required: true }]}
                           >
                             <Input autoComplete="off" />
@@ -98,13 +98,13 @@ const AppSettingsView = () => {
                           <Form.Item
                             {...restField}
                             name={[name, "appVersion"]}
-                            label={t("version")}
+                            label={t("features-app.version")}
                           >
                             <Input autoComplete="off" />
                           </Form.Item>
                         </Col>
                         <Col span={5}>
-                          <Form.Item {...restField} name={[name, "buildNumber"]} label={t("build")}>
+                          <Form.Item {...restField} name={[name, "buildNumber"]} label={t("features-app.build")}>
                             <Input autoComplete="off" />
                           </Form.Item>
                         </Col>
@@ -112,13 +112,13 @@ const AppSettingsView = () => {
                           <Form.Item
                             {...restField}
                             name={[name, "description"]}
-                            label={t("description")}
+                            label={t("features-app.description")}
                           >
                             <Input autoComplete="off" />
                           </Form.Item>
                         </Col>
                         <Col span={4} style={{ marginTop: "30px" }}>
-                          <Button onClick={() => remove(name)}>{t("remove")}</Button>
+                          <Button onClick={() => remove(name)}>{t("components.remove")}</Button>
                         </Col>
                       </Row>
                     ))}
@@ -128,7 +128,7 @@ const AppSettingsView = () => {
                       block
                       style={{ width: 250, margin: "20px auto 0", display: "block" }}
                     >
-                      {t("add-version")}
+                      {t("features-app.add-version")}
                     </Button>
                   </>
                 )}

@@ -55,7 +55,7 @@ const MapSelectModal = ({
     >
       <Row style={{ marginBottom: "10px", marginTop: "10px" }}>
         <Input
-          placeholder={t("choose-address")}
+          placeholder={t("components.choose-address")}
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           onKeyDown={(e) => {
@@ -74,7 +74,6 @@ const MapSelectModal = ({
           }}
         />
       </Row>
-
       <div style={{ height: "400px", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: googleMapKey }}

@@ -19,8 +19,8 @@ const AdminAppList = ({ value = [], onChange = () => {}, allAppList = [] }) => {
 
   const handleAddApp = async () => {
     const toAdd = await askSelect(
-      t("select-app"),
-      t("select-app-to-add"),
+      t("admin.select-app"),
+      t("admin.select-app-to-add"),
       availableApps
         .map((app) => ({ value: app.id, label: app.label }))
         .sort((a, b) => a.label.localeCompare(b.label)),
@@ -40,12 +40,12 @@ const AdminAppList = ({ value = [], onChange = () => {}, allAppList = [] }) => {
       title={
         <Row style={{ width: "100%" }}>
           <Col span={16}>
-            <Typography.Text>{t("provisioning-user-apps")}</Typography.Text>
+            <Typography.Text>{t("admin.provisioning-user-apps")}</Typography.Text>
           </Col>
           <Col span={6}>
             {availableApps.length > 0 && (
               <Button size="small" onClick={handleAddApp}>
-                {t("provisioning-user-add-app")}
+                {t("admin.provisioning-user-add-app")}
               </Button>
             )}
           </Col>

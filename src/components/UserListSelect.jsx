@@ -86,7 +86,7 @@ const UserListSelect = ({ value = [], onChange, userListStyle = {}, idField = "i
       <Row style={{ height: "50px" }}>
         <Col span={20} style={{ display: "flex", alignItems: "center", height: "100%" }}>
           <AutoComplete
-            placeholder={t("search-user")}
+            placeholder={t("components.search-user")}
             options={userCompletionList}
             allowClear
             onSearch={setSearchUserText}
@@ -103,7 +103,7 @@ const UserListSelect = ({ value = [], onChange, userListStyle = {}, idField = "i
             style={{ width: "75px" }}
             disabled={!selectedUser}
           >
-            {t("add")}
+            {t("components.add")}
           </Button>
         </Col>
       </Row>

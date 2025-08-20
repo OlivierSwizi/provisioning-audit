@@ -90,18 +90,18 @@ const CalendarUserDetails = () => {
     if (updatedEvent?.delete) {
       try {
         await workDispatch(cancelEvent(event.id));
-        message.success(t("event-cancelled"));
+        message.success(t("calendars.event-cancelled"));
       } catch (error) {
         logger.error(error);
-        message.error(t("error-cancelling-event"));
+        message.error(t("calendars.error-cancelling-event"));
       }
     } else if (updatedEvent) {
       try {
         await workDispatch(updateEvent(updatedEvent));
-        message.success(t("event-updated"));
+        message.success(t("calendars.event-updated"));
       } catch (error) {
         logger.error(error);
-        message.error(t("error-updating-event"));
+        message.error(t("calendars.error-updating-event"));
       }
     }
   };
@@ -143,7 +143,7 @@ const CalendarUserDetails = () => {
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
           <Button size="middle" type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("back")}
+            {t("app-details.back")}
           </Button>
         </Col>
       </Row>
@@ -166,7 +166,7 @@ const CalendarUserDetails = () => {
                   />
                 </Text>
                 <Typography.Title level={3}>
-                  {t("calendar-of-user", { user: helpers.formatUserName(selectedUser) })}
+                  {t("calendars.calendar-of-user", { user: helpers.formatUserName(selectedUser) })}
                 </Typography.Title>
               </Col>
             </Row>

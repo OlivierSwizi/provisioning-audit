@@ -107,7 +107,7 @@ const GroupList = () => {
             addonAfter={
               <Glyph name={"refresh"} style={{ cursor: "pointer" }} onClick={handleRefresh} />
             }
-            placeholder={t("search-group")}
+            placeholder={t("groups.search-group")}
             value={filter}
           />
         </Col>
@@ -116,7 +116,7 @@ const GroupList = () => {
             <Select
               mode="multiple"
               style={{ width: "100%", minWidth: "200px", padding: "10px" }}
-              placeholder={t("types")}
+              placeholder={t("groups.types")}
               value={types}
               onChange={(value) => setTypes(value)}
               size="small"
@@ -133,7 +133,7 @@ const GroupList = () => {
               checked={includeArchived}
               onChange={(e) => setIncludeArchived(e.target.checked)}
             >
-              {t("include-archived")}
+              {t("groups.include-archived")}
             </Checkbox>
           </Space>
         </Col>
@@ -164,7 +164,7 @@ const GroupList = () => {
                         </Text>
                         {item.isArchived && (
                           <Text type="danger" style={{ marginLeft: "8px" }}>
-                            {t("archived")}
+                            {t("groups.archived")}
                           </Text>
                         )}
                       </div>
@@ -207,7 +207,7 @@ const GroupList = () => {
                   <Row style={{ width: "100%" }}>
                     <Col span={12}>
                       <Typography.Text type={"secondary"}>
-                        <Glyph name={"person"} /> {item.nbUsers} {t("users")}
+                        <Glyph name={"person"} /> {item.nbUsers} {t("groups.users")}
                       </Typography.Text>
                     </Col>
                     <Col span={12} style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -308,7 +308,7 @@ const GroupList = () => {
                 <Row style={{ width: "100%" }}>
                   <Col span={12}>
                     <Typography.Text type={"secondary"}>
-                      <Glyph name={"person"} /> {item.nbUsers} {t("users")}
+                      <Glyph name={"person"} /> {item.nbUsers} {t("groups.users")}
                     </Typography.Text>
                   </Col>
                   <Col span={12} style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -340,7 +340,7 @@ const GroupList = () => {
               >
                 <Space size="small">
                   <Glyph name={"group_add"} style={{ fontSize: "18px" }} />
-                  {t("add-group")}
+                  {t("groups.add-group")}
                 </Space>
               </Button>
             </Col>
@@ -349,8 +349,8 @@ const GroupList = () => {
         <Col span={23}>
           <Tabs
             items={[
-              { label: t("Groups"), key: "groups", children: SearchGroup },
-              { label: t("Favorites"), key: "favorites", children: FavoriteGroups },
+              { label: t("groups.Groups"), key: "groups", children: SearchGroup },
+              { label: t("groups.Favorites"), key: "favorites", children: FavoriteGroups },
             ]}
           />
         </Col>

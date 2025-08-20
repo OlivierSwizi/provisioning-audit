@@ -29,7 +29,7 @@ const Managers = ({ group, onAddManagers, onRemoveManagerFromGroup }) => {
       <Row gutter={[10, 10]}>
         <Col span={22}>
           <Typography.Title level={4} style={{ margin: 0 }}>
-            {t("managers-of-group")}
+            {t("groups.managers-of-group")}
           </Typography.Title>
         </Col>
 
@@ -42,7 +42,7 @@ const Managers = ({ group, onAddManagers, onRemoveManagerFromGroup }) => {
           >
             <Space size="small">
               <Glyph name={"add-person"} style={{ fontSize: "18px" }} />
-              {t("add-manager")}
+              {t("groups.add-manager")}
             </Space>
           </Button>
         </Col>
@@ -50,7 +50,7 @@ const Managers = ({ group, onAddManagers, onRemoveManagerFromGroup }) => {
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
         {group.managers.length === 0 ? (
           <Typography.Text style={{ textAlign: "center" }}>
-            {t("no-manager-in-group")}
+            {t("groups.no-manager-in-group")}
           </Typography.Text>
         ) : (
           <>
@@ -62,24 +62,23 @@ const Managers = ({ group, onAddManagers, onRemoveManagerFromGroup }) => {
                     <Button disabled size="middle" shape="circle" type="dashed"></Button>
                   </Col>
                   <Col span={8}>{helpers.formatUserName(manager)}</Col>
-
                   <Col span={4}>
                     <Typography.Link
                       onClick={() => {
                         navigate(`/apps/${appId}/users/${manager.id}`);
                       }}
                     >
-                      {t("check-user")}
+                      {t("groups.check-user")}
                     </Typography.Link>
                   </Col>
                   <Col span={2}>
-                    <Tooltip title={t("remove-manager-from-group")}>
+                    <Tooltip title={t("groups.remove-manager-from-group")}>
                       <Popconfirm
-                        title={t("remove-manager-from-group-confirmation", { groupName: "" })}
+                        title={t("groups.remove-manager-from-group-confirmation", { groupName: "" })}
                         onConfirm={() => onRemoveManagerFromGroup(manager.id)}
                         placement="left"
-                        okText={t("yes")}
-                        cancelText={t("no")}
+                        okText={t("flexoffice.yes")}
+                        cancelText={t("flexoffice.no")}
                       >
                         <Glyph
                           name="delete"

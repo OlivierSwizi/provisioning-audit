@@ -107,20 +107,20 @@ const EditPlaceModal = ({ place, isVisible, setIsVisible, promiseResolve }) => {
         }}
         layout="horizontal"
       >
-        <MultiLineFormItem label={t("am-place-title")} name="title">
+        <MultiLineFormItem label={t("features-aroundme.am-place-title")} name="title">
           <Input autoComplete="off" />
         </MultiLineFormItem>
-        <MultiLineFormItem label={t("am-place-subtitle")} name="subtitle">
+        <MultiLineFormItem label={t("features-aroundme.am-place-subtitle")} name="subtitle">
           <Input autoComplete="off" />
         </MultiLineFormItem>
-        <MultiLineFormItem label={t("am-place-phone")} name="phone">
+        <MultiLineFormItem label={t("features-aroundme.am-place-phone")} name="phone">
           <Input autoComplete="off" />
         </MultiLineFormItem>
-        <MultiLineFormItem label={t("am-place-website")} name="website">
+        <MultiLineFormItem label={t("features-aroundme.am-place-website")} name="website">
           <Input autoComplete="off" />
         </MultiLineFormItem>
 
-        <MultiLineFormItem label={t("am-place-location")} name="location">
+        <MultiLineFormItem label={t("features-aroundme.am-place-location")} name="location">
           <MapImage />
         </MultiLineFormItem>
       </Form>

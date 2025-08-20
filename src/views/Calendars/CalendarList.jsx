@@ -19,7 +19,7 @@ const CalendarList = () => {
         <Col span={24}>
           <Row style={{ marginBottom: "15px" }}>
             <Col span={18}>
-              <Typography.Title level={3}>{t("calendars")}</Typography.Title>
+              <Typography.Title level={3}>{t("calendars.calendars")}</Typography.Title>
             </Col>
           </Row>
           <Row style={{ width: "100%" }}>
@@ -32,17 +32,17 @@ const CalendarList = () => {
               items={[
                 {
                   key: "tab-room",
-                  label: t("event-calendar-room"),
+                  label: t("calendars.event-calendar-room"),
                   children: <CalendarRoomSearch />,
                 },
                 {
                   key: "tab-user",
-                  label: t("event-calendar-user"),
+                  label: t("calendars.event-calendar-user"),
                   children: <CalendarUserSearch />,
                 },
                 {
                   key: "tab-master",
-                  label: t("event-calendar-master"),
+                  label: t("calendars.event-calendar-master"),
                   children: <CalendarMasterSearch />,
                 },
               ]}

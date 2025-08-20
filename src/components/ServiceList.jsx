@@ -21,7 +21,7 @@ const ServiceList = ({ value, onChange }) => {
               setCurrentValue([...currentValue]);
             }}
             style={{ width: 200 }}
-            placeholder={t("services-name-placeholder")}
+            placeholder={t("components.services-name-placeholder")}
             onBlur={() => onChange(currentValue)}
           />
           <Input
@@ -31,10 +31,10 @@ const ServiceList = ({ value, onChange }) => {
               setCurrentValue([...currentValue]);
             }}
             style={{ width: 300 }}
-            placeholder={t("services-url-placeholder")}
+            placeholder={t("components.services-url-placeholder")}
             onBlur={() => onChange(currentValue)}
           />
-          <Tooltip title={t("remove-service")}>
+          <Tooltip title={t("components.remove-service")}>
             <a
               onClick={() => {
                 currentValue.splice(index, 1);
@@ -42,7 +42,7 @@ const ServiceList = ({ value, onChange }) => {
                 setCurrentValue([...currentValue]);
               }}
             >
-              {t("remove")}
+              {t("components.remove")}
             </a>
           </Tooltip>
         </Flex>
@@ -54,7 +54,7 @@ const ServiceList = ({ value, onChange }) => {
           setCurrentValue([...currentValue]);
         }}
       >
-        {t("add")}
+        {t("components.add")}
       </a>
     </Flex>
   );

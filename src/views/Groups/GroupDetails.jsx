@@ -100,7 +100,7 @@ const GroupDetails = () => {
       setDescription(group.description || "");
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
@@ -112,7 +112,7 @@ const GroupDetails = () => {
       setMessageList(messages);
     } catch (error) {
       logger.error(error);
-      message.error(t("failed-to-load-messages"));
+      message.error(t("groups.failed-to-load-messages"));
     }
   };
 
@@ -133,10 +133,10 @@ const GroupDetails = () => {
 
     try {
       await workDispatch(addUsersToGroup(group, userIds));
-      message.success(t("users-added-to-group"));
+      message.success(t("groups.users-added-to-group"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     // need to wait to let user creation finish
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -153,16 +153,16 @@ const GroupDetails = () => {
       createdUser = await workDispatch(createUser(user));
     } catch (error) {
       logger.log(error);
-      message.error(t("failed-to-create-user"));
+      message.error(t("groups.failed-to-create-user"));
       return;
     }
 
     try {
       await workDispatch(addUsersToGroup(group, [createdUser.id]));
-      message.success(t("user-created-and-added-to-group"));
+      message.success(t("groups.user-created-and-added-to-group"));
     } catch (error) {
       logger.log(error);
-      message.error(t("created-failed-to-add-to-group"));
+      message.error(t("groups.created-failed-to-add-to-group"));
     }
     loadGroup(group.id);
   };
@@ -173,10 +173,10 @@ const GroupDetails = () => {
 
     try {
       await workDispatch(addManagersToGroup(group, managerIds));
-      message.success(t("managers-added-to-group"));
+      message.success(t("groups.managers-added-to-group"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadGroup(group.id);
@@ -185,27 +185,27 @@ const GroupDetails = () => {
   const handleUploadExcel = async (file) => {
     try {
       const answer = await confirm(
-        t("upload-excel-file-confirm-title"),
-        t("upload-excel-file-confirm-text"),
+        t("groups.upload-excel-file-confirm-title"),
+        t("groups.upload-excel-file-confirm-text"),
       );
       if (answer) {
         await api.groups.uploadUsersExcelToGroup(group.id, file);
-        message.success(t("upload-success"));
+        message.success(t("groups.upload-success"));
         loadGroup(group.id);
       }
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
   const handleUpdateDescription = async () => {
     try {
       await workDispatch(udpateGroupDescription(group, description));
-      message.success(t("group-description-updated"));
+      message.success(t("groups.group-description-updated"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     loadGroup(group.id);
   };
@@ -219,22 +219,22 @@ const GroupDetails = () => {
       a.href = url;
       a.download = `${group.label}-${timestamp}.xlsx`;
       a.click();
-      message.success(t("download-success"));
+      message.success(t("audience.download-success"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
   const handleRenameGroup = async () => {
-    const newName = await askPrompt(t("rename-group"), t("group-name"), group.label);
+    const newName = await askPrompt(t("groups.rename-group"), t("groups.group-name"), group.label);
     if (newName) {
       try {
         await workDispatch(renameGroup(group, newName));
-        message.success(t("group-renamed"));
+        message.success(t("groups.group-renamed"));
       } catch (error) {
         logger.log(error);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       }
       loadGroup(group.id);
     }
@@ -243,10 +243,10 @@ const GroupDetails = () => {
   const handleSyncAzureUsers = async (withPhoto) => {
     try {
       await workDispatch(syncAzureGroup([group], withPhoto));
-      message.success(t("users-sync-launched"));
+      message.success(t("groups.users-sync-launched"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadGroup(group.id);
@@ -254,16 +254,16 @@ const GroupDetails = () => {
 
   const handleDeleteGroup = async () => {
     await Modal.confirm({
-      title: t("confirm"),
-      content: t("delete-group-confirm"),
+      title: t("components.confirm"),
+      content: t("groups.delete-group-confirm"),
       onOk: async () => {
         try {
           await workDispatch(deleteGroup(group));
-          message.success(t("group-deleted"));
+          message.success(t("groups.group-deleted"));
           navigate(-1);
         } catch (error) {
           logger.error(error);
-          message.error(t("error-occurred"));
+          message.error(t("audience.error-occurred"));
         }
       },
     });
@@ -274,7 +274,7 @@ const GroupDetails = () => {
       await workDispatch(setBusinessGroup(group));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadGroup(group.id);
@@ -286,26 +286,26 @@ const GroupDetails = () => {
         await workDispatch(updateGroupSite(group, siteId));
       } catch (error) {
         logger.log(error);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       }
       loadGroup(group.id);
     }
   };
 
   const handleIMChannelChange = async () => {
-    if (group.isChatChannel) return message.warn(t("im-channnel-cant-be-removed"));
+    if (group.isChatChannel) return message.warn(t("groups.im-channnel-cant-be-removed"));
     try {
-      const msg = await askPrompt("", t("im-channel-welcome-message"), {
+      const msg = await askPrompt("", t("groups.im-channel-welcome-message"), {
         type: "textarea",
       });
       if (msg) {
         await workDispatch(createIMChannel(group));
         await workDispatch(publishIMMessage(group, msg));
-        message.success(t("im-channel-updated"));
+        message.success(t("groups.im-channel-updated"));
       }
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadMessages();
@@ -314,13 +314,13 @@ const GroupDetails = () => {
   const handlePublishIMMessage = async (type) => {
     try {
       const titleI18n = cond([
-        [equals("ANNOUNCEMENT"), () => t("publish-im-announce")],
-        [equals("ADMIN"), () => t("publish-im-message")],
+        [equals("ANNOUNCEMENT"), () => t("groups.publish-im-announce")],
+        [equals("ADMIN"), () => t("groups.publish-im-message")],
         [T, () => ""],
       ])(type);
       const successI18n = cond([
-        [equals("ANNOUNCEMENT"), () => t("announce-published")],
-        [equals("ADMIN"), () => t("message-published")],
+        [equals("ANNOUNCEMENT"), () => t("groups.announce-published")],
+        [equals("ADMIN"), () => t("groups.message-published")],
         [T, () => ""],
       ])(type);
 
@@ -333,7 +333,7 @@ const GroupDetails = () => {
       }
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadMessages();
@@ -342,15 +342,15 @@ const GroupDetails = () => {
   const handleUpdateIMMessage = async (msgId, type) => {
     try {
       const successI18n = cond([
-        [equals("ANNOUNCEMENT"), () => t("announce-published")],
-        [equals("ADMIN"), () => t("message-published")],
+        [equals("ANNOUNCEMENT"), () => t("groups.announce-published")],
+        [equals("ADMIN"), () => t("groups.message-published")],
         [T, () => ""],
       ])(type);
 
       const currentMessage = messageList.find((msg) => msg.id === msgId);
       if (!currentMessage) return;
 
-      const msg = await askPrompt("", t("updateannounce-message"), {
+      const msg = await askPrompt("", t("groups.updateannounce-message"), {
         type: "textarea",
         default: currentMessage.message,
       });
@@ -358,7 +358,7 @@ const GroupDetails = () => {
       message.success(successI18n);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
 
     loadMessages();
@@ -367,9 +367,9 @@ const GroupDetails = () => {
   const handleRemoveManagerFromGroup = async (userId) => {
     try {
       await workDispatch(removeManagersFromGroup(group, [userId]));
-      message.success(t("manager-removed-from-group"));
+      message.success(t("groups.manager-removed-from-group"));
     } catch (error) {
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
       logger.log(error);
     }
     loadGroup(group.id);
@@ -383,10 +383,10 @@ const GroupDetails = () => {
   const handleUpdateContactList = async (isInContactList, restrictMembers) => {
     try {
       await workDispatch(updateContactList(group, isInContactList, restrictMembers));
-      message.success(t("contact-list-updated"));
+      message.success(t("groups.contact-list-updated"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     loadGroup(group.id);
   };
@@ -398,10 +398,10 @@ const GroupDetails = () => {
           groupConfig: { ...group.groupConfig, parking: { tags } },
         }),
       );
-      message.success(t("parking-tags-updated"));
+      message.success(t("groups.parking-tags-updated"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     loadGroup(group.id);
   };
@@ -409,9 +409,9 @@ const GroupDetails = () => {
   const handleRemoveSector = async (siteId, sectorId) => {
     try {
       await workDispatch(removeSectorFromGroup(group, siteId, sectorId));
-      message.success(t("sector-removed-from-group"));
+      message.success(t("groups.sector-removed-from-group"));
     } catch (error) {
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
       logger.log(error);
     }
     loadGroup(group.id);
@@ -420,10 +420,10 @@ const GroupDetails = () => {
   const handleAddSector = async (sector) => {
     try {
       await workDispatch(addSectorToGroup(group, sector.siteId, sector.sectorId));
-      message.success(t("sector-added-to-group"));
+      message.success(t("groups.sector-added-to-group"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     loadGroup(group.id);
   };
@@ -431,10 +431,10 @@ const GroupDetails = () => {
   const handleUpdateFeaturesConfig = async (featureConfig) => {
     try {
       await workDispatch(updateFeatureConfig(group, featureConfig));
-      message.success(t("features-updated"));
+      message.success(t("groups.features-updated"));
     } catch (error) {
       logger.log(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
     loadGroup(group.id);
   };
@@ -475,25 +475,25 @@ const GroupDetails = () => {
   };
 
   let actionsMenu = [
-    { label: t("actions"), value: "actions" },
+    { label: t("calendars.actions"), value: "actions" },
     {
-      label: t("rename-group"),
+      label: t("groups.rename-group"),
       value: "rename-group",
     },
     {
-      label: t("add-new-user"),
+      label: t("admin.add-new-user"),
       value: "create-and-add-user",
       disabled: group?.type === "COMPOSIT",
     },
 
-    { label: t("add-existing-users"), value: "add-user", disabled: group?.type === "COMPOSIT" },
+    { label: t("groups.add-existing-users"), value: "add-user", disabled: group?.type === "COMPOSIT" },
     {
-      label: t("download-excel-file"),
+      label: t("groups.download-excel-file"),
       value: "download-excel-file",
       disabled: group?.type === "COMPOSIT",
     },
     {
-      label: t("upload-excel-file"),
+      label: t("groups.upload-excel-file"),
       value: "upload-excel-file",
       disabled: group?.type === "COMPOSIT",
     },
@@ -502,7 +502,7 @@ const GroupDetails = () => {
   if (group?.provisioningType === "business") {
     actionsMenu = concat(actionsMenu, [
       {
-        label: t("delete-group"),
+        label: t("groups.delete-group"),
         value: "delete-group",
       },
     ]);
@@ -511,17 +511,17 @@ const GroupDetails = () => {
   if (isUserGroupAdmin) {
     actionsMenu = concat(actionsMenu, [
       {
-        label: t("sync-users"),
+        label: t("groups.sync-users"),
         value: "sync-users",
         disabled: group?.type !== "AZURE_AD",
       },
       {
-        label: t("sync-users-photo"),
+        label: t("groups.sync-users-photo"),
         value: "sync-users-photo",
         disabled: group?.type !== "AZURE_AD",
       },
       {
-        label: showAdvancedOptions ? t("hide-advanced-options") : t("show-advanced-options"),
+        label: showAdvancedOptions ? t("groups.hide-advanced-options") : t("groups.show-advanced-options"),
         value: "show-hide-advanced-options",
       },
     ]);
@@ -534,12 +534,11 @@ const GroupDetails = () => {
 
     return (
       <>
-        <Descriptions.Item label={t("azure-ad-id")}>
+        <Descriptions.Item label={t("groups.azure-ad-id")}>
           <Text copyable>{group.externalId}</Text>
         </Descriptions.Item>
-
-        <Descriptions.Item label={t("azure-ad-groupname")}>
-          <Text copyable>{group.externalName || t("no-azure-group-found")}</Text>
+        <Descriptions.Item label={t("groups.azure-ad-groupname")}>
+          <Text copyable>{group.externalName || t("groups.no-azure-group-found")}</Text>
         </Descriptions.Item>
       </>
     );
@@ -551,7 +550,7 @@ const GroupDetails = () => {
 
     return (
       <>
-        <Descriptions.Item label={t("api-group-id")}>
+        <Descriptions.Item label={t("groups.api-group-id")}>
           <Text copyable>{group.externalId}</Text>
         </Descriptions.Item>
       </>
@@ -564,7 +563,7 @@ const GroupDetails = () => {
     return (
       <>
         {isUserGroupAdmin ? (
-          <Descriptions.Item label={t("swizi-business-group-type")}>
+          <Descriptions.Item label={t("groups.swizi-business-group-type")}>
             <Checkbox
               checked={group.provisioningType === "business"}
               onChange={handleSwitchIsBusinessGroup}
@@ -572,7 +571,7 @@ const GroupDetails = () => {
           </Descriptions.Item>
         ) : null}
         {group.provisioningType === "business" && isUserGroupAdmin ? (
-          <Descriptions.Item label={t("swizi-group-linked-site")}>
+          <Descriptions.Item label={t("groups.swizi-group-linked-site")}>
             <SiteSelector
               value={group.provisioningSiteId}
               onChange={handleUpdateSiteProvisioning}
@@ -619,7 +618,7 @@ const GroupDetails = () => {
       <Row gutter={[20, 20]}>
         <Col span={24}>
           <Button size="middle" type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("back")}
+            {t("app-details.back")}
           </Button>
         </Col>
         <Col span={24}>
@@ -630,7 +629,7 @@ const GroupDetails = () => {
 
                 {group.isArchived && (
                   <Text type="danger" style={{ marginLeft: "10px" }}>
-                    {t("group-archived-explanation")}
+                    {t("groups.group-archived-explanation")}
                   </Text>
                 )}
 
@@ -654,24 +653,24 @@ const GroupDetails = () => {
                   {renderAzureInfos()}
                   {renderAPIInfos()}
 
-                  <Descriptions.Item label={t("swizi-user-id")}>
+                  <Descriptions.Item label={t("groups.swizi-user-id")}>
                     <Text copyable>{group.id}</Text>
                   </Descriptions.Item>
-                  <Descriptions.Item label={t("description")}>
+                  <Descriptions.Item label={t("features-app.description")}>
                     <Flex vertical gap="small" align="center" justify="space-between">
                       <Input.TextArea
                         value={description}
                         onChange={(v) => setDescription(v.target.value)}
                       />
                       <Button style={{ width: "150px" }} onClick={handleUpdateDescription}>
-                        {t("save")}
+                        {t("components.save")}
                       </Button>
                     </Flex>
                   </Descriptions.Item>
-                  <Descriptions.Item label={t("user-count-in-this-group")}>
+                  <Descriptions.Item label={t("groups.user-count-in-this-group")}>
                     {group.nbUsers}
                   </Descriptions.Item>
-                  <Descriptions.Item label={t("group-is-archived")}>
+                  <Descriptions.Item label={t("groups.group-is-archived")}>
                     <Switch
                       checked={group.isArchived}
                       onChange={(checked) => handleUpdateOption("isArchived", checked)}
@@ -679,7 +678,7 @@ const GroupDetails = () => {
                     />
                   </Descriptions.Item>
                   {renderSwiziInfos()}
-                  <Descriptions.Item label={t("show-group-contact-list")}>
+                  <Descriptions.Item label={t("groups.show-group-contact-list")}>
                     <Switch
                       checked={group.isInContactList}
                       onChange={(checked) => handleUpdateContactList(checked, false)}
@@ -690,7 +689,7 @@ const GroupDetails = () => {
                     <Descriptions.Item
                       label={
                         <Typography.Text style={{ marginLeft: "15px" }}>
-                          {t("restrict-contact-list-to-members")}
+                          {t("groups.restrict-contact-list-to-members")}
                         </Typography.Text>
                       }
                     >
@@ -701,7 +700,7 @@ const GroupDetails = () => {
                       />
                     </Descriptions.Item>
                   )}
-                  <Descriptions.Item label={t("parking-tags")} style={{ width: "150px" }}>
+                  <Descriptions.Item label={t("groups.parking-tags")} style={{ width: "150px" }}>
                     <Select
                       mode="tags"
                       style={{ width: "100%" }}
@@ -722,13 +721,13 @@ const GroupDetails = () => {
               {group.type !== "SITE" && showAdvancedOptions && (
                 <Col span={18}>
                   <Row gutter={[20, 20]} style={{ width: "100%" }}>
-                    <RenderOption title={t("facility-group-type")} option={"facility"} />
-                    <RenderOption title={t("communication-group-type")} option={"communication"} />
-                    <RenderOption title={t("ticketing-group-type")} option={"ticketing"} />
-                    <RenderOption title={t("accueil-group-type")} option={"accueil"} />
-                    <RenderOption title={t("analytics-group-type")} option={"analytics"} />
-                    <RenderOption title={t("canChat-group-type")} option={"canChat"} />
-                    <RenderOption title={t("searchable-group-type")} option={"searchable"} />
+                    <RenderOption title={t("groups.facility-group-type")} option={"facility"} />
+                    <RenderOption title={t("groups.communication-group-type")} option={"communication"} />
+                    <RenderOption title={t("groups.ticketing-group-type")} option={"ticketing"} />
+                    <RenderOption title={t("groups.accueil-group-type")} option={"accueil"} />
+                    <RenderOption title={t("groups.analytics-group-type")} option={"analytics"} />
+                    <RenderOption title={t("groups.canChat-group-type")} option={"canChat"} />
+                    <RenderOption title={t("groups.searchable-group-type")} option={"searchable"} />
                     {/*<RenderOption title={t("isTeam-group-type")} option={"isTeam"} />*/}
                   </Row>
                 </Col>
@@ -738,7 +737,7 @@ const GroupDetails = () => {
         </Col>
       </Row>
       <Tabs>
-        <Tabs.TabPane tab={t("users")} key="users">
+        <Tabs.TabPane tab={t("groups.users")} key="users">
           <Users
             onAddUsers={handleAddUsers}
             isAdmin={isUserGroupAdmin}
@@ -748,7 +747,7 @@ const GroupDetails = () => {
           />
         </Tabs.TabPane>
         {group?.type === "COMPOSIT" && (
-          <Tabs.TabPane tab={t("children")} key="childrenusers">
+          <Tabs.TabPane tab={t("groups.children")} key="childrenusers">
             <ChildrenGroups
               onAddUsers={handleAddUsers}
               isAdmin={isUserGroupAdmin}
@@ -758,14 +757,14 @@ const GroupDetails = () => {
             />
           </Tabs.TabPane>
         )}
-        <Tabs.TabPane tab={t("managers")} key="managers">
+        <Tabs.TabPane tab={t("groups.managers")} key="managers">
           <Managers
             group={group}
             onAddManagers={handleAddManagers}
             onRemoveManagerFromGroup={handleRemoveManagerFromGroup}
           />
         </Tabs.TabPane>
-        <Tabs.TabPane tab={t("sectors")} key="sectors">
+        <Tabs.TabPane tab={t("groups.sectors")} key="sectors">
           <Sectors
             group={group}
             onAddSector={handleAddSector}
@@ -773,7 +772,7 @@ const GroupDetails = () => {
           />
         </Tabs.TabPane>
         {isIMActive && (
-          <Tabs.TabPane tab={t("instant-messaging")} key="im">
+          <Tabs.TabPane tab={t("groups.instant-messaging")} key="im">
             <IM
               group={group}
               messageList={messageList}
@@ -783,7 +782,7 @@ const GroupDetails = () => {
             />
           </Tabs.TabPane>
         )}
-        <Tabs.TabPane tab={t("features")} key="features">
+        <Tabs.TabPane tab={t("groups.features")} key="features">
           <Features group={group} onUpdateFeaturesConfig={handleUpdateFeaturesConfig} />
         </Tabs.TabPane>
       </Tabs>

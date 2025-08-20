@@ -44,19 +44,19 @@ const SpaasView = () => {
   const SPAAS_TYPES = [
     {
       key: 0,
-      value: t("spaas-disabled"),
+      value: t("features-spaas.spaas-disabled"),
     },
     {
       key: 1,
-      value: t("spaas-1"),
+      value: t("features-spaas.spaas-1"),
     },
     {
       key: 2,
-      value: t("spaas-2"),
+      value: t("features-spaas.spaas-2"),
     },
     {
       key: 3,
-      value: t("spaas-3"),
+      value: t("features-spaas.spaas-3"),
     },
   ];
 
@@ -80,7 +80,7 @@ const SpaasView = () => {
         setLevel(config.type);
       } catch (e) {
         logger.error("faield to load", e);
-        message.error(t("load-error"));
+        message.error(t("audience.load-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -101,10 +101,10 @@ const SpaasView = () => {
         afternoonHours: form.getFieldsValue().hours.afternoonHours,
       };
       await api.features.saveSpaasConfig(siteId, newValues);
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error("Failed to save", error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -116,7 +116,7 @@ const SpaasView = () => {
       const template = await api.features.getSpaasTemplates();
       await dispatch(stopWorking());
       const response = await editEmailNotifModal(
-        t("edit-confirm-presence-template"),
+        t("features-spaas.edit-confirm-presence-template"),
         template,
         keywords,
       );
@@ -128,7 +128,7 @@ const SpaasView = () => {
     } catch (error) {
       await dispatch(stopWorking());
       logger.error(error);
-      message.error(t("load-error"));
+      message.error(t("audience.load-error"));
     }
   };
 
@@ -155,13 +155,13 @@ const SpaasView = () => {
             {level == 3 && (
               <Col span={4}>
                 <Button block onClick={handleEditTemplate}>
-                  {t("edit-template")}
+                  {t("features-spaas.edit-template")}
                 </Button>
               </Col>
             )}
             <Col offset={1} span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             <Col span={24}>
@@ -180,7 +180,7 @@ const SpaasView = () => {
               >
                 <Row style={{ marginBottom: 20 }}>
                   <Col span={24}>
-                    <MultiLineFormItem label={t("spaas-type")} name="type">
+                    <MultiLineFormItem label={t("features-parking.spaas-type")} name="type">
                       <Select style={{ width: "100%" }}>
                         {SPAAS_TYPES.map((item) => (
                           <Select.Option key={item.key} value={item.key}>
@@ -190,14 +190,14 @@ const SpaasView = () => {
                       </Select>
                     </MultiLineFormItem>
 
-                    <MultiLineFormItem label={t("timeslot")} name="hours">
+                    <MultiLineFormItem label={t("features-parking.timeslot")} name="hours">
                       <DayHoursPicker />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("spaas-recurrence-max")} name="maxRecurrenceMonths">
+                    <MultiLineFormItem label={t("features-spaas.spaas-recurrence-max")} name="maxRecurrenceMonths">
                       <InputNumber min={1} step={1} />
                     </MultiLineFormItem>
                     <MultiLineFormItem
-                      label={t("use-electronique-tag")}
+                      label={t("features-spaas.use-electronique-tag")}
                       name="electroniqueTag"
                       valuePropName="checked"
                       hidden={level !== 3}

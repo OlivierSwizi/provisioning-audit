@@ -141,10 +141,10 @@ const AdminView = () => {
 
     try {
       await workDispatch(saveUserPermissions(userEmail, data));
-      message.success(t("provisioning-user-saved"));
+      message.success(t("admin.provisioning-user-saved"));
     } catch (error) {
       logger.error(error);
-      message.error(t("provisioning-user-error"));
+      message.error(t("admin.provisioning-user-error"));
     }
 
     handleChange(userEmail);
@@ -205,10 +205,10 @@ const AdminView = () => {
     if (user) {
       try {
         workDispatch(createUser(user));
-        message.success(t("account-created"));
+        message.success(t("admin.account-created"));
       } catch (error) {
-        if (error?.response?.status === 409) message.error(t("email-already-exists"));
-        else message.error(t("provisioning-user-error"));
+        if (error?.response?.status === 409) message.error(t("admin.email-already-exists"));
+        else message.error(t("admin.provisioning-user-error"));
       }
     }
   };
@@ -218,13 +218,13 @@ const AdminView = () => {
       {UserAdminModal}
       <Row gutter={[20, 20]}>
         <Col span={18}>
-          <Typography.Title level={2}>{t("provisioning-user-administration")}</Typography.Title>
+          <Typography.Title level={2}>{t("admin.provisioning-user-administration")}</Typography.Title>
         </Col>
         <Col flex={"auto"}>
           <Select
             showSearch
             style={{ width: 500 }}
-            placeholder={t("select-user")}
+            placeholder={t("admin.select-user")}
             optionFilterProp="children"
             onChange={handleChange}
             value={userEmail}
@@ -245,7 +245,7 @@ const AdminView = () => {
         </Col>
         {!editing && (
           <Col span={3}>
-            <Button onClick={handleAddUser}>{t("add-new-user")}</Button>
+            <Button onClick={handleAddUser}>{t("admin.add-new-user")}</Button>
           </Col>
         )}
 
@@ -258,7 +258,7 @@ const AdminView = () => {
                   size="middle"
                   onClick={() => handleChange(userEmail)}
                 >
-                  {t("cancel")}
+                  {t("admin.cancel")}
                 </Button>
                 <Button
                   type="primary"
@@ -266,7 +266,7 @@ const AdminView = () => {
                   size="middle"
                   onClick={() => form.submit()}
                 >
-                  {t("save")}
+                  {t("components.save")}
                 </Button>
               </Col>
             )}
@@ -286,11 +286,11 @@ const AdminView = () => {
               >
                 <Row style={{ width: "100%" }}>
                   <Col span={24}>
-                    <ProvCard title={t("provisioning-user-profile")}>
+                    <ProvCard title={t("admin.provisioning-user-profile")}>
                       <Row gutter={[16, 16]} style={{ display: "flex", flexWrap: "wrap" }}>
                         <Col span={6}>
                           <ProvFormItem
-                            label={t("provisioning-user-normal-role")}
+                            label={t("admin.provisioning-user-normal-role")}
                             valuePropName="checked"
                             name="standardProfile"
                           >
@@ -299,7 +299,7 @@ const AdminView = () => {
                         </Col>
                         <Col span={6}>
                           <ProvFormItem
-                            label={t("provisioning-user-business-role")}
+                            label={t("admin.provisioning-user-business-role")}
                             valuePropName="checked"
                             name="businessProfile"
                           >
@@ -308,7 +308,7 @@ const AdminView = () => {
                         </Col>
                         <Col span={6}>
                           <ProvFormItem
-                            label={t("provisioning-user-super-admin")}
+                            label={t("admin.provisioning-user-super-admin")}
                             valuePropName="checked"
                             name="superAdmin"
                           >
@@ -320,7 +320,7 @@ const AdminView = () => {
                   </Col>
 
                   <Col span={24} hidden={isSuperAdmin}>
-                    <ProvCard title={t("provisioning-user-permissions")}>
+                    <ProvCard title={t("admin.provisioning-user-permissions")}>
                       <Row gutter={[16, 16]} style={{ display: "flex", flexWrap: "wrap" }}>
                         {(operations || [])
                           .filter((op) => {
@@ -346,13 +346,13 @@ const AdminView = () => {
                   </Col>
 
                   <Col span={24} hidden={isSuperAdmin || isBusinessRole}>
-                    <ProvCard title={t("provisioning-grouped-permission")}>
+                    <ProvCard title={t("admin.provisioning-grouped-permission")}>
                       <Row style={{ width: "100%" }}>
                         <Col span={24} style={{ display: "flex" }}>
                           <Form.Item
                             colon={false}
                             style={{ width: "400px" }}
-                            label={t("admin-all-apps")}
+                            label={t("admin.admin-all-apps")}
                             wrapperCol={{ offset: 1, span: 17 }}
                             labelCol={{ span: 6 }}
                             name={"all"}
@@ -367,7 +367,7 @@ const AdminView = () => {
                             wrapperCol={{ offset: 1, span: 17 }}
                             labelCol={{ span: 6 }}
                             name={"vendors"}
-                            label={t("admin-vendors")}
+                            label={t("admin.admin-vendors")}
                           >
                             <Select
                               mode="multiple"

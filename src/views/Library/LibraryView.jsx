@@ -65,7 +65,7 @@ const LibraryView = () => {
       setPage(parseInt(result.page));
     } catch (error) {
       logger.error("Failed to load library", error);
-      message.error(t("errorLoadingLibrary"));
+      message.error(t("library.errorLoadingLibrary"));
     }
   };
 
@@ -154,13 +154,13 @@ const LibraryView = () => {
                 alignItems: "center",
               }}
             >
-              <Tooltip title={t("delete-image")}>
+              <Tooltip title={t("library.delete-image")}>
                 <Popconfirm
                   placement="top"
-                  title={t("delete-image-confirm")}
+                  title={t("library.delete-image-confirm")}
                   onConfirm={onDelete}
-                  okText={t("Yes")}
-                  cancelText={t("No")}
+                  okText={t("library.Yes")}
+                  cancelText={t("library.No")}
                 >
                   <Glyph
                     className={"ant-typography-copy"}
@@ -169,13 +169,13 @@ const LibraryView = () => {
                   />
                 </Popconfirm>
               </Tooltip>
-              <Tooltip title={t("replace-image")}>
+              <Tooltip title={t("library.replace-image")}>
                 <Popconfirm
                   placement="top"
-                  title={t("replace-image-confirm")}
+                  title={t("library.replace-image-confirm")}
                   onConfirm={onReplace}
-                  okText={t("Yes")}
-                  cancelText={t("No")}
+                  okText={t("library.Yes")}
+                  cancelText={t("library.No")}
                 >
                   <Glyph className={"ant-typography-copy"} name={"refresh"} />
                 </Popconfirm>
@@ -190,11 +190,11 @@ const LibraryView = () => {
   const handleDelete = async (image) => {
     try {
       await api.media.delete(image.id);
-      message.success(t("image-deleted"));
+      message.success(t("library.image-deleted"));
       refresh();
     } catch (error) {
       logger.error("Failed to delete image", error);
-      message.error(t("error-deleting-image"));
+      message.error(t("library.error-deleting-image"));
     }
   };
 
@@ -203,10 +203,10 @@ const LibraryView = () => {
     if (!file) return;
     try {
       await api.media.replace(image.id, file);
-      message.success(t("image-replaced"));
+      message.success(t("library.image-replaced"));
     } catch (error) {
       logger.error("Failed to replace image", error);
-      message.error(t("error-replacing-image"));
+      message.error(t("library.error-replacing-image"));
     }
     refresh();
   };
@@ -216,11 +216,11 @@ const LibraryView = () => {
     if (!file) return;
     try {
       await api.media.upload(file);
-      message.success(t("image-uploaded"));
+      message.success(t("library.image-uploaded"));
       refresh();
     } catch (error) {
       logger.error("Failed to upload file", error);
-      message.error(t("error-uploading"));
+      message.error(t("library.error-uploading"));
     }
     setSortType("date");
     setSortOrder("desc");
@@ -235,7 +235,7 @@ const LibraryView = () => {
             <Col span={24}>
               <Row style={{ width: "100%" }}>
                 <Col span={24}>
-                  <Title level={3}>{t("library")}</Title>
+                  <Title level={3}>{t("library.library")}</Title>
                 </Col>
                 <Col span={6}>
                   <Pagination
@@ -251,7 +251,7 @@ const LibraryView = () => {
                   span={4}
                   style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
                 >
-                  <Typography.Text>{t("Filter")}</Typography.Text>
+                  <Typography.Text>{t("library.Filter")}</Typography.Text>
                   <Input
                     value={filter}
                     onChange={(v) => setFilter(v.target.value)}
@@ -264,16 +264,16 @@ const LibraryView = () => {
                   offset={1}
                   style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
                 >
-                  <Typography.Text>{t("Sort by")}</Typography.Text>
+                  <Typography.Text>{t("library.Sort by")}</Typography.Text>
                   <Select
                     onChange={(v) => setSortType(v)}
                     value={sortType}
                     style={{ marginLeft: "10px", width: "50%" }}
                     size="middle"
                   >
-                    <Select.Option value="name">{t("Name")}</Select.Option>
-                    <Select.Option value="date">{t("Date")}</Select.Option>
-                    <Select.Option value="id">{t("Id")}</Select.Option>
+                    <Select.Option value="name">{t("library.Name")}</Select.Option>
+                    <Select.Option value="date">{t("library.Date")}</Select.Option>
+                    <Select.Option value="id">{t("library.Id")}</Select.Option>
                   </Select>
                 </Col>
                 <Col
@@ -281,20 +281,20 @@ const LibraryView = () => {
                   offset={1}
                   style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
                 >
-                  <Typography.Text>{t("Order")}</Typography.Text>
+                  <Typography.Text>{t("library.Order")}</Typography.Text>
                   <Select
                     onChange={(v) => setSortOrder(v)}
                     value={sortOrder}
                     style={{ marginLeft: "10px", width: "60%" }}
                     size="middle"
                   >
-                    <Select.Option value="asc">{t("Asc")}</Select.Option>
-                    <Select.Option value="desc">{t("Desc")}</Select.Option>
+                    <Select.Option value="asc">{t("library.Asc")}</Select.Option>
+                    <Select.Option value="desc">{t("library.Desc")}</Select.Option>
                   </Select>
                 </Col>
                 <Col span={3} offset={1}>
                   <Button block onClick={handleAddMedia}>
-                    {t("add-a-media")}
+                    {t("library.add-a-media")}
                   </Button>
                 </Col>
                 <Col span={24}>

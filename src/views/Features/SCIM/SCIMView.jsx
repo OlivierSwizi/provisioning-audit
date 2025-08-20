@@ -73,7 +73,7 @@ const SCIMHistoryView = () => {
       }, 500);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-load-scim-settings"));
+      message.error(t("features-planner.error-load-scim-settings"));
     } finally {
       setIsLoading(false);
     }
@@ -83,10 +83,10 @@ const SCIMHistoryView = () => {
     setIsLoading(true);
     try {
       await api.scim.revokeToken(secretId);
-      message.success(t("success-removing-token"));
+      message.success(t("features-scim.success-removing-token"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-removing-token"));
+      message.error(t("features-scim.error-removing-token"));
     } finally {
       setIsLoading(false);
     }
@@ -95,22 +95,22 @@ const SCIMHistoryView = () => {
   };
 
   const addToken = async () => {
-    const duration = await askSelect(t("token-duration"), t("select-duration"), [
-      { value: 1, label: t("1-month") },
-      { value: 3, label: t("3-month") },
-      { value: 6, label: t("6-month") },
-      { value: 12, label: t("1-year") },
+    const duration = await askSelect(t("features-scim.token-duration"), t("features-scim.select-duration"), [
+      { value: 1, label: t("features-scim.1-month") },
+      { value: 3, label: t("features-scim.3-month") },
+      { value: 6, label: t("features-scim.6-month") },
+      { value: 12, label: t("features-scim.1-year") },
     ]);
 
     if (!duration) return;
 
     try {
       const token = await api.scim.addToken(duration);
-      message.success(t("success-adding-token"));
-      await showCopyableText(t("show-token-text"), t("show-token-instruction"), token.token);
+      message.success(t("features-scim.success-adding-token"));
+      await showCopyableText(t("features-scim.show-token-text"), t("features-scim.show-token-instruction"), token.token);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-adding-token"));
+      message.error(t("features-scim.error-adding-token"));
     }
 
     loadSettings();
@@ -125,10 +125,10 @@ const SCIMHistoryView = () => {
           group: JSON.parse(mappingGroup),
         },
       });
-      message.success(t("success-scim-save-settings"));
+      message.success(t("features-scim.success-scim-save-settings"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-scim-save-settings"));
+      message.error(t("features-planner.error-scim-save-settings"));
     } finally {
       setIsLoading(false);
     }
@@ -154,7 +154,7 @@ const SCIMHistoryView = () => {
       );
     } catch (error) {
       logger.error(error);
-      message.error(t("error-scim-load-history"));
+      message.error(t("features-scim.error-scim-load-history"));
       setPage(1);
       setPageSize(10);
       setFilter({});
@@ -168,10 +168,10 @@ const SCIMHistoryView = () => {
     setIsLoading(true);
     try {
       await api.scim.cleanHistory();
-      message.success(t("success-cleaning-history"));
+      message.success(t("features-scim.success-cleaning-history"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-cleaning-history"));
+      message.error(t("features-scim.error-cleaning-history"));
     } finally {
       setIsLoading(false);
     }
@@ -209,7 +209,7 @@ const SCIMHistoryView = () => {
   const History = () => {
     const columns = [
       {
-        title: <span>{t("date")}</span>,
+        title: <span>{t("features-history.date")}</span>,
         dataIndex: "timestamp",
 
         render: (value) => {
@@ -217,7 +217,7 @@ const SCIMHistoryView = () => {
         },
       },
       {
-        title: <span>{t("status")}</span>,
+        title: <span>{t("features-scim.status")}</span>,
         dataIndex: "status",
         filters: [],
 
@@ -234,16 +234,16 @@ const SCIMHistoryView = () => {
         },
       },
       {
-        title: <span>{t("operation")}</span>,
+        title: <span>{t("features-scim.operation")}</span>,
         dataIndex: "operation",
         render: (value) => <span>{t(value)}</span>,
       },
       {
-        title: <span>{t("resource")}</span>,
+        title: <span>{t("features-scim.resource")}</span>,
         dataIndex: "resource",
       },
       {
-        title: <span>{t("data")}</span>,
+        title: <span>{t("features-history.data")}</span>,
         dataIndex: "data",
         width: "350",
         render: (value) => (
@@ -255,7 +255,7 @@ const SCIMHistoryView = () => {
               whiteSpace: "nowrap",
               cursor: "pointer",
             }}
-            onClick={() => editJSON(t("data"), value)}
+            onClick={() => editJSON(t("features-history.data"), value)}
           >
             {JSON.stringify(value)}
           </div>
@@ -267,7 +267,7 @@ const SCIMHistoryView = () => {
         <Col span={24}>
           <Row style={{ width: "100%" }}>
             <Col span={24}>
-              <Title level={3}>{t("history")}</Title>
+              <Title level={3}>{t("features-history.history")}</Title>
             </Col>
             <Col span={22}>
               <RangePicker
@@ -319,7 +319,7 @@ const SCIMHistoryView = () => {
               width: "250px",
             }}
           >
-            {t("clean-scim-history")}
+            {t("features-scim.clean-scim-history")}
           </Button>
         </Col>
       </Row>
@@ -329,7 +329,7 @@ const SCIMHistoryView = () => {
   const Settings = ({ tokens }) => {
     const tokenColumns = [
       {
-        title: <span>{t("creation-date")}</span>,
+        title: <span>{t("features-scim.creation-date")}</span>,
         dataIndex: "createdAt",
         width: "170px",
         align: "center",
@@ -338,19 +338,19 @@ const SCIMHistoryView = () => {
         },
       },
       {
-        title: <span>{t("id")}</span>,
+        title: <span>{t("features-scim.id")}</span>,
         dataIndex: "secretId",
         align: "center",
         width: "300px",
       },
       {
-        title: <span>{t("token")}</span>,
+        title: <span>{t("features-scim.token")}</span>,
         dataIndex: "token",
         align: "center",
         width: "100px",
       },
       {
-        title: <span>{t("expire-date")}</span>,
+        title: <span>{t("features-scim.expire-date")}</span>,
         dataIndex: "expiresAt",
         align: "center",
         width: "100px",
@@ -359,12 +359,12 @@ const SCIMHistoryView = () => {
         },
       },
       {
-        title: <span>{t("revoke")}</span>,
+        title: <span>{t("features-scim.revoke")}</span>,
         align: "center",
         render: (value) => {
           return (
             <div style={{ width: "100%", textAlign: "center" }}>
-              <Popconfirm title={t("revoke-token")} onConfirm={() => revokeToken(value.secretId)}>
+              <Popconfirm title={t("features-scim.revoke-token")} onConfirm={() => revokeToken(value.secretId)}>
                 <DeleteOutlined style={{ color: "red" }} />
               </Popconfirm>
             </div>
@@ -377,7 +377,7 @@ const SCIMHistoryView = () => {
       <>
         <Row style={{ width: "100%", marginTop: "24px" }}>
           <Col span={4}>
-            <Text>{t("log-all-scim-call")}</Text>
+            <Text>{t("features-scim.log-all-scim-call")}</Text>
           </Col>
           <Col span={20}>
             <Checkbox checked={logAllCalls} onChange={(e) => setLogAllCalls(e.target.checked)} />
@@ -385,7 +385,7 @@ const SCIMHistoryView = () => {
         </Row>
         <Row style={{ width: "100%", marginTop: "24px" }}>
           <Col span={4}>
-            <Text>{t("scim-endpoint")}</Text>
+            <Text>{t("features-scim.scim-endpoint")}</Text>
           </Col>
           <Col span={20}>
             <Text copyable>{endPoint}</Text>
@@ -411,7 +411,7 @@ const SCIMHistoryView = () => {
                 alignItems: "center",
               }}
             >
-              <Button onClick={addToken}>{t("add-a-token")}</Button>
+              <Button onClick={addToken}>{t("features-scim.add-a-token")}</Button>
             </Col>
           </Row>
         )}
@@ -422,7 +422,7 @@ const SCIMHistoryView = () => {
   const Mapping = () => {
     const tab = [
       {
-        label: t("scim-user-mapping"),
+        label: t("features-scim.scim-user-mapping"),
         key: "user",
         children: (
           <Row style={{ width: "100%" }} key="user">
@@ -447,14 +447,14 @@ const SCIMHistoryView = () => {
                   width: "250px",
                 }}
               >
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
           </Row>
         ),
       },
       {
-        label: t("scim-group-mapping"),
+        label: t("features-scim.scim-group-mapping"),
         key: "group",
         children: (
           <Row style={{ width: "100%" }} key="group">
@@ -479,7 +479,7 @@ const SCIMHistoryView = () => {
                   width: "250px",
                 }}
               >
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
           </Row>
@@ -497,9 +497,9 @@ const SCIMHistoryView = () => {
   };
 
   const tabItems = [
-    { label: t("settings"), key: "settings", children: <Settings tokens={tokens} /> }, // remember to pass the key prop
-    { label: t("mapping"), key: "mapping", children: <Mapping /> }, // remember to pass the key prop
-    { label: t("scim-history"), key: "log", children: <History /> },
+    { label: t("features-scim.settings"), key: "settings", children: <Settings tokens={tokens} /> }, // remember to pass the key prop
+    { label: t("features-scim.mapping"), key: "mapping", children: <Mapping /> }, // remember to pass the key prop
+    { label: t("features-scim.scim-history"), key: "log", children: <History /> },
   ];
 
   return (

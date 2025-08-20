@@ -38,7 +38,7 @@ const CalendarUserSearch = () => {
           allowClear
           onChange={(e) => setSearch(e.target.value)}
           prefix={<SearchOutlined />}
-          placeholder={t("search-user")}
+          placeholder={t("components.search-user")}
           value={search}
         />
       </Col>

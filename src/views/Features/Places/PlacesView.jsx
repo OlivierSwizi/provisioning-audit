@@ -105,7 +105,7 @@ const PlacesView = () => {
       }
     } catch (e) {
       logger.error(e);
-      message.error(t("load-error"));
+      message.error(t("audience.load-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -171,10 +171,10 @@ const PlacesView = () => {
       }
       await api.features.places.update(siteId, placesId, contentId, data);
 
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.log(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -188,24 +188,22 @@ const PlacesView = () => {
         <Col span={24}>
           <Form.Item hidden name={["localized", index, "locale"]} />
           <Form.Item hidden name={["localized", index, "extras"]} />
-          <Form.Item label={t("places-name")} name={["localized", index, "name"]} required>
+          <Form.Item label={t("features-places.places-name")} name={["localized", index, "name"]} required>
             <Input autoComplete="off" />
           </Form.Item>
         </Col>
-
         <Col span={24}>
-          <Form.Item label={t("places-description")} name={["localized", index, "others"]}>
+          <Form.Item label={t("features-places.places-description")} name={["localized", index, "others"]}>
             <RichEditor />
           </Form.Item>
         </Col>
-
         <Col span={24}>
-          <Form.Item label={t("places-equipments")} name={["localized", index, "equipments"]}>
+          <Form.Item label={t("features-places.places-equipments")} name={["localized", index, "equipments"]}>
             <EquipmentList />
           </Form.Item>
         </Col>
         <Col span={24}>
-          <Form.Item label={t("places-services")} name={["localized", index, "services"]}>
+          <Form.Item label={t("features-places.places-services")} name={["localized", index, "services"]}>
             <ServiceList />
           </Form.Item>
         </Col>
@@ -217,7 +215,7 @@ const PlacesView = () => {
     <>
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
-          <Typography.Title level={2}>{t("places-settings")}</Typography.Title>
+          <Typography.Title level={2}>{t("features-places.places-settings")}</Typography.Title>
         </Col>
         <Col span={24}>
           <Row style={{ width: "100%" }}>
@@ -267,7 +265,7 @@ const PlacesView = () => {
 
             <Col offset={3} span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             {placesList.length > 0 ? (
@@ -275,11 +273,11 @@ const PlacesView = () => {
                 <Col span={24} style={{ marginTop: 5, marginBottom: 10 }}>
                   <Space size="middle">
                     <span>
-                      <Typography.Text strong>{t("section-id")} : </Typography.Text>
+                      <Typography.Text strong>{t("features-places.section-id")} : </Typography.Text>
                       <Typography.Text copyable>{placesId}</Typography.Text>
                     </span>
                     <span>
-                      <Typography.Text strong>{t("content-id")} : </Typography.Text>
+                      <Typography.Text strong>{t("features-places.content-id")} : </Typography.Text>
                       <Typography.Text copyable>{contentId}</Typography.Text>
                     </span>
                   </Space>
@@ -300,17 +298,17 @@ const PlacesView = () => {
                   >
                     <Row style={{ marginBottom: 20 }}>
                       <Col span={24}>
-                        <Form.Item label={t("places-header")} name="headerMediaId">
+                        <Form.Item label={t("features-places.places-header")} name="headerMediaId">
                           <MediaSelector />
                         </Form.Item>
                         <Form.Item
-                          label={t("places-location")}
+                          label={t("features-places.places-location")}
                           name="location"
                           validateStatus={placeIsError ? "error" : "success"}
                         >
                           <PlaceSelector siteId={siteId} onError={setPlaceIsError} />
                         </Form.Item>
-                        <Form.Item label={t("timezone")} name="timeZone">
+                        <Form.Item label={t("features-places.timezone")} name="timeZone">
                           <TimezoneSelector />
                         </Form.Item>
                         <Col offset={4} span={8} style={{ marginBottom: 15 }}>
@@ -318,20 +316,20 @@ const PlacesView = () => {
                             checked={useOpeningHours}
                             onChange={(e) => setUseOpeningHours(e.target.checked)}
                           >
-                            {t("show-opening-hours")}
+                            {t("features-places.show-opening-hours")}
                           </Checkbox>
                         </Col>
                         <Form.Item
-                          label={t("opening-hours")}
+                          label={t("features-places.opening-hours")}
                           name="openingHours"
                           hidden={!useOpeningHours}
                         >
                           <OpeningHoursSelector />
                         </Form.Item>
-                        <Form.Item label={t("places-phone")} name="phone">
+                        <Form.Item label={t("features-places.places-phone")} name="phone">
                           <ActivableInput />
                         </Form.Item>
-                        <Form.Item label={t("places-email")} name="email">
+                        <Form.Item label={t("features-places.places-email")} name="email">
                           <ActivableInput />
                         </Form.Item>
                       </Col>
@@ -357,7 +355,7 @@ const PlacesView = () => {
               </Row>
             ) : (
               <Col span={24}>
-                <Result status="404" title={t("no-places-found")} subTitle={""} />
+                <Result status="404" title={t("features-places.no-places-found")} subTitle={""} />
               </Col>
             )}
           </Row>

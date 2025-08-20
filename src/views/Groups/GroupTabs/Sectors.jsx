@@ -64,7 +64,7 @@ const Sectors = ({ group, onAddSector, onRemoveSector }) => {
       <Row gutter={[10, 10]}>
         <Col span={22}>
           <Typography.Title level={4} style={{ margin: 0 }}>
-            {t("sectors-of-group")}
+            {t("groups.sectors-of-group")}
           </Typography.Title>
         </Col>
 
@@ -77,7 +77,7 @@ const Sectors = ({ group, onAddSector, onRemoveSector }) => {
           >
             <Space size="small">
               <Glyph name={"add-person"} style={{ fontSize: "18px" }} />
-              {t("add-sector")}
+              {t("components.add-sector")}
             </Space>
           </Button>
         </Col>
@@ -85,7 +85,7 @@ const Sectors = ({ group, onAddSector, onRemoveSector }) => {
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
         {groupSectors.length === 0 ? (
           <Typography.Text style={{ textAlign: "center" }}>
-            {t("no-sector-in-group")}
+            {t("groups.no-sector-in-group")}
           </Typography.Text>
         ) : (
           <>
@@ -97,16 +97,15 @@ const Sectors = ({ group, onAddSector, onRemoveSector }) => {
                     <Button disabled size="middle" shape="circle" type="dashed"></Button>
                   </Col>
                   <Col span={8}>{gs.siteLabel}</Col>
-
                   <Col span={8}>{gs.sectorLabel}</Col>
                   <Col span={2}>
-                    <Tooltip title={t("remove-sector-from-group")}>
+                    <Tooltip title={t("groups.remove-sector-from-group")}>
                       <Popconfirm
-                        title={t("remove-sector-from-group-confirmation")}
+                        title={t("groups.remove-sector-from-group-confirmation")}
                         onConfirm={() => onRemoveSector(gs.siteId, gs.sectorId)}
                         placement="left"
-                        okText={t("yes")}
-                        cancelText={t("no")}
+                        okText={t("flexoffice.yes")}
+                        cancelText={t("flexoffice.no")}
                       >
                         <Glyph
                           name="delete"

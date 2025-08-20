@@ -104,7 +104,7 @@ const RangeTimePicker = ({ value, onChange }) => {
           justifyContent: "center",
         }}
       >
-        <span>{t("to")}</span>
+        <span>{t("components.to")}</span>
       </Col>
       <Col span={10} offset={2}>
         <Select

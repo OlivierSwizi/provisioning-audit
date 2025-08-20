@@ -60,7 +60,6 @@ const AppDetails = () => {
   return (
     <div>
       {SelectPublicMediaModal}
-
       <Row gutter={[20, 20]}>
         <Col span={24}>
           <Card style={{ body: { padding: 0 } }} bordered={false}>
@@ -90,7 +89,7 @@ const AppDetails = () => {
                 {selectedApp.name}
               </Typography.Title>
               <Typography.Text>
-                {t("project-id")}: {selectedApp.id}
+                {t("app-details.project-id")}: {selectedApp.id}
               </Typography.Text>
             </Space>
 
@@ -115,9 +114,9 @@ const AppDetails = () => {
 
             <Divider />
 
-            <Typography.Title level={3}>{t("public-media-management")}</Typography.Title>
+            <Typography.Title level={3}>{t("app-details.public-media-management")}</Typography.Title>
             <Button type="primary" onClick={handleOpenPublicMedia}>
-              {t("got-to-public-media-lib")}
+              {t("app-details.got-to-public-media-lib")}
             </Button>
 
             <Divider />

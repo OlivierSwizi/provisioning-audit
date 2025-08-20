@@ -39,7 +39,7 @@ const TemplateListEditor = ({ value, onChange, keywords = {} }) => {
   return (
     <Row style={{ width: "100%" }}>
       <Col span={24} style={{ marginBottom: "15px" }}>
-        <Typography.Text>{t("template")}</Typography.Text>
+        <Typography.Text>{t("components.template")}</Typography.Text>
       </Col>
       <Col span={12}>
         <Select onChange={handleChange} value={selectedEntry} size="middle">

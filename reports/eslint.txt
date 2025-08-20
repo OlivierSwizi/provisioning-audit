@@ -1,7 +1,0 @@
-
-/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Groups/GroupDetails.jsx
-  28:8  error  'NetworkTypeTag' is defined but never used  unused-imports/no-unused-imports
-
-✖ 1 problem (1 error, 0 warnings)
-  1 error and 0 warnings potentially fixable with the `--fix` option.
-

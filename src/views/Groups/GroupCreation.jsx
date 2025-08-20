@@ -42,7 +42,7 @@ const GroupCreation = () => {
       <Row gutter={[20, 20]}>
         <Col span={24}>
           <Button size="middle" type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("back")}
+            {t("app-details.back")}
           </Button>
         </Col>
         <Col span={24}>
@@ -52,7 +52,7 @@ const GroupCreation = () => {
               <Row style={{ width: "100%" }}>
                 <Col span={24} style={{ display: "flex" }}>
                   <Title level={3} style={{ marginRight: "15px" }}>
-                    {t("group-creation")}
+                    {t("groups.group-creation")}
                   </Title>
                 </Col>
               </Row>
@@ -61,7 +61,7 @@ const GroupCreation = () => {
             {isUserGroupAdmin ? (
               <Row style={{ width: "100%" }}>
                 <Col span={8}>
-                  <Text>{t("group-type")}</Text>
+                  <Text>{t("groups.group-type")}</Text>
                 </Col>
 
                 <Col span={8}>

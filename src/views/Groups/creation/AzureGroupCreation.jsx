@@ -53,11 +53,11 @@ const AzureGroupCreation = () => {
         false,
       );
 
-      message.success(t("group-created"));
+      message.success(t("groups.group-created"));
       navigate(`/apps/${appId}/groups/${groupId}`);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     } finally {
       dispatch(stopWorking());
     }
@@ -74,7 +74,7 @@ const AzureGroupCreation = () => {
         setSelectedTenant(tenants[0].key);
       } catch (e) {
         logger.error(e);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       } finally {
         dispatch(stopWorking());
       }
@@ -98,7 +98,7 @@ const AzureGroupCreation = () => {
         );
       } catch (e) {
         logger.error(e);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       } finally {
         dispatch(stopWorking());
       }
@@ -126,8 +126,8 @@ const AzureGroupCreation = () => {
           <Card bordered={false}>
             <Result
               status="404"
-              title={t("no-azure-config-found")}
-              subTitle={t("no-tenant-found-subtitle")}
+              title={t("groups.no-azure-config-found")}
+              subTitle={t("groups.no-tenant-found-subtitle")}
             />
           </Card>
         </Col>
@@ -139,7 +139,7 @@ const AzureGroupCreation = () => {
     <Card bordered={false}>
       <Row style={{ width: "100%" }}>
         <Col span={8}>
-          <Text>{t("tenant-selection")}</Text>
+          <Text>{t("groups.tenant-selection")}</Text>
         </Col>
         <Col span={8}>
           <Select value={selectedTenant} onSelect={(v) => setSelectedTenant(v)}>
@@ -153,11 +153,11 @@ const AzureGroupCreation = () => {
       </Row>
       <Row style={{ width: "100%", marginTop: "15px" }}>
         <Col span={8}>
-          <Text>{t("group-azure-selection")}</Text>
+          <Text>{t("groups.group-azure-selection")}</Text>
         </Col>
         <Col span={8}>
           <AutoComplete
-            placeholder={t("search-group")}
+            placeholder={t("groups.search-group")}
             options={azureGroupList}
             allowClear
             onSearch={setSearchName}
@@ -171,7 +171,7 @@ const AzureGroupCreation = () => {
         <>
           <Row style={{ width: "100%", marginTop: "15px" }}>
             <Col span={8}>
-              <Text>{t("group-displayname")}</Text>
+              <Text>{t("groups.group-displayname")}</Text>
             </Col>
             <Col span={8}>
               <Input
@@ -182,10 +182,10 @@ const AzureGroupCreation = () => {
           </Row>
           <Row justify="center" style={{ width: "100%", marginTop: "25px" }}>
             {alreadyExists ? (
-              <Typography.Text type="danger">{t("azure-group-already-exists")}</Typography.Text>
+              <Typography.Text type="danger">{t("groups.azure-group-already-exists")}</Typography.Text>
             ) : (
               <Button type="primary" style={{ width: "250px" }} onClick={handleCreateGroup}>
-                {t("add")}
+                {t("components.add")}
               </Button>
             )}
           </Row>

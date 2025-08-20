@@ -58,12 +58,12 @@ const SwiziGroupCreation = () => {
       );
       /* if (createIMChannel)
         await workDispatch(publishIMAnnouncement(newGroupId, imChannelWelcomeMessage));*/
-      message.success(t("group-created"));
+      message.success(t("groups.group-created"));
 
       navigate(`/apps/${appId}/groups/${newGroupId}`);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-occurred"));
+      message.error(t("audience.error-occurred"));
     }
   };
 
@@ -74,7 +74,7 @@ const SwiziGroupCreation = () => {
       <>
         <Row style={{ width: "100%", marginTop: "15px" }}>
           <Col span={8}>
-            <Text>{t("group-displayname")}</Text>
+            <Text>{t("groups.group-displayname")}</Text>
           </Col>
           <Col span={8}>
             <Input
@@ -88,7 +88,7 @@ const SwiziGroupCreation = () => {
         {!isUserGroupAdmin ? (
           <Row style={{ width: "100%", marginTop: "15px" }}>
             <Col span={8}>
-              <Text>{t("group-site-link")}</Text>
+              <Text>{t("groups.group-site-link")}</Text>
             </Col>
             <Col span={8}>
               <Select value={siteId} onChange={(value) => setSiteId(value)}>
@@ -103,7 +103,7 @@ const SwiziGroupCreation = () => {
         ) : null}
         <Row style={{ width: "100%", marginTop: "15px" }}>
           <Col span={8}>
-            <Text>{t("create-im-channel")}</Text>
+            <Text>{t("groups.create-im-channel")}</Text>
           </Col>
           <Col span={8}>
             <Col span={8}>
@@ -139,7 +139,7 @@ const SwiziGroupCreation = () => {
         )*/}
         <Row justify="center" style={{ width: "100%", marginTop: "25px" }}>
           {alreadyExists ? (
-            <Typography.Text type="danger">{t("swizi-group-already-exists")}</Typography.Text>
+            <Typography.Text type="danger">{t("groups.swizi-group-already-exists")}</Typography.Text>
           ) : (
             <Button
               type="primary"
@@ -152,7 +152,7 @@ const SwiziGroupCreation = () => {
                 (createIMChannel && !imChannelWelcomeMessage)*/
               }
             >
-              {t("add")}
+              {t("components.add")}
             </Button>
           )}
         </Row>

@@ -60,12 +60,12 @@ const AroundMe = () => {
           setCategories(categories);
           setSelectedCategory(config[0]);
         } catch (err) {
-          message.error(t("api-error"));
+          message.error(t("components.api-error"));
           logger.error(err);
         }
       } catch (e) {
         logger.error(e);
-        message.error(t("load-error"));
+        message.error(t("audience.load-error"));
       } finally {
         await dispatch(stopWorking());
       }
@@ -100,10 +100,10 @@ const AroundMe = () => {
       );
       setCategories(newCategories);
       setSelectedCategory(config[0]);
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -201,10 +201,9 @@ const AroundMe = () => {
         <Property place={place} property="subtitle" />
         <Property place={place} property="phone" />
         <Property place={place} property="website" />
-
         <Row style={{ width: "100%", marginTop: "10px" }} align="middle" justify="center">
           <Col span={10}>
-            <Text>{t("am-place-position")}</Text>
+            <Text>{t("features-aroundme.am-place-position")}</Text>
           </Col>
           <Col span={10}>
             <Text>{place.address}</Text>
@@ -230,7 +229,7 @@ const AroundMe = () => {
         <Card style={{ width: "100%", marginBottom: "25px" }} bordered={false}>
           <Row style={{ width: "100%", marginBottom: "15px" }}>
             <Col span={8}>
-              <Text>{t("am-category-title")}</Text>
+              <Text>{t("features-aroundme.am-category-title")}</Text>
             </Col>
             <Col span={12}>
               <Input autoComplete="off" value={selectedCategory.title} />
@@ -238,7 +237,7 @@ const AroundMe = () => {
           </Row>
           <Row style={{ width: "100%", marginBottom: "15px" }}>
             <Col span={8}>
-              <Text>{t("am-category-icon")}</Text>
+              <Text>{t("features-aroundme.am-category-icon")}</Text>
             </Col>
             <Col span={12}>
               <Glyph
@@ -252,7 +251,7 @@ const AroundMe = () => {
         <Row style={{ width: "100%", maxHeight: "500px" }}>
           <ManagedList
             accordion
-            title={`${t("am-places-list-of")} ${selectedCategory.title.toUpperCase()}`}
+            title={`${t("features-aroundme.am-places-list-of")} ${selectedCategory.title.toUpperCase()}`}
             items={selectedCategory.places}
             onAdd={handleAddPlace}
             onRemove={handleRemovePlace}
@@ -283,7 +282,7 @@ const AroundMe = () => {
             </Col>
             <Col span={4}>
               <Button block type="primary" onClick={handleSave}>
-                {t("save")}
+                {t("components.save")}
               </Button>
             </Col>
             <Col span={6}>

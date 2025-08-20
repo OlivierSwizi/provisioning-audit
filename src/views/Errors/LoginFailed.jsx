@@ -20,8 +20,8 @@ const LoginFailed = () => {
       <Card style={{ width: 400, textAlign: "center" }} bordered={false}>
         <Result
           status={403}
-          title={t("login-error-title")}
-          subTitle={t("login-error-subtitle")}
+          title={t("errors.login-error-title")}
+          subTitle={t("errors.login-error-subtitle")}
           extra={[
             <Button
               block
@@ -31,13 +31,13 @@ const LoginFailed = () => {
                 auth.signinRedirect();
               }}
             >
-              {t("login-error-button")}
+              {t("errors.login-error-button")}
             </Button>,
           ]}
         />
         <Typography style={{ marginTop: "20px" }}>
           <Paragraph>
-            {t("contact-support") + " "}
+            {t("errors.contact-support") + " "}
             <a href="mailto:support@swizi.io">support@swizi.io</a>.
           </Paragraph>
         </Typography>

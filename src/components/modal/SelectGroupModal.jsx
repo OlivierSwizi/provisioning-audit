@@ -35,10 +35,10 @@ const SelectGroupModal = ({
   return (
     <Modal open={isVisible} onOk={handleOk} onCancel={handleCancel}>
       <Row>
-        <Typography.Title level={4}>{t("choose-group-to-move")}</Typography.Title>
+        <Typography.Title level={4}>{t("components.choose-group-to-move")}</Typography.Title>
       </Row>
       <Row>
-        <Typography.Text>{t("manage-group-explaination")}</Typography.Text>
+        <Typography.Text>{t("components.manage-group-explaination")}</Typography.Text>
       </Row>
       <GroupSelector
         value={value}

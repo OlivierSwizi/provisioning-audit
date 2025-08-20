@@ -27,7 +27,7 @@ const NotFound = ({ title, subtitle, messageDetail }) => {
               {messageDetail}
             </Paragraph>
             <Button type="primary" onClick={handleGoBack}>
-              {t("returnToPreviousPage")}
+              {t("components.returnToPreviousPage")}
             </Button>
           </>
         }

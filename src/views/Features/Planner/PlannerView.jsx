@@ -73,7 +73,7 @@ const PlannerView = () => {
       form.setFieldsValue(config);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-load-scim-settings"));
+      message.error(t("features-planner.error-load-scim-settings"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -105,7 +105,7 @@ const PlannerView = () => {
       await api.planner.saveConfig(data);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-scim-save-settings"));
+      message.error(t("features-planner.error-scim-save-settings"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -138,10 +138,10 @@ const PlannerView = () => {
     try {
       await dispatch(startWorking());
       await api.planner.cleanCache(type);
-      message.info(t("cache-cleaned"));
+      message.info(t("features-planner.cache-cleaned"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-clean-cache"));
+      message.error(t("features-planner.error-clean-cache"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -151,10 +151,10 @@ const PlannerView = () => {
     try {
       await dispatch(startWorking());
       await api.planner.renewSubscriptions();
-      message.info(t("subscriptions-renewed"));
+      message.info(t("features-planner.subscriptions-renewed"));
     } catch (error) {
       logger.error(error);
-      message.error(t("error-renew-subscriptions"));
+      message.error(t("features-planner.error-renew-subscriptions"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -171,7 +171,7 @@ const PlannerView = () => {
       await api.planner.configure();
     } catch (error) {
       logger.error(error);
-      message.error(t("error-configure-planner"));
+      message.error(t("features-planner.error-configure-planner"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -186,11 +186,11 @@ const PlannerView = () => {
             span={24}
             style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}
           >
-            <Text>{t("no-O365-provider-configured")}</Text>
+            <Text>{t("features-planner.no-O365-provider-configured")}</Text>
           </Col>
           <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
             <Button type="primary" onClick={handleAddO365Provider}>
-              {t("add-O365-provider")}
+              {t("features-planner.add-O365-provider")}
             </Button>
           </Col>
         </Row>
@@ -209,41 +209,41 @@ const PlannerView = () => {
             </Select>
           </Col>
           <Col span={5} offset={14} style={{ display: "flex", justifyContent: "center" }}>
-            <Button onClick={handleAddO365Provider}>{t("add-O365-provider")}</Button>
+            <Button onClick={handleAddO365Provider}>{t("features-planner.add-O365-provider")}</Button>
           </Col>
         </Row>
         <MultiLineFormItem
-          label={t("O365-tenant-name")}
+          label={t("features-planner.O365-tenant-name")}
           name={["providers", "O365", selectedO365Provider, "name"]}
         >
           <Input autoComplete="off" />
         </MultiLineFormItem>
         <MultiLineFormItem
-          label={t("O365-tenantId")}
+          label={t("features-planner.O365-tenantId")}
           name={["providers", "O365", selectedO365Provider, "tenantId"]}
         >
           <Input autoComplete="off" />
         </MultiLineFormItem>
         <MultiLineFormItem
-          label={t("O365-clientId")}
+          label={t("features-planner.O365-clientId")}
           name={["providers", "O365", selectedO365Provider, "appId"]}
         >
           <Input autoComplete="off" />
         </MultiLineFormItem>
         <MultiLineFormItem
-          label={t("O365-secret")}
+          label={t("features-planner.O365-secret")}
           name={["providers", "O365", selectedO365Provider, "appPassword"]}
         >
           <Input autoComplete="off" />
         </MultiLineFormItem>
         <MultiLineFormItem
-          label={t("O365-domains")}
+          label={t("features-planner.O365-domains")}
           name={["providers", "O365", selectedO365Provider, "domains"]}
         >
           <DomainList />
         </MultiLineFormItem>
         <MultiLineFormItem
-          label={t("allow-outside-tenant-booking")}
+          label={t("features-planner.allow-outside-tenant-booking")}
           name={["providers", "O365", selectedO365Provider, "allowOutsideTenantBooking"]}
           valuePropName="checked"
         >
@@ -273,7 +273,7 @@ const PlannerView = () => {
     return (
       <>
         <MultiLineFormItem
-          label={t("activate-swizi-provider")}
+          label={t("features-planner.activate-swizi-provider")}
           name={"activateSwizi"}
           valuePropName="checked"
         >
@@ -282,14 +282,14 @@ const PlannerView = () => {
         {swiziIsActivated && (
           <>
             <MultiLineFormItem
-              label={t("use-swizi-provider-as-default")}
+              label={t("features-planner.use-swizi-provider-as-default")}
               name={["swiziAsDefault"]}
               valuePropName="checked"
             >
               <Checkbox />
             </MultiLineFormItem>
             {!swiziAsDefault && (
-              <MultiLineFormItem label={t("swizi-domains")} name={["swiziDomains"]}>
+              <MultiLineFormItem label={t("features-planner.swizi-domains")} name={["swiziDomains"]}>
                 <DomainList />
               </MultiLineFormItem>
             )}
@@ -300,22 +300,22 @@ const PlannerView = () => {
   };
 
   const GoogleProvider = () => {
-    return <Text>{t("not-available")}</Text>;
+    return <Text>{t("features-planner.not-available")}</Text>;
   };
 
   const providersTab = [
     {
-      label: t("provider-O365"),
+      label: t("features-planner.provider-O365"),
       key: "O365",
       children: <O365Provider />,
     },
     {
-      label: t("provider-Swizi"),
+      label: t("features-planner.provider-Swizi"),
       key: "Swizi",
       children: <SwiziProvider />,
     },
     {
-      label: t("provider-google"),
+      label: t("features-planner.provider-google"),
       key: "Google",
       children: <GoogleProvider />,
     },
@@ -325,7 +325,7 @@ const PlannerView = () => {
     return (
       <Row style={{ width: "100%" }}>
         <Col span={24} style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
-          <Text>{t("planner-not-configured")}</Text>
+          <Text>{t("features-planner.planner-not-configured")}</Text>
         </Col>
         <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
           <Button
@@ -334,7 +334,7 @@ const PlannerView = () => {
               await configurePlanner();
             }}
           >
-            {t("configure-planner")}
+            {t("features-planner.configure-planner")}
           </Button>
         </Col>
       </Row>
@@ -345,12 +345,12 @@ const PlannerView = () => {
     <>
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
-          <Typography.Title level={2}>{t("planner")}</Typography.Title>
+          <Typography.Title level={2}>{t("features-planner.planner")}</Typography.Title>
         </Col>
 
         <Col span={24}>
           <Card
-            title={<Title level={4}>{t("planner-operations")}</Title>}
+            title={<Title level={4}>{t("features-planner.planner-operations")}</Title>}
             style={{
               width: "100%",
               marginBottom: "15px",
@@ -367,19 +367,19 @@ const PlannerView = () => {
               }}
             >
               <Button onClick={() => handleCleanCache("rm")} style={{ width: "250px" }}>
-                {t("clean-cache-RM")}
+                {t("features-planner.clean-cache-RM")}
               </Button>
 
               <Button onClick={() => handleCleanCache("dwm")} style={{ width: "250px" }}>
-                {t("clean-cache-users")}
+                {t("features-planner.clean-cache-users")}
               </Button>
 
               <Button onClick={() => handleCleanCache("o365")} style={{ width: "250px" }}>
-                {t("clean-cache-o365")}
+                {t("features-planner.clean-cache-o365")}
               </Button>
 
               <Button onClick={() => handleRenewSubscriptions()} style={{ width: "250px" }}>
-                {t("renew-subscriptions")}
+                {t("features-planner.renew-subscriptions")}
               </Button>
             </Row>
           </Card>
@@ -404,10 +404,10 @@ const PlannerView = () => {
                 layout="horizontal"
               >
                 <Card
-                  title={<Title level={4}>{t("planner-config")}</Title>}
+                  title={<Title level={4}>{t("features-planner.planner-config")}</Title>}
                   extra={
                     <Button type="primary" style={{ width: "150px" }} htmlType="submit">
-                      {t("save")}
+                      {t("components.save")}
                     </Button>
                   }
                   style={{
@@ -418,7 +418,7 @@ const PlannerView = () => {
                   <div style={{ overflowY: "auto" }}>
                     <Row style={{ width: "100%" }}>
                       <Col span={24}>
-                        <Typography.Title level={5}>{t("notice")}</Typography.Title>
+                        <Typography.Title level={5}>{t("features-noshow.notice")}</Typography.Title>
                         <Typography.Paragraph
                           style={{ whiteSpace: "pre-line" }}
                           ellipsis={{
@@ -426,25 +426,25 @@ const PlannerView = () => {
                             expandable: "collapsible",
                           }}
                         >
-                          {t("planner-explanation")}
+                          {t("features-planner.planner-explanation")}
                         </Typography.Paragraph>
                       </Col>
                     </Row>
-                    <MultiLineFormItem label={t("planner-id")} name="id">
+                    <MultiLineFormItem label={t("features-planner.planner-id")} name="id">
                       <ReadOnlyComponent copyable>{form.getFieldValue("id")}</ReadOnlyComponent>
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("VIP-groups")} name="VIPGroups">
+                    <MultiLineFormItem label={t("features-planner.VIP-groups")} name="VIPGroups">
                       <GroupSelector mode="tags" size="middle" />
                     </MultiLineFormItem>
-                    <MultiLineFormItem label={t("cancelation-mode")} name="removeOnCancel">
+                    <MultiLineFormItem label={t("features-planner.cancelation-mode")} name="removeOnCancel">
                       <Select disabled={disableRemoveOnCancel} size="middle">
-                        <Select.Option value="true">{t("remove-on-cancel")}</Select.Option>
-                        <Select.Option value="false">{t("release-on-cancel")}</Select.Option>
+                        <Select.Option value="true">{t("features-planner.remove-on-cancel")}</Select.Option>
+                        <Select.Option value="false">{t("features-planner.release-on-cancel")}</Select.Option>
                       </Select>
                     </MultiLineFormItem>
                     <Row style={{ width: "100%" }}>
                       <Col span={24}>
-                        <Typography.Title level={5}>{t("planner-providers")}</Typography.Title>
+                        <Typography.Title level={5}>{t("features-planner.planner-providers")}</Typography.Title>
                       </Col>
                     </Row>
                     <Row style={{ width: "100%" }}>

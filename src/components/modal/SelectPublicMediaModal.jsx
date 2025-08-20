@@ -120,12 +120,12 @@ const Toolbar = ({ onSearch, onUpload }) => {
           allowClear
           onSearch={onSearch}
           onChange={(e) => onSearch(e.target.value)}
-          placeholder={t("spm-filter")}
+          placeholder={t("components.spm-filter")}
           style={{ maxWidth: 280 }}
         />
         <div style={{ flex: 1 }} />
         <Button icon={<UploadOutlined />} onClick={onUpload}>
-          {t("add-image-or-video")}
+          {t("components.add-image-or-video")}
         </Button>
       </div>
     </div>
@@ -158,9 +158,9 @@ const EmptyDropzone = ({ onFiles }) => {
         background: "#fafafa",
       }}
     >
-      <Empty description={t("add-image-or-video")} />
+      <Empty description={t("components.add-image-or-video")} />
       <Typography.Text type="secondary">
-        {t("spm-drop-hint", { defaultValue: "Drag & drop files here" })}
+        {t("components.spm-drop-hint", { defaultValue: "Drag & drop files here" })}
       </Typography.Text>
     </div>
   );
@@ -321,12 +321,12 @@ const SelectPublicMediaModal = ({ isVisible, setIsVisible, promiseResolve }) => 
       width={1000}
       okButtonProps={{ style: { width: 180 }, disabled: !selected }}
       cancelButtonProps={{ style: { width: 180 } }}
-      title={t("spm-title")}
+      title={t("components.spm-title")}
     >
       <Flex vertical>
         {/* Help zone under title */}
         <Typography.Paragraph type="secondary" style={{ margin: "0 0 12px" }}>
-          {t("spm-help")}
+          {t("components.spm-help")}
         </Typography.Paragraph>
 
         {/* Toolbar (sticky) */}
@@ -405,13 +405,13 @@ const SelectPublicMediaModal = ({ isVisible, setIsVisible, promiseResolve }) => 
             <>
               {" "}
               <Typography.Text strong>
-                {t("spm-selected-url", { defaultValue: "Selected media URL:" })}
+                {t("components.spm-selected-url", { defaultValue: "Selected media URL:" })}
               </Typography.Text>
               <Typography.Text copyable={{ text: selected.url }}>{selected.url}</Typography.Text>
             </>
           ) : (
             <Typography.Text>
-              {t("spm-no-selected-url", { defaultValue: "No media selected" })}
+              {t("components.spm-no-selected-url", { defaultValue: "No media selected" })}
             </Typography.Text>
           )}
         </div>

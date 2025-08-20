@@ -50,30 +50,30 @@ const NoShowView = () => {
   const NO_SHOW_TYPES = [
     {
       key: 0,
-      value: t("no-show-disabled"),
+      value: t("features-noshow.no-show-disabled"),
     },
     {
       key: 1,
-      value: t("no-show-config-1"),
+      value: t("features-noshow.no-show-config-1"),
     },
     {
       key: 2,
-      value: t("no-show-config-2"),
+      value: t("features-noshow.no-show-config-2"),
     },
     {
       key: 3,
-      value: t("no-show-config-3"),
+      value: t("features-noshow.no-show-config-3"),
     },
   ];
 
   const CHECK_OCCUPANCY_TYPES = [
     {
       key: "ON_TIME",
-      value: t("no-show-check-occupancy-on-time"),
+      value: t("features-noshow.no-show-check-occupancy-on-time"),
     },
     {
       key: "ON_PERIOD",
-      value: t("no-show-check-occupancy-on-period"),
+      value: t("features-noshow.no-show-check-occupancy-on-period"),
     },
   ];
 
@@ -143,10 +143,10 @@ const NoShowView = () => {
         ),
         templates: R.pick(["releaseRoom_type_2", "releaseRoom_type_3"], form.getFieldsValue()),
       });
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.error(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -180,10 +180,10 @@ const NoShowView = () => {
                 layout="horizontal"
               >
                 <Card
-                  title={<Title level={4}>{t("no-show-config")}</Title>}
+                  title={<Title level={4}>{t("features-noshow.no-show-config")}</Title>}
                   extra={
                     <Button type="primary" style={{ width: "150px" }} htmlType="submit">
-                      {t("save")}
+                      {t("components.save")}
                     </Button>
                   }
                   style={{
@@ -194,7 +194,7 @@ const NoShowView = () => {
                   <div style={{ overflowY: "auto" }}>
                     <Row style={{ width: "100%" }}>
                       <Col span={24}>
-                        <Typography.Title level={5}>{t("notice")}</Typography.Title>
+                        <Typography.Title level={5}>{t("features-noshow.notice")}</Typography.Title>
                         <Typography.Paragraph
                           style={{ whiteSpace: "pre-line" }}
                           ellipsis={{
@@ -202,12 +202,12 @@ const NoShowView = () => {
                             expandable: "collapsible",
                           }}
                         >
-                          {t("no-show-explanation")}
+                          {t("features-noshow.no-show-explanation")}
                         </Typography.Paragraph>
                       </Col>
                     </Row>
                     <MultiLineFormItem
-                      label={t("no-show-config-type")}
+                      label={t("features-noshow.no-show-config-type")}
                       name="type"
                       style={{ marginTop: "15px" }}
                     >
@@ -222,7 +222,7 @@ const NoShowView = () => {
                     {showConfig ? (
                       <>
                         <MultiLineFormItem
-                          label={t("no-show-check-occupancy-type")}
+                          label={t("features-noshow.no-show-check-occupancy-type")}
                           name="checkOccupancyType"
                           style={{ marginTop: "15px" }}
                         >
@@ -236,7 +236,7 @@ const NoShowView = () => {
                         </MultiLineFormItem>
                         {checkOccupancyType === "ON_PERIOD" ? (
                           <MultiLineFormItem
-                            label={t("no-show-check-occupancy-period")}
+                            label={t("features-noshow.no-show-check-occupancy-period")}
                             name="checkOccupancyPeriod"
                           >
                             <InputNumber
@@ -248,11 +248,11 @@ const NoShowView = () => {
                             />
                           </MultiLineFormItem>
                         ) : null}
-                        <MultiLineFormItem label={t("no-show-range-period")} name="actionRange">
+                        <MultiLineFormItem label={t("features-noshow.no-show-range-period")} name="actionRange">
                           <RangeTimePicker />
                         </MultiLineFormItem>
                         <MultiLineFormItem
-                          label={t("no-show-maxResponseTime")}
+                          label={t("features-noshow.no-show-maxResponseTime")}
                           name="maxResponseTime"
                         >
                           <InputNumber
@@ -264,7 +264,7 @@ const NoShowView = () => {
                           />
                         </MultiLineFormItem>
                         <MultiLineFormItem
-                          label={t("no-show-roomMaxDuration")}
+                          label={t("features-noshow.no-show-roomMaxDuration")}
                           name="roomMaxDuration"
                         >
                           <InputNumber
@@ -276,24 +276,24 @@ const NoShowView = () => {
                           />
                         </MultiLineFormItem>
                         <MultiLineFormItem
-                          label={t("no-show-isWhiteListEnabled")}
+                          label={t("features-noshow.no-show-isWhiteListEnabled")}
                           name="isWhiteListEnabled"
                           valuePropName="checked"
                         >
                           <Checkbox />
                         </MultiLineFormItem>
                         {showWhiteList ? (
-                          <MultiLineFormItem label={t("no-show-whiteList")} name="whiteList">
+                          <MultiLineFormItem label={t("features-noshow.no-show-whiteList")} name="whiteList">
                             <UserListSelect idField="email" />
                           </MultiLineFormItem>
                         ) : null}
-                        <MultiLineFormItem label={t("no-show-VIP-list")} name="excludedGroups">
+                        <MultiLineFormItem label={t("features-noshow.no-show-VIP-list")} name="excludedGroups">
                           <GroupSelector mode="tags" size="middle" />
                         </MultiLineFormItem>
                         {templates > 1 ? (
                           <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
                             <Typography.Title level={4}>
-                              {t("no-show-email-template")}
+                              {t("features-noshow.no-show-email-template")}
                             </Typography.Title>
                           </Col>
                         ) : null}

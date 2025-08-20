@@ -39,7 +39,7 @@ const EmailTemplateEditor = ({ value, onChange, keywords }) => {
         <KeywordPanel keywords={keywords} />
       </Col>
       <Col span={24}>
-        <Typography.Text>{t("mail-subject")}</Typography.Text>
+        <Typography.Text>{t("components.mail-subject")}</Typography.Text>
       </Col>
       <Col span={24} style={{ marginBottom: "15px", marginTop: "15px" }}>
         <Input
@@ -49,7 +49,7 @@ const EmailTemplateEditor = ({ value, onChange, keywords }) => {
         />
       </Col>
       <Col span={24} style={{ marginBottom: "15px" }}>
-        <Typography.Text>{t("mail-body")}</Typography.Text>
+        <Typography.Text>{t("components.mail-body")}</Typography.Text>
       </Col>
       <Col span={24} style={{ border: "2px solid #d9d9d9" }}>
         <HTMLEditor

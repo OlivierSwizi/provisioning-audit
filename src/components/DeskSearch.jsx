@@ -35,14 +35,14 @@ const DeskSearch = ({ value, onChange, disabled = false, siteId, size = "large" 
               .filter((u) => !!u.label),
           );
         } catch (err) {
-          message.error(t("api-error"));
+          message.error(t("components.api-error"));
           logger.error(err);
         }
       } else setOptions([]);
     };
 
     doIt();
-  }, [api, debounceText, mode, siteId]);
+  }, [api, debounceText, mode, siteId, t]);
 
   const onSearch = (text) => {
     setSearchDeskText(text);

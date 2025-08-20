@@ -59,7 +59,7 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
       okButtonProps={{ style: { width: "180px" } }}
       cancelButtonProps={{ style: { width: "180px" } }}
     >
-      <Typography.Title level={4}>{t("add-presence")}</Typography.Title>
+      <Typography.Title level={4}>{t("components.add-presence")}</Typography.Title>
       <Form
         form={form}
         layout="horizontal"
@@ -71,13 +71,13 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("site")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.site")}</div>}
               name={"site"}
               style={{ marginBottom: "0", width: "100%" }}
               rules={[
                 {
                   required: true,
-                  message: t("required-field"),
+                  message: t("components.required-field"),
                 },
               ]}
             >
@@ -89,13 +89,13 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("access-code")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.access-code")}</div>}
               name={"accessCode"}
               style={{ marginBottom: "0", width: "100%" }}
               rules={[
                 {
                   required: true,
-                  message: t("required-field"),
+                  message: t("components.required-field"),
                 },
               ]}
             >
@@ -107,7 +107,7 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("access-code-expiration-date")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.access-code-expiration-date")}</div>}
               name={"expiresAt"}
               style={{ marginBottom: "0", width: "100%" }}
             >
@@ -119,7 +119,7 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
           <Col span={24}>
             <Form.Item
               labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-              label={<div style={{ whiteSpace: "normal" }}>{t("is-present")}</div>}
+              label={<div style={{ whiteSpace: "normal" }}>{t("components.is-present")}</div>}
               name={"isPresent"}
               valuePropName="checked"
               style={{ marginBottom: "0", width: "100%" }}
@@ -133,7 +133,7 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
             <Col span={24}>
               <Form.Item
                 labelCol={{ style: { width: LABEL_MAX_WIDTH } }}
-                label={<div style={{ whiteSpace: "normal" }}>{t("presence-expiration-date")}</div>}
+                label={<div style={{ whiteSpace: "normal" }}>{t("components.presence-expiration-date")}</div>}
                 name={"presenceExpirationDate"}
                 style={{ marginBottom: "0", width: "100%" }}
               >

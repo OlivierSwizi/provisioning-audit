@@ -110,7 +110,7 @@ const CalendarMasterDetails = () => {
       await workDispatch(loadMasterEvents(undefined, true));
     } catch (error) {
       logger.error("Error creating event", error);
-      message.error(t("error-creating-event"));
+      message.error(t("calendars.error-creating-event"));
     }
   };
 
@@ -123,20 +123,20 @@ const CalendarMasterDetails = () => {
         await workDispatch(cancelEvent(event.id, event.location));
         await workDispatch(loadMasterEvents(undefined, true));
 
-        message.success(t("event-cancelled"));
+        message.success(t("calendars.event-cancelled"));
       } catch (error) {
         logger.error("Error cancelling event", error);
-        message.error(t("error-cancelling-event"));
+        message.error(t("calendars.error-cancelling-event"));
       }
     } else if (updatedEvent) {
       try {
         await workDispatch(updateEvent(updatedEvent, event.location));
         await workDispatch(loadMasterEvents(undefined, true));
 
-        message.success(t("event-updated"));
+        message.success(t("calendars.event-updated"));
       } catch (error) {
         logger.error("Error updating event", error);
-        message.error(t("error-updating-event"));
+        message.error(t("calendars.error-updating-event"));
       }
     }
   };
@@ -180,7 +180,7 @@ const CalendarMasterDetails = () => {
     // chek room availability to disply an alert if necessary
     const availableRooms = await api.calendars.getAvailableRooms(newStart, newEnd, eventId);
     if (!availableRooms.find((ar) => ar.ref === roomRef)?.available) {
-      message.warning(t("room-busy"));
+      message.warning(t("components.room-busy"));
     }
 
     try {
@@ -197,10 +197,10 @@ const CalendarMasterDetails = () => {
           event.place.placeId,
         ),
       );
-      message.success(t("event-updated"));
+      message.success(t("calendars.event-updated"));
     } catch (error) {
       logger.error("Error updating event", error);
-      message.error(t("error-updating-event"));
+      message.error(t("calendars.error-updating-event"));
     }
   };
 
@@ -212,7 +212,7 @@ const CalendarMasterDetails = () => {
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
           <Button size="middle" type="text" onClick={() => navigate(-1)} icon={<LeftOutlined />}>
-            {t("back")}
+            {t("app-details.back")}
           </Button>
         </Col>
       </Row>
@@ -235,7 +235,7 @@ const CalendarMasterDetails = () => {
                   />
                 </Text>
                 <Typography.Title level={3}>
-                  {t("calendar-of-master", { master: selectedMaster })}
+                  {t("calendars.calendar-of-master", { master: selectedMaster })}
                 </Typography.Title>
               </Col>
             </Row>

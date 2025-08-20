@@ -87,7 +87,7 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
         await api.groups.removeUsersFromGroup(group.id, [userId]);
       } catch (error) {
         logger.error(error);
-        message.error(t("error-occurred"));
+        message.error(t("audience.error-occurred"));
       }
     });
     loadUsers();
@@ -110,7 +110,7 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
           <Flex vertical>
             <Flex horizontal>
               <Typography.Title level={4} style={{ margin: 0 }}>
-                {t("user-of-group")}
+                {t("groups.user-of-group")}
               </Typography.Title>
               <Glyph
                 name="refresh"
@@ -123,7 +123,7 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
             </Flex>
             {group.type === "COMPOSIT" ? (
               <Typography.Text type="secondary">
-                {t("composit-group-no-children-user")}
+                {t("groups.composit-group-no-children-user")}
               </Typography.Text>
             ) : null}
           </Flex>
@@ -144,7 +144,7 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
               block
               onClick={onCreateAndAdd}
             >
-              {t("add-new-user")}
+              {t("admin.add-new-user")}
             </Button>
           </Col>
         )}
@@ -163,13 +163,13 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
             onClick={onAddUsers}
             block
           >
-            {t("add-existing-users")}
+            {t("groups.add-existing-users")}
           </Button>
         </Col>
 
         <Col span={24}>
           <Input
-            placeholder={t("search-user")}
+            placeholder={t("components.search-user")}
             value={filter}
             onChange={(event) => {
               setFilter(event.target.value);
@@ -181,7 +181,7 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
         {group.nbUsers === 0 ? (
           <Typography.Title level={5} style={{ textAlign: "center" }}>
-            {t("no-user-in-group")}
+            {t("groups.no-user-in-group")}
           </Typography.Title>
         ) : (
           <Row>
@@ -200,19 +200,19 @@ const Users = ({ onAddUsers, onCreateAndAdd, isAdmin, group, trigger }) => {
                             navigate(`/apps/${appId}/users/${user.id}`);
                           }}
                         >
-                          {t("check-user")}
+                          {t("groups.check-user")}
                         </Typography.Link>
                       </Col>
                     ) : null}
 
                     <Col span={2}>
-                      <Tooltip title={t("remove_from_group")}>
+                      <Tooltip title={t("groups.remove_from_group")}>
                         <Popconfirm
-                          title={t("remove-from-group-confirmation", { groupName: "" })}
+                          title={t("groups.remove-from-group-confirmation", { groupName: "" })}
                           onConfirm={() => handleRemoveUserFromGroup(user.id)}
                           placement="left"
-                          okText={t("yes")}
-                          cancelText={t("no")}
+                          okText={t("flexoffice.yes")}
+                          cancelText={t("flexoffice.no")}
                         >
                           <Glyph
                             name="delete"

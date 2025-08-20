@@ -36,9 +36,9 @@ const WifiGuest = () => {
   const [wifiType, setWifiType] = useState("NONE");
 
   const WIFI_TYPES_OPTIONS = [
-    { label: t("wifi-type-none"), value: "NONE" },
-    { label: t("wifi-type-fake"), value: "FAKE" },
-    { label: t("wifi-type-cisco"), value: "CISCO" },
+    { label: t("features-wifiguest.wifi-type-none"), value: "NONE" },
+    { label: t("features-wifiguest.wifi-type-fake"), value: "FAKE" },
+    { label: t("features-wifiguest.wifi-type-cisco"), value: "CISCO" },
   ];
 
   const loadConfig = async () => {
@@ -56,7 +56,7 @@ const WifiGuest = () => {
       setWifiType(config.wifiType);
     } catch (e) {
       logger.error(e);
-      message.error(t("load-error"));
+      message.error(t("audience.load-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -81,10 +81,10 @@ const WifiGuest = () => {
 
       await api.wifiGuest.updateConfig(siteId, data);
 
-      message.success(t("save-success"));
+      message.success(t("features-app.save-success"));
     } catch (error) {
       logger.log(error);
-      message.error(t("save-error"));
+      message.error(t("features-app.save-error"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -101,7 +101,7 @@ const WifiGuest = () => {
 
   return (
     <Flex style={{ marginTop: 20 }} vertical>
-      <Typography.Title level={2}>{t("wifi-guest")}</Typography.Title>
+      <Typography.Title level={2}>{t("features-wifiguest.wifi-guest")}</Typography.Title>
       <Flex style={{ width: "100%" }} vertical>
         <SiteSelector
           value={siteId}
@@ -115,7 +115,7 @@ const WifiGuest = () => {
             title={""}
             extra={
               <Button type="primary" style={{ width: "150px" }} htmlType="submit">
-                {t("save")}
+                {t("components.save")}
               </Button>
             }
             style={{
@@ -123,7 +123,7 @@ const WifiGuest = () => {
             }}
             bordered={false}
           >
-            <Form.Item label={t("wifi-type")} name="wifiType" rules={[{ required: true }]}>
+            <Form.Item label={t("features-wifiguest.wifi-type")} name="wifiType" rules={[{ required: true }]}>
               <Select options={WIFI_TYPES_OPTIONS} />
             </Form.Item>
 
@@ -135,7 +135,7 @@ const WifiGuest = () => {
               </span>
             )}
             <Form.Item
-              label={t("notify-before-minutes")}
+              label={t("features-wifiguest.notify-before-minutes")}
               name="notifyBeforeMinutes"
               rules={[{ required: true }]}
               style={{ marginTop: 10 }}
@@ -143,7 +143,7 @@ const WifiGuest = () => {
               <InputNumber />
             </Form.Item>
             <Form.Item
-              label={t("notification-template")}
+              label={t("features-wifiguest.notification-template")}
               name="notificationTemplate"
               rules={[{ required: true }]}
               style={{ marginTop: 10 }}
@@ -154,7 +154,7 @@ const WifiGuest = () => {
             </Form.Item>
 
             <Form.Item
-              label={t("provider-config")}
+              label={t("features-wifiguest.provider-config")}
               name="providerConfig"
               rules={[{ required: true }]}
               hidden={["NONE", "FAKE"].includes(wifiType)}

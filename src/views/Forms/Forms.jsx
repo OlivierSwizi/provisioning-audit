@@ -37,7 +37,7 @@ const Forms = () => {
         <Flex align="center" gap={"0.5rem"}>
           <Glyph name={"mood"} style={{ color: "var(--secondary_base)", fontSize: "1.8rem" }} />
           <Typography.Title style={{ margin: 0 }} level={2}>
-            {t("forms")}
+            {t("forms.forms")}
           </Typography.Title>
         </Flex>
       </Col>

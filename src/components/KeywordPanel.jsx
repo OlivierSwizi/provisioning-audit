@@ -20,7 +20,7 @@ const KeywordPanel = ({ keywords, prefix = "", keywordHelp = "", style = {} }) =
     <Row style={{ width: "100%", ...style }}>
       <Col span={24}>
         <Collapse>
-          <Collapse.Panel header={t("keyword-title")} key="1">
+          <Collapse.Panel header={t("components.keyword-title")} key="1">
             <Row style={{ width: "100%" }}>
               {keywordHelp && (
                 <Col span={24} style={{ marginBottom: "15px" }}>

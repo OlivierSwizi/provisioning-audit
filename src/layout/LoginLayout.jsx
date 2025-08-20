@@ -34,7 +34,7 @@ const InitializationScreen = ({ task }) => {
         <Spin size="large" />
         <Typography style={{ marginTop: "20px" }}>
           <Title level={3}>{t(task)}...</Title>
-          <Paragraph>{t("please-wait")}</Paragraph>
+          <Paragraph>{t("layout.please-wait")}</Paragraph>
         </Typography>
       </Card>
     </div>

@@ -55,7 +55,7 @@ const BIView = () => {
       await api.bi.updatePermissions(siteId, reportId, groupIds);
     } catch (error) {
       logger.error(error);
-      message.error(t("error-saving-permissions"));
+      message.error(t("features-bi.error-saving-permissions"));
     } finally {
       await dispatch(stopWorking());
     }
@@ -66,7 +66,7 @@ const BIView = () => {
   const tabs = [
     {
       key: "1",
-      label: t("permissions"),
+      label: t("features-bi.permissions"),
       children: (
         <Row>
           <Col span={22} style={{ marginTop: "20px" }}>
@@ -75,7 +75,7 @@ const BIView = () => {
               dataSource={reports}
               columns={[
                 {
-                  title: t("report"),
+                  title: t("features-bi.report"),
                   dataIndex: "title",
                   width: 350,
                   key: "title",
@@ -108,7 +108,7 @@ const BIView = () => {
     <>
       <Row>
         <Col span={24}>
-          <Typography.Title level={2}>{t("bi")}</Typography.Title>
+          <Typography.Title level={2}>{t("features-bi.bi")}</Typography.Title>
         </Col>
         <Col span={24}>
           <Row style={{ width: "100%" }}>
