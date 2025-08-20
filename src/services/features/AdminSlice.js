@@ -56,7 +56,7 @@ export const saveUserPermissions = (email, data) => async (dispatch, getState) =
 
 //Create a user
 export const createUser =
-  ({ firstName, lastName, email }, ) =>
+  ({ firstName, lastName, email }) =>
   async (dispatch, getState) => {
     await API(getState()).admin.createUser({
       firstName,

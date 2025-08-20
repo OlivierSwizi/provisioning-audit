@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState,  } from "react";
+import { useState } from "react";
 
-import { Modal, Col, Row, Typography,  } from "antd";
+import { Modal, Col, Row, Typography } from "antd";
 
 const ShowCopyableTextModal = ({
   title = "",
@@ -65,7 +65,7 @@ export const useShowCopyableTextModal = () => {
 
   return [
     showCopyableText,
-    // eslint-disable-next-line react/jsx-key
+
     <ShowCopyableTextModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

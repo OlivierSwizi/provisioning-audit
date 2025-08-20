@@ -183,7 +183,7 @@ const SCIMHistoryView = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appId]);
 
-  useEffect(() => {
+  (useEffect(() => {
     if (isLoaded) {
       saveSettings();
     }
@@ -204,7 +204,7 @@ const SCIMHistoryView = () => {
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [appId, page, pageSize, filter, startDate, endDate, refreshFlag],
-    );
+    ));
 
   const History = () => {
     const columns = [

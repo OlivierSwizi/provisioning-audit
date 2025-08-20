@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import UserListSelect from "../UserListSelect";
@@ -57,7 +57,7 @@ export const useSelectUserModal = () => {
 
   return [
     selectUsers,
-    // eslint-disable-next-line react/jsx-key
+
     <SelectUserModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

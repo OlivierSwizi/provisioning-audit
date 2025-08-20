@@ -115,7 +115,7 @@ export const useEmailNotifModal = () => {
 
   return [
     updateTemplate,
-    // eslint-disable-next-line react/jsx-key
+
     <EmailNotifModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

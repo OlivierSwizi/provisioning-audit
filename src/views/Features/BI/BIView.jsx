@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Row, Col, Button, Typography, Tabs, Table, message } from "antd";
+import { Row, Col, Typography, Tabs, Table, message } from "antd";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,6 @@ import { extractLocalizedString } from "@/helpers";
 
 import logger from "@/logger";
 import GroupSelector from "@/components/GroupSelector";
-import GroupList from "@/views/Groups/GroupList";
 
 const BIView = () => {
   const { t } = useTranslation();
@@ -23,7 +22,7 @@ const BIView = () => {
   const [siteId, setSiteId] = useState(null);
   const [reports, setReports] = useState([]);
 
-  const loadConfig = async (config) => {
+  const loadConfig = async () => {
     try {
       await dispatch(startWorking());
       const config = await api.bi.listPermissions(siteId);
@@ -80,7 +79,7 @@ const BIView = () => {
                   dataIndex: "title",
                   width: 350,
                   key: "title",
-                  render: (text, record) => <Typography.Text strong>{text}</Typography.Text>,
+                  render: (text) => <Typography.Text strong>{text}</Typography.Text>,
                 },
                 {
                   title: t("authorized.groups"),

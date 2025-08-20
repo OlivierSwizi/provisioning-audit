@@ -1,19 +1,11 @@
 import { Select, Dropdown, Button } from "antd";
-import { DownOutlined, TagOutlined, NumberOutlined } from "@ant-design/icons";
+import { TagOutlined, NumberOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { API } from "@/services/features/AuthSlice";
 import { useDebounce } from "use-debounce";
-import helpers from "@/helpers";
 
-const DeskSearch = ({
-  value,
-  onChange,
-  disabled = false,
-  siteId,
-  size = "large",
-  showEmail = false,
-}) => {
+const DeskSearch = ({ value, onChange, disabled = false, siteId, size = "large" }) => {
   const [options, setOptions] = useState([]);
   const api = useSelector(API);
 
@@ -41,7 +33,7 @@ const DeskSearch = ({
     };
 
     doIt();
-  }, [api, debounceText]);
+  }, [api, debounceText, mode, siteId]);
 
   const onSearch = (text) => {
     setSearchDeskText(text);

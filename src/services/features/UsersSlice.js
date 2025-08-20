@@ -21,11 +21,11 @@ const slice = createSlice({
 
 const { usersFilterUpdated } = slice.actions;
 
-export const updateUserFilter = (filter) => async (dispatch, ) => {
+export const updateUserFilter = (filter) => async (dispatch) => {
   dispatch(usersFilterUpdated({ filter }));
 };
 
-export const resetUsers = () => async (dispatch, ) => {
+export const resetUsers = () => async (dispatch) => {
   dispatch(usersFilterUpdated({ filter: "" }));
 };
 

@@ -1,7 +1,6 @@
-import { Input, Select } from "antd";
+import { Input } from "antd";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import logger from "@/logger";
 import { useDebounce } from "use-debounce";
 
 import { API } from "@/services/features/AuthSlice";
@@ -35,6 +34,7 @@ const GroupSelector = ({ value, onChange, onError, siteId, isError = false }) =>
           placeId: location.reference,
           name: location.title,
         });
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       setLabel("");
       onError(true);

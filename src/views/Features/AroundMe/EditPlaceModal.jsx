@@ -145,7 +145,7 @@ export const useEditPlaceModal = () => {
 
   return [
     editPlace,
-    // eslint-disable-next-line react/jsx-key
+
     <EditPlaceModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

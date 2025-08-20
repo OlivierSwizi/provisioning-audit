@@ -95,7 +95,7 @@ const UserModal = ({ user = undefined, isVisible, setIsVisible, promiseResolve }
         style={{ marginBottom: "0" }}
         rules={rules}
       >
-        <Input autoComplete="off" size="small" disabled={disabled} autoComplete="off" />
+        <Input autoComplete="off" size="small" disabled={disabled} />
       </Form.Item>
     );
   };
@@ -187,7 +187,7 @@ export const useUserModal = () => {
 
   return [
     updateUser,
-    // eslint-disable-next-line react/jsx-key
+
     <UserModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

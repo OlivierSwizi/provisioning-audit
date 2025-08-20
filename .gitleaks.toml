@@ -1,0 +1,23 @@
+# FILENAME: .gitleaks.toml
+title = "Swizi Front - Gitleaks config"
+
+[allowlist]
+paths = [
+  '''^build/''',
+  '''^dist/''',
+  '''^reports/'''
+]
+# Ignore aussi les fichiers minifiés et bundles
+regexes = [
+  '''(?i).*\.min\.js$''',
+  '''(?i).*index-[A-Za-z0-9_-]+\.js$'''
+]
+
+# Exemple : si vous avez des fausses clés connues pour dev, on peut whitelister un motif:
+# [[rules]]
+# description = "Allow fake keys starting with FAKE_"
+# id = "allow-fake-keys"
+# regex = '''FAKE_[A-Z0-9]{16,}'''
+# entropythreshold = 0.0
+# [rules.allowlist]
+# paths = ['''^src/''']

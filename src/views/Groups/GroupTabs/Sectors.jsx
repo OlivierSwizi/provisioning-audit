@@ -47,7 +47,6 @@ const Sectors = ({ group, onAddSector, onRemoveSector }) => {
       (a.siteLabel + a.sectorLabel).localeCompare(b.siteLabel + b.sectorLabel),
     );
     setGroupSectors(groupSectors);
-     
   }, [sectorList, siteList, group]);
 
   return (

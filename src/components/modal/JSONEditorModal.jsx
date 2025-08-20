@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 
 import { Modal, Form, Col, Row } from "antd";
@@ -87,7 +87,7 @@ export const useJSONEditorModal = () => {
 
   return [
     editJSON,
-    // eslint-disable-next-line react/jsx-key
+
     <JSONEditorModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

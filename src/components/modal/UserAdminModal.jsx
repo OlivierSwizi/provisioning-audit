@@ -85,7 +85,6 @@ export const useUserAdminModal = () => {
   return [
     askUser,
 
-    // eslint-disable-next-line react/jsx-key
     <UserAdminModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

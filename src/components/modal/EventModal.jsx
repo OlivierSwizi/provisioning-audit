@@ -382,7 +382,7 @@ export const useEventModal = () => {
 
   return [
     updateEvent,
-    // eslint-disable-next-line react/jsx-key
+
     <EventModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

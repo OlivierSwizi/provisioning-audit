@@ -79,7 +79,18 @@ const LeftSider = () => {
     });
 
     return menus;
-  }, [access, appId, appVendor, t]);
+  }, [
+    access.all,
+    access.apps,
+    access.businessProfile,
+    access.scopes,
+    access.superAdmin,
+    access.vendors,
+    appId,
+    appVendor,
+    t,
+    useCM,
+  ]);
 
   return (
     <Menu

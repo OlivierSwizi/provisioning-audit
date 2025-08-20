@@ -1,11 +1,8 @@
 import Glyph from "@/common/Glyph";
-import { SearchOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
   Col,
-  Input,
-  Pagination,
   Popconfirm,
   Row,
   Space,

@@ -1,18 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { isNil, pickAll } from "ramda";
 import {
-  Row,
-  Col,
   Button,
   message,
   Form,
   Typography,
   Select,
-  Result,
-  Tabs,
-  Input,
-  Checkbox,
-  Space,
   Flex,
   Card,
   InputNumber,

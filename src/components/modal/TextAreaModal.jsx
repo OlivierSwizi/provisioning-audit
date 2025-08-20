@@ -8,7 +8,7 @@ import TextArea from "antd/lib/input/TextArea";
 
 const TextAreaModal = ({ document, title, isVisible, setIsVisible, promiseResolve }) => {
   const [form] = Form.useForm();
-  const [isCreationForm, setIsCreationForm] = useState(false);
+  const [_, setIsCreationForm] = useState(false);
 
   useEffect(() => {
     if (document && isVisible) {
@@ -84,7 +84,7 @@ export const useTextAreaModal = () => {
 
   return [
     editText,
-    // eslint-disable-next-line react/jsx-key
+
     <TextAreaModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

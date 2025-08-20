@@ -92,6 +92,7 @@ const QuillKeywordEditor = ({
       convertAllTokensToEmbeds();
       if (sel) quill.setSelection(sel, "silent");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, quill]);
 
   // Bind handlers (une fois) : détection "{{", clic token, matcher clipboard
@@ -174,5 +175,6 @@ const QuillKeywordEditor = ({
   return <div ref={quillRef} />;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { DEFAULT_TOOLBAR_TITLE, DEFAULT_TOOLBAR_BODY };
 export default QuillKeywordEditor;

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Modal, Col, Row, Typography, Select } from "antd";
 
@@ -20,7 +20,6 @@ const SelectModal = ({
     if (options && isVisible) {
       setSelected(options[0].value);
     }
-     
   }, [options, isVisible]);
 
   const handleOk = async () => {
@@ -76,7 +75,7 @@ export const useSelectModal = () => {
 
   return [
     askSelect,
-    // eslint-disable-next-line react/jsx-key 
+
     <SelectModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

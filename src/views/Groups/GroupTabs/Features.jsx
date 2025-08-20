@@ -1,7 +1,7 @@
 import Glyph from "@/common/Glyph";
 import { Button, Card, Checkbox, Col, Form, Row, Space, Typography } from "antd";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const Features = ({ group, onUpdateFeaturesConfig }) => {
@@ -21,7 +21,7 @@ const Features = ({ group, onUpdateFeaturesConfig }) => {
     form.setFieldsValue({
       unifiedQRCode: !!group.featureConfig?.unifiedQrCode?.enabled,
     });
-  }, [group]);
+  }, [form, group]);
 
   return (
     <Card

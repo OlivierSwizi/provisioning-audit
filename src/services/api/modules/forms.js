@@ -1,3 +1,5 @@
+import logger from "@/logger";
+
 const FormApi = (AXIOS) => {
   return {
     list: async () => {

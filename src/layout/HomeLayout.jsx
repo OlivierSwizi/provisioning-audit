@@ -4,6 +4,8 @@ import TopBar from "@/views/Header/TopBar";
 import { Layout } from "antd";
 import { Outlet, useNavigate, useOutlet } from "react-router-dom";
 
+import logger from "@/logger";
+
 const HomeLayout = () => {
   const navigate = useNavigate();
   const outlet = useOutlet();

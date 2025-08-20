@@ -37,12 +37,7 @@ const slice = createSlice({
   name: "calendars",
   initialState,
   reducers: {
-     
-     
-    resetCalendars: (state) => {
-      // eslint-disable-next-line no-unused-vars
-      state = initialState;
-    },
+    resetCalendars: () => {},
     setRoomList: (state, action) => {
       state.searchTextRoom = action.payload.filter;
       state.roomList = action.payload.list;
@@ -232,7 +227,6 @@ export const selectRoom = (roomRef) => async (dispatch, getState) => {
 
 export const selectUser = (userId) => async (dispatch, getState) => {
   try {
-
     const user = await API(getState()).users.getUserDetails(userId);
 
     dispatch(setSelectedUser(user));
@@ -242,7 +236,7 @@ export const selectUser = (userId) => async (dispatch, getState) => {
   }
 };
 
-export const selectMaster = (master) => async (dispatch, ) => {
+export const selectMaster = (master) => async (dispatch) => {
   try {
     dispatch(setSelectedMaster(master));
     dispatch(loadMasterEvents(undefined, true));
@@ -271,10 +265,7 @@ export const loadUserEvents =
 
       dispatch(setSelectedDay({ start, end, selectedDay }));
 
-      if (
-        forceRefresh ||
-        dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()
-      ) {
+      if (forceRefresh || dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()) {
         const userEvents = await API(getState()).calendars.listUserEvents(
           selectedUser.id,
           start,
@@ -307,10 +298,7 @@ export const loadRoomEvents =
 
       dispatch(setSelectedDay({ start, end, selectedDay }));
 
-      if (
-        forceRefresh ||
-        dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()
-      ) {
+      if (forceRefresh || dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()) {
         const roomEvents = await API(getState()).calendars.listRoomEvents(
           selectedRoom.ref,
           start,
@@ -343,10 +331,7 @@ export const loadMasterEvents =
 
       dispatch(setSelectedDay({ start, end, selectedDay }));
 
-      if (
-        forceRefresh ||
-        dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()
-      ) {
+      if (forceRefresh || dayjs(selectedDay).week() !== dayjs(state.calendars.selectedDay).week()) {
         const masterEvents = await API(getState()).calendars.listMastersEvents(
           selectedMaster,
           start,

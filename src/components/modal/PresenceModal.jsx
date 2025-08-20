@@ -99,7 +99,7 @@ const PresenceModal = ({ isVisible, setIsVisible, promiseResolve }) => {
                 },
               ]}
             >
-              <Input autoComplete="off" size="small" style={{ width: "100%" }} autoComplete="off" />
+              <Input autoComplete="off" size="small" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -162,7 +162,7 @@ export const usePresenceModal = () => {
 
   return [
     updateUser,
-    // eslint-disable-next-line react/jsx-key
+
     <PresenceModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

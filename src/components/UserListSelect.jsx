@@ -7,12 +7,7 @@ import { useDebounce } from "use-debounce";
 import { API } from "@/services/features/AuthSlice";
 import helpers from "@/helpers";
 
-const UserListSelect = ({
-  value = [],
-  onChange,
-  userListStyle = {},
-  idField = "id",
-}) => {
+const UserListSelect = ({ value = [], onChange, userListStyle = {}, idField = "id" }) => {
   const { t } = useTranslation();
 
   const api = useSelector(API);

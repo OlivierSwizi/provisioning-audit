@@ -819,5 +819,6 @@
   "spm-selected-url": "Lien du média sélectionné",
   "spm-no-selected-url": "Aucun média sélectionné",
   "public-media-management": "Gestion des médias publics",
-  "got-to-public-media-lib": "Accéder à la bibiothèque"
+  "got-to-public-media-lib": "Accéder à la bibiothèque",
+  "show-opening-hours": " Afficher les heures d'ouverture"
 }

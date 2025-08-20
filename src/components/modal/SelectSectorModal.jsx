@@ -125,7 +125,7 @@ export const useSelectSectorModal = () => {
 
   return [
     selectSector,
-    // eslint-disable-next-line react/jsx-key
+
     <SelectSectorModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

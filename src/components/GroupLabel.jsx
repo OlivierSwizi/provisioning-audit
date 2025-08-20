@@ -16,7 +16,6 @@ const GroupLabel = ({ value }) => {
     };
 
     doIt();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [api, value]);
 
   return <Typography.Text>{groupName}</Typography.Text>;

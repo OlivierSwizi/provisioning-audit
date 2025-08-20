@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const SelectFileModal = ({ accept = "image/*", isVisible, setIsVisible, promiseResolve }) => {
   const fileInput = useRef(null);
@@ -9,7 +9,6 @@ const SelectFileModal = ({ accept = "image/*", isVisible, setIsVisible, promiseR
     if (isVisible) {
       fileInput.current.click();
     }
-     
   }, [isVisible]);
 
   const handleFileSelected = (event) => {
@@ -50,7 +49,7 @@ export const useSelectFileModal = () => {
 
   return [
     prompt,
-    // eslint-disable-next-line react/jsx-key
+
     <SelectFileModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

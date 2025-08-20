@@ -1,5 +1,5 @@
 import { Button, Flex, TimePicker } from "antd";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
@@ -19,7 +19,7 @@ const OpeningHoursSelector = ({ value = [], onChange }) => {
       i18n.t("saturday", { lng }),
       i18n.t("sunday", { lng }),
     ];
-  }, []);
+  }, [i18n, lng]);
 
   const addSlotToDay = (day) => {
     const newValue = [...(value[day] || [])];

@@ -454,7 +454,7 @@ export const useSelectPublicMediaModal = () => {
 
   return [
     askSelect,
-    // eslint-disable-next-line react/jsx-key
+
     <SelectPublicMediaModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

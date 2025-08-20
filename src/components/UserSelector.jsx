@@ -7,7 +7,7 @@ import { useDebounce } from "use-debounce";
 const UserSelector = ({ value, onChange, style = {}, mode, size = "small" }) => {
   const [options, setOptions] = useState([]);
   const api = useSelector(API);
-  const [searchUserText, ] = useState("");
+  const [searchUserText] = useState("");
 
   const [debouncedText] = useDebounce(searchUserText, 500);
 
@@ -23,7 +23,6 @@ const UserSelector = ({ value, onChange, style = {}, mode, size = "small" }) => 
     };
 
     doIt();
-     
   }, [api, debouncedText]);
 
   return (

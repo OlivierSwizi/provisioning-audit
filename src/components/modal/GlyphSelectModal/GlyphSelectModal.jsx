@@ -91,7 +91,7 @@ export const useGlyphModal = () => {
 
   return [
     selectGlyph,
-    // eslint-disable-next-line react/jsx-key
+
     <GlyphSelectModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

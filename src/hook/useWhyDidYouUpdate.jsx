@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import logger from "@/logger";
 
 const useWhyDidYouUpdate = (name, props) => {
   // Get a mutable ref object where we can store props ...

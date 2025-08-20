@@ -1,5 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
-
 import Glyph from "@/common/Glyph";
 import useDesignTokens from "@/hook/useDesignTokens";
 import { Button, Card, Row, Space, Table, Tag, Typography } from "antd";

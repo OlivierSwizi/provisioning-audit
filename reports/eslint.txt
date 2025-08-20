@@ -1,5 +1,5 @@
 
-/Users/olivierraveneau/bitbucket/front-provisioning/build/assets/index-CY1Y3FBb.js
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/build/assets/index-CY1Y3FBb.js
      1:1224    error    'global' is not defined                                                                                                                                                                                                                                               no-undef
      1:1534    error    Empty block statement                                                                                                                                                                                                                                                 no-empty
      9:542     error    't' is defined but never used                                                                                                                                                                                                                                         no-unused-vars
@@ -1946,40 +1946,37 @@
   1016:95150   error    'r' is defined but never used                                                                                                                                                                                                                                         no-unused-vars
   1016:95341   error    'a' is assigned a value but never used                                                                                                                                                                                                                                no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/DeskSearch.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/DeskSearch.jsx
    2:10  error    'DownOutlined' is defined but never used                                                                                no-unused-vars
    7:8   error    'helpers' is defined but never used                                                                                     no-unused-vars
   15:3   error    'showEmail' is assigned a value but never used                                                                          no-unused-vars
   44:6   warning  React Hook useEffect has missing dependencies: 'mode' and 'siteId'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/GroupLabel.jsx
-  19:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
-
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/KeywordPanel.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/KeywordPanel.jsx
   17:6  warning  React Hook useEffect has a missing dependency: 'prefix'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/LocalizedInput.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/LocalizedInput.jsx
    1:18  error    'Checkbox' is defined but never used                                                                                                                                                                                                                                                           no-unused-vars
    1:28  error    'Divider' is defined but never used                                                                                                                                                                                                                                                            no-unused-vars
   14:7   error    'currentValue' is constant                                                                                                                                                                                                                                                                     no-const-assign
   20:12  error    'currentValue' is constant                                                                                                                                                                                                                                                                     no-const-assign
   20:27  warning  Assignments to the 'currentValue' variable from inside React Hook useEffect will be lost after each render. To preserve the value over time, store it in a useRef Hook and keep the mutable value in the '.current' property. Otherwise, you can move this variable directly inside useEffect  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/OpeningHoursSelector.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/OpeningHoursSelector.jsx
    2:10  error    'useEffect' is defined but never used                                                                              no-unused-vars
   22:6   warning  React Hook useMemo has missing dependencies: 'i18n' and 'lng'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/PlaceSelector copy.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/PlaceSelector copy.jsx
    1:17  error  'Select' is defined but never used  no-unused-vars
    4:8   error  'logger' is defined but never used  no-unused-vars
   38:14  error  'error' is defined but never used   no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/PlaceSelector.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/PlaceSelector.jsx
    1:17  error  'Select' is defined but never used  no-unused-vars
    4:8   error  'logger' is defined but never used  no-unused-vars
   38:14  error  'error' is defined but never used   no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/TimezoneSelector.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/TimezoneSelector.jsx
    1:10  error  'Input' is defined but never used                   no-unused-vars
    2:10  error  'useEffect' is defined but never used               no-unused-vars
    2:21  error  'useState' is defined but never used                no-unused-vars
@@ -1990,60 +1987,59 @@
   10:10  error  'extractLocalizedString' is defined but never used  no-unused-vars
   25:9   error  'lng' is assigned a value but never used            no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/modal/PresenceModal.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/modal/PresenceModal.jsx
   102:80  error  No duplicate props allowed  react/jsx-no-duplicate-props
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/modal/TextAreaModal.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/modal/TextAreaModal.jsx
   11:10  error  'isCreationForm' is assigned a value but never used  no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/modal/UserModal.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/modal/UserModal.jsx
   98:68  error  No duplicate props allowed  react/jsx-no-duplicate-props
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/template-editors/EmailTemplateEditor.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/template-editors/EmailTemplateEditor.jsx
   2:16  error  'Space' is defined but never used  no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/template-editors/MultilangNotificationEditor.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/template-editors/MultilangNotificationEditor.jsx
   134:14  error  'e' is defined but never used  no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/template-editors/components/CodeKeywordEditor.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/template-editors/components/CodeKeywordEditor.jsx
     5:10  error    'EditorState' is defined but never used                                                                                                                                     no-unused-vars
    27:3   error    'keywords' is assigned a value but never used                                                                                                                               no-unused-vars
   150:6   warning  React Hook useMemo has missing dependencies: 'clickTokenHandler', 'keywordField', 'openMenuOnDoubleBrace', and 'theme'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/components/template-editors/components/QuillKeywordEditor.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/components/template-editors/components/QuillKeywordEditor.jsx
    95:6   warning  React Hook useEffect has a missing dependency: 'convertAllTokensToEmbeds'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
   177:10  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
   177:33  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/layout/AppLayout.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/layout/AppLayout.jsx
   82:6  warning  React Hook useMemo has a missing dependency: 'useCM'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/services/api/modules/media.js
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/services/api/modules/media.js
    3:24  error    'token' is defined but never used  no-unused-vars
   50:9   warning  Unexpected console statement       no-console
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Features/BI/BIView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Features/BI/BIView.jsx
    2:20  error  'Button' is defined but never used     no-unused-vars
   16:8   error  'GroupList' is defined but never used  no-unused-vars
   26:29  error  'config' is defined but never used     no-unused-vars
   83:34  error  'record' is defined but never used     no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Features/CM/CMView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Features/CM/CMView.jsx
    33:10  error    'selectApp' is defined but never used                                                                                  no-unused-vars
   128:6   warning  React Hook useCallback has an unnecessary dependency: 'appId'. Either exclude it or remove the dependency array        react-hooks/exhaustive-deps
-  171:3   warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
-  174:6   warning  React Hook useEffect has a missing dependency: 'loadLocationStatus'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  225:31  error    'changedFields' is defined but never used                                                                              no-unused-vars
+  173:6   warning  React Hook useEffect has a missing dependency: 'loadLocationStatus'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  224:31  error    'changedFields' is defined but never used                                                                              no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Features/History/HistoryView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Features/History/HistoryView.jsx
   61:24  error  'pageCount' is assigned a value but never used  no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Features/Places/PlacesView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Features/Places/PlacesView.jsx
   139:6   warning  React Hook useEffect has missing dependencies: 'form', 'placesId', and 'placesList'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
   146:6   warning  React Hook useEffect has a missing dependency: 'placesList'. Either include it or remove the dependency array                            react-hooks/exhaustive-deps
   321:50  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                          react/no-unescaped-entities
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Features/WifiGuest/WifiGuestView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Features/WifiGuest/WifiGuestView.jsx
    2:10  error  'isNil' is defined but never used     no-unused-vars
    2:17  error  'pickAll' is defined but never used   no-unused-vars
    4:3   error  'Row' is defined but never used       no-unused-vars
@@ -2054,27 +2050,23 @@
   14:3   error  'Checkbox' is defined but never used  no-unused-vars
   15:3   error  'Space' is defined but never used     no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/FlexOffice/FlexOfficeView.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/FlexOffice/FlexOfficeView.jsx
    44:25  error    Unexpected empty object pattern                                                                          no-empty-pattern
    60:8   warning  React Hook useEffect has a missing dependency: 'form'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
   214:25  error    Unexpected empty object pattern                                                                          no-empty-pattern
   230:8   warning  React Hook useEffect has a missing dependency: 'form'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Groups/GroupTabs/ChildrenGroups.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Groups/GroupTabs/ChildrenGroups.jsx
   2:10  error  'SearchOutlined' is defined but never used  no-unused-vars
   7:3   error  'Input' is defined but never used           no-unused-vars
   8:3   error  'Pagination' is defined but never used      no-unused-vars
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Groups/GroupTabs/Features.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Groups/GroupTabs/Features.jsx
    4:21  error    'useState' is defined but never used                                                                     no-unused-vars
   24:6   warning  React Hook useEffect has a missing dependency: 'form'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Groups/GroupTabs/IM.jsx
-  1:1  warning  Unused eslint-disable directive (no problems were reported from 'react-refresh/only-export-components')
-
-/Users/olivierraveneau/bitbucket/front-provisioning/src/views/Users/UserDetails.jsx
+/Users/olivierraveneau/bitbucket/front-provisioning-audit/src/views/Users/UserDetails.jsx
   8:3  error  'Divider' is defined but never used  no-unused-vars
 
-✖ 2020 problems (1897 errors, 123 warnings)
-  0 errors and 3 warnings potentially fixable with the `--fix` option.
+✖ 2017 problems (1897 errors, 120 warnings)
 

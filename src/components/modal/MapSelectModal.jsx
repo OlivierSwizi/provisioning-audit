@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useEffect, useState } from "react";
-import { Input, Modal, Row,  } from "antd";
+import { useEffect, useState } from "react";
+import { Input, Modal, Row } from "antd";
 import GoogleMapReact from "google-map-react";
 import { AimOutlined } from "@ant-design/icons";
 import useDesignTokens from "@/hook/useDesignTokens";
@@ -22,9 +22,7 @@ const MapSelectModal = ({
   const { colors } = useDesignTokens();
   const { t } = useTranslation();
 
-  const POI = () => (
-    <AimOutlined style={{ fontSize: "32px", color: colors.secondary_base }} />
-  );
+  const POI = () => <AimOutlined style={{ fontSize: "32px", color: colors.secondary_base }} />;
 
   useEffect(() => {
     if (isVisible) {
@@ -111,7 +109,7 @@ export const useMapSelectModal = () => {
 
   return [
     selectOnMap,
-    // eslint-disable-next-line react/jsx-key
+
     <MapSelectModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

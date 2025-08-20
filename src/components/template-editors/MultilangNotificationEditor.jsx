@@ -131,7 +131,8 @@ const MultilangNotificationEditor = ({
         top = rect.top + top;
         left = rect.left + left;
       }
-    } catch (e) {
+      // eslint-disable-next-line unused-imports/no-unused-vars
+    } catch (_) {
       // si on ne peut pas calculer, on garde la position telle quelle
     }
 

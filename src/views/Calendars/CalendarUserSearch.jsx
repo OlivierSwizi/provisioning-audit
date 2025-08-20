@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import useDesignTokens from "@/hook/useDesignTokens";
-import {  searchUsers } from "@/services/features/CalendarsSlice";
+import { searchUsers } from "@/services/features/CalendarsSlice";
 
 const { Text, Title } = Typography;
 

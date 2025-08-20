@@ -58,7 +58,7 @@ const HistoryView = () => {
           startDate.toISOString(),
           endDate.toISOString(),
         );
-        const { items, pageCount, itemCount } = result;
+        const { items, itemCount } = result;
         setItemCount(itemCount);
 
         if (resetPage) {
@@ -73,17 +73,17 @@ const HistoryView = () => {
             data: !item.data
               ? ""
               : item.data?.lastOccupancy === undefined
-                ? t("meeting-infos", {
-                    start: new Date(item.data.startDate).toLocaleString(),
-                    end: new Date(item.data.endDate).toLocaleString(),
-                    organizer: item.data.organizer,
-                  })
-                : t("meeting-infos-occupancy", {
-                    start: new Date(item.data.startDate).toLocaleString(),
-                    end: new Date(item.data.endDate).toLocaleString(),
-                    organizer: item.data.organizer,
-                    lastOccupancy: item.data?.lastOccupancy?.toFixed(1),
-                  }),
+              ? t("meeting-infos", {
+                  start: new Date(item.data.startDate).toLocaleString(),
+                  end: new Date(item.data.endDate).toLocaleString(),
+                  organizer: item.data.organizer,
+                })
+              : t("meeting-infos-occupancy", {
+                  start: new Date(item.data.startDate).toLocaleString(),
+                  end: new Date(item.data.endDate).toLocaleString(),
+                  organizer: item.data.organizer,
+                  lastOccupancy: item.data?.lastOccupancy?.toFixed(1),
+                }),
           })),
         );
       } catch (error) {

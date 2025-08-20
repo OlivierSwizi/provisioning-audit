@@ -56,8 +56,8 @@ export const useConfirmModal = () => {
   };
 
   return [
-       prompt,
-    // eslint-disable-next-line react/jsx-key
+    prompt,
+
     <ConfirmModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

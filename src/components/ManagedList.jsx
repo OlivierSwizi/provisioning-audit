@@ -77,7 +77,7 @@ const ManagedList = ({
                       />
                     ) : null,
                     <Button
-                    key={`button${idx}`}
+                      key={`button${idx}`}
                       style={{ width: "12px", height: "12px" }}
                       type="link"
                       icon={<CloseOutlined />}

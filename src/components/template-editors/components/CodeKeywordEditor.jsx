@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { html as htmlLang } from "@codemirror/lang-html";
 import { EditorView, keymap, ViewPlugin } from "@codemirror/view";
-import { EditorState, StateField, RangeSetBuilder } from "@codemirror/state";
+import { StateField, RangeSetBuilder } from "@codemirror/state";
 import { Decoration } from "@codemirror/view";
 import { autocompletion } from "@codemirror/autocomplete";
 import { Button, Space } from "antd";
@@ -24,7 +24,6 @@ const CodeKeywordEditor = ({
   value = "",
   onChange,
   placeholder,
-  keywords = [],
   singleLine = false,
   height,
   onOpenKeywordMenu,
@@ -147,6 +146,7 @@ const CodeKeywordEditor = ({
       exts.push(EditorView.editorAttributes.of({ "aria-label": placeholder }));
     }
     return exts;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [singleLine, placeholder]);
 
   useEffect(() => {
@@ -159,8 +159,8 @@ const CodeKeywordEditor = ({
         ? `${height}px`
         : height
       : singleLine
-        ? "44px"
-        : "420px";
+      ? "44px"
+      : "420px";
 
   // Toolbar action: open picker and insert URL at caret (in THIS editor)
   const handleInsertImage = async () => {

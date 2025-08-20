@@ -1,6 +1,6 @@
 import config from "@/config";
 
-export default (AXIOS, token) => {
+export default (AXIOS) => {
   return {
     get: async (mediaId) => {
       let res = await AXIOS.get(`/media/${mediaId}`, {
@@ -38,7 +38,9 @@ export default (AXIOS, token) => {
       return res.data;
     },
     getMediaUrl: (appId, mediaId, date) => {
-      return `${config.endpoint}/provisioning/apps/${appId}/media/${mediaId}?${date ? `&date=${date}` : ""}`;
+      return `${config.endpoint}/provisioning/apps/${appId}/media/${mediaId}?${
+        date ? `&date=${date}` : ""
+      }`;
     },
     getMediaCookie: async () => {
       try {

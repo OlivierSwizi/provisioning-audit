@@ -136,14 +136,14 @@ const PlacesView = () => {
     } else {
       form.resetFields();
     }
-  }, [contentId]);
+  }, [contentId, form, placesId, placesList]);
 
   useEffect(() => {
     if (!placesId) return setContentId(null);
     const selectedPlace = placesList.find((p) => p.id === placesId);
     setSelectedPlace(selectedPlace);
     setContentId(selectedPlace?.content?.length > 0 ? selectedPlace.content[0].id : null);
-  }, [placesId]);
+  }, [placesId, placesList]);
 
   useEffect(() => {
     if (
@@ -318,7 +318,7 @@ const PlacesView = () => {
                             checked={useOpeningHours}
                             onChange={(e) => setUseOpeningHours(e.target.checked)}
                           >
-                            Afficher les heures d'ouverture
+                            {t("show-opening-hours")}
                           </Checkbox>
                         </Col>
                         <Form.Item

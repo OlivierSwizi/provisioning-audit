@@ -600,5 +600,6 @@
   "spm-selected-url": "Selected media URL:",
   "spm-no-selected-url": "No media selected",
   "public-media-management": "Public media management",
-  "got-to-public-media-lib": "Go to library"
+  "got-to-public-media-lib": "Go to library",
+  "show-opening-hours": "Show opening hours"
 }

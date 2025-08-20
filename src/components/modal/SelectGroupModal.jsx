@@ -85,7 +85,7 @@ export const useSelectGroupModal = () => {
 
   return [
     prompt,
-    // eslint-disable-next-line react/jsx-key
+
     <SelectGroupModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

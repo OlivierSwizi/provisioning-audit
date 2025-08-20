@@ -30,7 +30,6 @@ import { useDebounce } from "use-debounce";
 import Input from "antd/lib/input/Input";
 import DomainList from "@/components/DomainList";
 import logger from "@/logger";
-import { selectApp } from "@/services/features/AppsSlice";
 import { useForm } from "antd/es/form/Form";
 import { CheckOutlined, CloseOutlined, DeleteOutlined, SyncOutlined } from "@ant-design/icons";
 
@@ -125,7 +124,7 @@ const CMView = () => {
       } finally {
         setLocationsAreLoading(false);
       }
-  }, [api, appId, t, page, pageSize, selectedProvider, debouncedFilter, onlyErrors]);
+  }, [api, t, page, pageSize, selectedProvider, debouncedFilter, onlyErrors]);
 
   useEffect(() => {
     loadProviders();
@@ -168,10 +167,9 @@ const CMView = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedFilter]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadLocationStatus();
-  }, [filter, onlyErrors]);
+  }, [filter, loadLocationStatus, onlyErrors]);
 
   const handleActivateCM = async () => {
     try {
@@ -221,8 +219,6 @@ const CMView = () => {
 
     loadProviders();
   };
-
-  const handleFieldsChange = (changedFields) => {};
 
   const handleSave = async (values) => {
     try {
@@ -358,7 +354,6 @@ const CMView = () => {
         children: (
           <Form
             form={form}
-            onFieldsChange={handleFieldsChange}
             onFinish={handleSave}
             labelCol={{
               span: 6,

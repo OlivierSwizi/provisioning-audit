@@ -1,4 +1,4 @@
-import { Button, Checkbox, Divider, Tabs } from "antd";
+import { Button, Tabs } from "antd";
 import { useEffect, useState } from "react";
 
 const LocalizedInput = ({
@@ -10,6 +10,7 @@ const LocalizedInput = ({
   const [selectedLocale, setSelectedLocale] = useState();
 
   useEffect(() => {
+    let currentValue;
     if (!value) {
       currentValue = [
         {
@@ -26,7 +27,7 @@ const LocalizedInput = ({
       setSelectedLocale(currentValue[0][options.keyLocale]);
     }
     setCurrentValue(currentValue);
-  }, [value, options.keyLocale, options.keyContent]);
+  }, [value, options.keyLocale, options.keyContent, selectedLocale]);
 
   const handleLocaleChange = (locale) => {
     setSelectedLocale(locale);

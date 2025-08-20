@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Card, Space, Button, Layout } from "antd";
+import { Card, Button, Layout } from "antd";
 import { useTranslation } from "react-i18next";
 
 import CodeKeywordEditor from "@/components/template-editors/components/CodeKeywordEditor";

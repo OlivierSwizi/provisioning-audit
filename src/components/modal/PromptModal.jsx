@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Input } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 
@@ -79,8 +79,8 @@ export const usePromptModal = () => {
   };
 
   return [
-       prompt,
-    // eslint-disable-next-line react/jsx-key
+    prompt,
+
     <PromptModal
       isVisible={isVisible}
       setIsVisible={setIsVisible}

@@ -1,34 +1,27 @@
+# FILENAME: .gitignore
+# Node / Vite
+node_modules/
+dist/
+build/
+
+# Tooling reports
+reports/
+
+# Env & local
+.env
+.env.*
+!.env.example
+
 # Logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-build
-build-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Editor
+.idea/
+.vscode/
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.vscode/launch.json
 
-node_modules
-dist
-build
-coverage
-.env
-.env.*
+# Coverage
+coverage/

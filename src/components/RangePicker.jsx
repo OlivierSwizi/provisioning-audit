@@ -82,7 +82,6 @@ const RangePicker = ({ value, onChange }) => {
       setEnd(dayjs(value.end));
       setDay(dayjs(value.start));
     }
-     
   }, [value]);
 
   const handleChange = (toUpdate) => {

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const colors = require(`../../assets/token/DT_swizi/web/colors.json`);
 const symbols = require(`../../assets/token/DT_swizi/web/symbols.json`);
 const shadow = require(`../../assets/token/DT_swizi/web/shadows.json`);

@@ -41,7 +41,7 @@ const FlexOfficeView = () => {
     if (!appId || !siteId) return;
   }, [appId, siteId]);
 
-  const SearchByUser = ({}) => {
+  const SearchByUser = () => {
     const [form] = useForm();
 
     const [items, setItems] = useState([]);
@@ -57,7 +57,7 @@ const FlexOfficeView = () => {
       return () => {
         // Cleanup logic if needed
       };
-    }, []);
+    }, [form]);
 
     const search = async (values, selectedPage) => {
       try {
@@ -172,8 +172,8 @@ const FlexOfficeView = () => {
                         {record.morning && record.afternoon
                           ? t("flex-office-all-day")
                           : record.morning
-                            ? "flex-office-morning"
-                            : t("flex-office-afternoon")}
+                          ? "flex-office-morning"
+                          : t("flex-office-afternoon")}
                       </span>
                     ),
                   },
@@ -211,7 +211,7 @@ const FlexOfficeView = () => {
     );
   };
 
-  const SearchByDesk = ({}) => {
+  const SearchByDesk = () => {
     const [form] = useForm();
 
     const [items, setItems] = useState([]);
@@ -227,7 +227,7 @@ const FlexOfficeView = () => {
       return () => {
         // Cleanup logic if needed
       };
-    }, []);
+    }, [form]);
 
     const search = async (values, selectedPage) => {
       try {
@@ -346,8 +346,8 @@ const FlexOfficeView = () => {
                         {record.morning && record.afternoon
                           ? t("flex-office-all-day")
                           : record.morning
-                            ? "flex-office-morning"
-                            : t("flex-office-afternoon")}
+                          ? "flex-office-morning"
+                          : t("flex-office-afternoon")}
                       </span>
                     ),
                   },

@@ -14,7 +14,7 @@ const KeywordPanel = ({ keywords, prefix = "", keywordHelp = "", style = {} }) =
     }
 
     setKeys(keys);
-  }, [keywords, t]);
+  }, [keywords, prefix, t]);
 
   return (
     <Row style={{ width: "100%", ...style }}>
