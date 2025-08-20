@@ -36,28 +36,33 @@ const AroundMe = () => {
       try {
         await dispatch(startWorking());
 
-        const config = await api.features.getAroundMeConfig(siteId);
-        const categories = config.map((item, idx) =>
-          Object.assign({
-            id: idx + 1,
-            title: item.title || "",
-            icon: item.icon || "",
-            places: (item.places || []).map((place, idxP) =>
-              Object.assign({
-                id: idxP + 1,
-                title: place.title || "",
-                subtitle: place.subtitle || "",
-                website: place.website || "",
-                address: place.address || "",
-                phone: place.phone || "",
-                lat: place.lat,
-                lon: place.lon,
-              }),
-            ),
-          }),
-        );
-        setCategories(categories);
-        setSelectedCategory(config[0]);
+        try {
+          const config = await api.features.getAroundMeConfig(siteId);
+          const categories = config.map((item, idx) =>
+            Object.assign({
+              id: idx + 1,
+              title: item.title || "",
+              icon: item.icon || "",
+              places: (item.places || []).map((place, idxP) =>
+                Object.assign({
+                  id: idxP + 1,
+                  title: place.title || "",
+                  subtitle: place.subtitle || "",
+                  website: place.website || "",
+                  address: place.address || "",
+                  phone: place.phone || "",
+                  lat: place.lat,
+                  lon: place.lon,
+                }),
+              ),
+            }),
+          );
+          setCategories(categories);
+          setSelectedCategory(config[0]);
+        } catch (err) {
+          message.error(t("api-error"));
+          logger.error(err);
+        }
       } catch (e) {
         logger.error(e);
         message.error(t("load-error"));

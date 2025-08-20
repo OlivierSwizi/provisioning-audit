@@ -1,9 +1,11 @@
-import { Select, Dropdown, Button } from "antd";
+import { Select, Dropdown, Button, message } from "antd";
 import { TagOutlined, NumberOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { API } from "@/services/features/AuthSlice";
 import { useDebounce } from "use-debounce";
+import logger from "@/logger";
+import { useTranslation } from "react-i18next";
 
 const DeskSearch = ({ value, onChange, disabled = false, siteId, size = "large" }) => {
   const [options, setOptions] = useState([]);
@@ -15,20 +17,27 @@ const DeskSearch = ({ value, onChange, disabled = false, siteId, size = "large" 
 
   const [debounceText] = useDebounce(searchDeskText, 500);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const doIt = async () => {
       if (debounceText) {
-        const desks = await api.flexoffice.searchDesk(siteId, debounceText, mode);
-        setOptions(
-          (desks || [])
-            .map((desk) => ({
-              value: desk.uid,
-              label: desk.title,
-              uid: desk.uid,
-              reference: desk.reference,
-            }))
-            .filter((u) => !!u.label),
-        );
+        try {
+          const desks = await api.flexoffice.searchDesk(siteId, debounceText, mode);
+          setOptions(
+            (desks || [])
+              .map((desk) => ({
+                value: desk.uid,
+                label: desk.title,
+                uid: desk.uid,
+                reference: desk.reference,
+              }))
+              .filter((u) => !!u.label),
+          );
+        } catch (err) {
+          message.error(t("api-error"));
+          logger.error(err);
+        }
       } else setOptions([]);
     };
 

@@ -1,8 +1,9 @@
-import { Select } from "antd";
+import { message, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import logger from "@/logger";
 import { API } from "@/services/features/AuthSlice";
+import { useTranslation } from "react-i18next";
 
 const GroupSelector = ({
   value,
@@ -18,6 +19,8 @@ const GroupSelector = ({
   const [options, setOptions] = useState([]);
   const api = useSelector(API);
   const appId = useSelector((state) => state.apps.selectedApp.id);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const doIt = async () => {
@@ -36,9 +39,9 @@ const GroupSelector = ({
             .map((group) => ({ value: group.id, label: group.label }))
             .sort((a, b) => a.label.localeCompare(b.label)),
         );
-      } catch (error) {
-        logger.error("Failed to load groups", error);
-        setOptions([]);
+      } catch (err) {
+        message.error(t("api-error"));
+        logger.error(err);
       }
     };
 
