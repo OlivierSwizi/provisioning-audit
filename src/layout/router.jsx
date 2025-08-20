@@ -1,36 +1,47 @@
-import { createBrowserRouter } from "react-router-dom";
+import React, { lazy } from "react";
 
-import AdminView from "../views/Admin/AdminView";
-import AppDetails from "../views/AppDetails/AppDetails";
-import AppList from "../views/AppsList/AppList";
-import NotFound from "../views/Errors/NotFound";
-import UserList from "../views/Users/UserList";
-import GroupList from "../views/Groups/GroupList";
-import UserDetails from "../views/Users/UserDetails";
-import GroupDetails from "../views/Groups/GroupDetails";
-import GroupCreation from "../views/Groups/GroupCreation";
-import NoShowView from "../views/Features/NoShow/NoShowView";
-import ReceptionView from "../views/Features/Reception/ReceptionView";
-import AppLayout from "./AppLayout";
-import HomeLayout from "./HomeLayout";
-import CalendarList from "../views/Calendars/CalendarList";
-import CalendarRoomDetails from "../views/Calendars/CalendarRoomDetails";
-import CalendarUserDetails from "../views/Calendars/CalendarUserDetails";
-import CalendarMasterDetails from "../views/Calendars/CalendarMasterDetails";
-import SiteSettingsView from "@/views/Features/SiteSettings/SiteSettingsView";
-import SpaasView from "@/views/Features/Spaas/SpaasView";
-import ParkingView from "@/views/Features/Parking/ParkingView";
-import HistoryView from "@/views/Features/History/HistoryView";
-import LibraryView from "@/views/Library/LibraryView";
-import SCIMView from "@/views/Features/SCIM/SCIMView";
-import PlannerView from "@/views/Features/Planner/PlannerView";
-import CMView from "@/views/Features/CM/CMView";
-import PlacesView from "@/views/Features/Places/PlacesView";
-import AudienceView from "@/views/Audience/AudienceView";
-import BIView from "@/views/Features/BI/BIView";
-import Forms from "@/views/Forms/Forms";
-import AppSettingsView from "@/views/Features/App/AppSettingsView";
-import FlexOfficeView from "@/views/FlexOffice/FlexOfficeView";
+import { createBrowserRouter } from "react-router-dom";
+import withSuspense from "@/utils/withSuspense";
+
+const GroupList = withSuspense(lazy(() => import("@/views/Groups/GroupList")));
+const AdminView = withSuspense(lazy(() => import("@/views/Admin/AdminView")));
+const AppDetails = withSuspense(lazy(() => import("@/views/AppDetails/AppDetails")));
+const AppList = withSuspense(lazy(() => import("@/views/AppsList/AppList")));
+const NotFound = withSuspense(lazy(() => import("@/views/Errors/NotFound")));
+const UserList = withSuspense(lazy(() => import("@/views/Users/UserList")));
+const UserDetails = withSuspense(lazy(() => import("@/views/Users/UserDetails")));
+const GroupDetails = withSuspense(lazy(() => import("@/views/Groups/GroupDetails")));
+const GroupCreation = withSuspense(lazy(() => import("@/views/Groups/GroupCreation")));
+const NoShowView = withSuspense(lazy(() => import("@/views/Features/NoShow/NoShowView")));
+const ReceptionView = withSuspense(lazy(() => import("@/views/Features/Reception/ReceptionView")));
+const AppLayout = withSuspense(lazy(() => import("./AppLayout")));
+const HomeLayout = withSuspense(lazy(() => import("./HomeLayout")));
+const CalendarList = withSuspense(lazy(() => import("@/views/Calendars/CalendarList")));
+const CalendarRoomDetails = withSuspense(
+  lazy(() => import("@/views/Calendars/CalendarRoomDetails")),
+);
+const CalendarUserDetails = withSuspense(
+  lazy(() => import("@/views/Calendars/CalendarUserDetails")),
+);
+const CalendarMasterDetails = withSuspense(
+  lazy(() => import("@/views/Calendars/CalendarMasterDetails")),
+);
+const SiteSettingsView = withSuspense(
+  lazy(() => import("@/views/Features/SiteSettings/SiteSettingsView")),
+);
+const SpaasView = withSuspense(lazy(() => import("@/views/Features/Spaas/SpaasView")));
+const ParkingView = withSuspense(lazy(() => import("@/views/Features/Parking/ParkingView")));
+const HistoryView = withSuspense(lazy(() => import("@/views/Features/History/HistoryView")));
+const LibraryView = withSuspense(lazy(() => import("@/views/Library/LibraryView")));
+const SCIMView = withSuspense(lazy(() => import("@/views/Features/SCIM/SCIMView")));
+const PlannerView = withSuspense(lazy(() => import("@/views/Features/Planner/PlannerView")));
+const CMView = withSuspense(lazy(() => import("@/views/Features/CM/CMView")));
+const PlacesView = withSuspense(lazy(() => import("@/views/Features/Places/PlacesView")));
+const AudienceView = withSuspense(lazy(() => import("@/views/Audience/AudienceView")));
+const BIView = withSuspense(lazy(() => import("@/views/Features/BI/BIView")));
+const Forms = withSuspense(lazy(() => import("@/views/Forms/Forms")));
+const AppSettingsView = withSuspense(lazy(() => import("@/views/Features/App/AppSettingsView")));
+const FlexOfficeView = withSuspense(lazy(() => import("@/views/FlexOffice/FlexOfficeView")));
 
 /** @type {import("react-router").RouteObject[]} */
 export const appRoutes = [
