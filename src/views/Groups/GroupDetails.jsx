@@ -1,5 +1,3 @@
-import SwiziJoyrideTitle from "@/assets/joyride/SwiziJoyrideTitle";
-
 import { LeftOutlined } from "@ant-design/icons";
 import {
   Button,
@@ -630,13 +628,6 @@ const GroupDetails = () => {
               <Col span={24} style={{ display: "flex", alignItems: "center" }}>
                 <GroupTypeGlyph group={group} />
 
-                <SwiziJoyrideTitle
-                  title={group.label}
-                  screen="groupDetails"
-                  style={{ marginRight: "15px", marginTop: "12px" }}
-                  tag={<NetworkTypeTag type={group.type} />}
-                />
-
                 {group.isArchived && (
                   <Text type="danger" style={{ marginLeft: "10px" }}>
                     {t("group-archived-explanation")}
@@ -682,7 +673,6 @@ const GroupDetails = () => {
                   </Descriptions.Item>
                   <Descriptions.Item label={t("group-is-archived")}>
                     <Switch
-                      className="joyride-group-archived"
                       checked={group.isArchived}
                       onChange={(checked) => handleUpdateOption("isArchived", checked)}
                       size="small"

@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import SwiziJoyrideTitle from "@/assets/joyride/SwiziJoyrideTitle";
 
 import {
   Row,
@@ -113,7 +112,7 @@ const GroupList = () => {
           />
         </Col>
         <Col span={24} style={{ marginTop: "16px" }}>
-          <Space className="joyride-group-list-types">
+          <Space>
             <Select
               mode="multiple"
               style={{ width: "100%", minWidth: "200px", padding: "10px" }}
@@ -129,7 +128,7 @@ const GroupList = () => {
               ))}
             </Select>
           </Space>
-          <Space className="joyride-group-list-include-archived">
+          <Space>
             <Checkbox
               checked={includeArchived}
               onChange={(e) => setIncludeArchived(e.target.checked)}
@@ -151,7 +150,6 @@ const GroupList = () => {
             >
               {(groupList || []).map((item, idx) => (
                 <Card
-                  className="joyride-group-list-how-to-archive"
                   key={idx}
                   onClick={() => navigate(`/apps/${appId}/groups/${item.id}`)}
                   style={{ cursor: "pointer" }}
@@ -333,9 +331,6 @@ const GroupList = () => {
       <Row style={{ marginTop: 20 }}>
         <Col span={24}>
           <Row style={{ marginBottom: "25px" }}>
-            <Col span={18} style={{ display: "flex", flexDir: "col" }}>
-              <SwiziJoyrideTitle title={t("Groups")} screen="groupList" />
-            </Col>
             <Col span={4} push={2}>
               <Button
                 type="primary"

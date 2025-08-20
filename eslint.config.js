@@ -8,7 +8,7 @@ import unusedImports from "eslint-plugin-unused-imports";
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-  // Ignorés partout
+  // Dossiers à ignorer partout
   {
     ignores: ["assets/**", "build/**", "dist/**", "reports/**", "node_modules/**"],
   },
@@ -33,11 +33,11 @@ export default [
     },
     settings: { react: { version: "detect" } },
     rules: {
-      // Considérer les imports JSX comme “utilisés” si présents dans le JSX
+      // Considérer les imports JSX comme “utilisés”
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
 
-      // ➜ Autosuppression d’imports inutilisés en --fix
+      // ➜ autosuppression des imports inutilisés en --fix
       "no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
