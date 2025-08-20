@@ -21,9 +21,9 @@ const AppList = () => {
 
   const filtered = appList.filter((d) => new RegExp(search, "i").test(d.name));
 
-  const handleSelectApp = async (appId) => {
-    await workDispatch(selectApp(appId));
-    navigate(`/apps/${appId}`);
+  const handleSelectApp = async (app) => {
+    await workDispatch(selectApp(app.id));
+    navigate(`/apps/${app.id}`);
   };
 
   if (!appList.length) return <NoApps />;
