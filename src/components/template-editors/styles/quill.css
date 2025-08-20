@@ -1,0 +1,45 @@
+/* @/components/template-editors/styles/quill.css */
+
+/* Apparence compacte */
+.ql-toolbar-compact {
+  border-radius: 8px 8px 0 0 !important;
+  padding: 4px !important;
+}
+.ql-container-compact {
+  border-radius: 0 0 8px 8px !important;
+}
+
+/* Cadres et labels génériques */
+.editor-label {
+  font-size: 12px;
+  color: #595959;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.editor-wrap {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Token {{keyword}} */
+.keyword-token {
+  color: #b71c1c;
+  background-color: #ffebee;
+  padding: 0 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Hauteur minimale par type d’éditeur */
+.ql-container.title-editor .ql-editor {
+  min-height: 1.5em; /* ~1 ligne */
+  line-height: 1.5;
+}
+.ql-container.body-editor .ql-editor {
+  min-height: 4.5em; /* ~3 lignes */
+  line-height: 1.5;
+}

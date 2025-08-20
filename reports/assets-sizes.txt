@@ -1,0 +1,8 @@
+4.0K	src/assets/images/azure-active-directory.svg
+8.0K	public/logo192.png
+8.0K	src/assets/images/no_user.svg
+ 44K	src/assets/images/logo_swizi_square.png
+ 44K	src/assets/token/DT_swizi/Assets/00 - Brand/01 Logo/01 Standard.png
+ 44K	src/assets/token/DT_swizi/Assets/ios/app_icon/icon_1024pt.png
+ 48K	src/assets/images/logo_swizi.png
+492K	src/assets/images/plan.png

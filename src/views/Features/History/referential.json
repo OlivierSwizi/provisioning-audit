@@ -1,0 +1,46 @@
+{
+  "SERVICES": [
+    {
+      "i18nKey": "noShow",
+      "key": "NOSHOW"
+    },
+    {
+      "i18nKey": "wildbooking",
+      "key": "wildbooking"
+    }
+  ],
+  "ACTIONS": [
+    {
+      "i18nKey": "notWhiteListed",
+      "key": "NOT_WHITE_LISTED"
+    },
+    {
+      "i18nKey": "maxDurationExceeded",
+      "key": "MAX_DURATION_EXCEEDED"
+    },
+    {
+      "i18nKey": "userInExcludedGroup",
+      "key": "USER_IN_EXCLUDED_GROUP"
+    },
+    {
+      "i18nKey": "roomUnderConstruction",
+      "key": "ROOM_UNDER_CONSTRUCTION"
+    },
+    {
+      "i18nKey": "roomNotDisplayOccupancy",
+      "key": "ROOM_NOT_DISPLAY_OCCUPANCY"
+    },
+    {
+      "i18nKey": "roomNotAllowNoShow",
+      "key": "ROOM_NOT_ALLOW_NO_SHOW"
+    },
+    {
+      "i18nKey": "userNotified",
+      "key": "USER_NOTIFIED"
+    },
+    {
+      "i18nKey": "getPlanning",
+      "key": "getPlanning"
+    }
+  ]
+}

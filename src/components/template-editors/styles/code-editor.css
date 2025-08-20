@@ -1,0 +1,17 @@
+.cm-editor {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.cm-editor .cm-scroller {
+  min-height: 3.5em;
+}
+
+.cm-keyword-token {
+  background-color: #ffebee;
+  color: #b71c1c;
+  border-radius: 4px;
+  padding: 0 2px;
+  cursor: pointer;
+  font-weight: 500;
+}

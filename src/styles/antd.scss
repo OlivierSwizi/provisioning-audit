@@ -1,0 +1,39 @@
+// AVATAR
+
+.ant-avatar {
+  box-shadow: var(--shadow);
+  border-color: white;
+}
+
+// CARD
+
+.ant-card.ant-card-bordered {
+  background-color: var(--light_background);
+}
+
+// MENU
+
+.ant-menu .ant-menu-item .ant-menu-title-content,
+.ant-menu .ant-menu-submenu-title .ant-menu-title-content {
+  font-weight: bold;
+}
+
+// MODAL
+
+.ant-modal .ant-modal-content .ant-modal-close {
+  background-color: var(--grey_20);
+  border-radius: 50%;
+}
+
+// TAG
+
+.ant-tag {
+  font-weight: bold;
+}
+
+// LAYOUT
+
+.ant-layout-header,
+.ant-layout-sider {
+  box-shadow: var(--shadow);
+}

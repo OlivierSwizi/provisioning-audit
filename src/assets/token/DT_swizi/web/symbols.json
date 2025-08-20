@@ -1,0 +1,8 @@
+{
+  "base_shape": {
+    "radius": 12
+  },
+  "button_shape": {
+    "radius": 100
+  }
+}

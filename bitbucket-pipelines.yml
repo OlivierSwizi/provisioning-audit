@@ -1,0 +1,201 @@
+image: node:14
+
+options:
+  size: 2x
+
+definitions:
+  services:
+    docker:
+      memory: 7168 # Base is 1024
+  steps:
+    - step: &push-ecr
+        name: Push to ECR
+        script:
+          - source set_env.sh
+          - docker build -t $ECR_REPOSITORY -t $ECR_REPOSITORY:$TAG_VERSION --build-arg client=$CLIENT --build-arg env=$ENV .
+          - pipe: atlassian/aws-ecr-push-image:2.0.0
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
+              AWS_DEFAULT_REGION: "eu-west-3"
+              IMAGE_NAME: $ECR_REPOSITORY
+              TAGS: "$TAG_VERSION"
+    - step: &deploy-ecs
+        image: amazon/aws-cli
+        name: Deploy to ECS
+        script:
+          - source set_env.sh
+          - aws configure set aws_access_key_id $AWS_ACCESS_KEY --profile ci
+          - aws configure set aws_secret_access_key $AWS_SECRET_KEY --profile ci
+          - aws ecr get-login-password --region eu-west-3 --profile ci | docker login --username AWS --password-stdin $ECS_REGISTRY
+          - docker pull $ECS_REGISTRY/$ECR_REPOSITORY:$TAG_VERSION
+          - docker tag $ECS_REGISTRY/$ECR_REPOSITORY:$TAG_VERSION $ECS_REGISTRY/$ECR_REPOSITORY:$TAG
+          - docker push $ECS_REGISTRY/$ECR_REPOSITORY:$TAG
+          - pipe: atlassian/aws-ecs-deploy:1.7.0
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
+              AWS_DEFAULT_REGION: "eu-west-3"
+              CLUSTER_NAME: $ECS_CLUSTER
+              SERVICE_NAME: $ECS_SERVICE
+              FORCE_NEW_DEPLOYMENT: "true"
+
+pipelines:
+  branches:
+    "develop":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_DEV" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_KEY_DEV" >> set_env.sh
+            - echo "export CLIENT=swizi" >> set_env.sh
+            - echo "export ENV=dev" >> set_env.sh
+            - echo "export ECS_REGISTRY=432347300271.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-swizi-dev" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-swizi-dev" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-swizi-dev" >> set_env.sh
+            - echo "export TAG=front-admin.swizi.dev" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.swizi.dev.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step: *deploy-ecs
+    "uat":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_DEV" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_KEY_DEV" >> set_env.sh
+            - echo "export CLIENT=swizi" >> set_env.sh
+            - echo "export ENV=uat" >> set_env.sh
+            - echo "export ECS_REGISTRY=432347300271.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-swizi-uat" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-swizi-uat" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-swizi-uat" >> set_env.sh
+            - echo "export TAG=front-admin.swizi.uat" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.swizi.uat.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step: *deploy-ecs
+    "master":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=swizi" >> set_env.sh
+            - echo "export ENV=preprod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-swizi-preprod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-swizi-preprod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-swizi-preprod" >> set_env.sh
+            - echo "export TAG=front-admin.swizi.preprod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.swizi.preprod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+          deployment: Preproduction
+  tags:
+    "v*":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=swizi" >> set_env.sh
+            - echo "export ENV=prod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-swizi-prod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-swizi-prod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-swizi-prod" >> set_env.sh
+            - echo "export TAG=front-admin.swizi.prod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.swizi.prod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+          deployment: Production
+    "CMA-PREPROD-RC*":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=cmacgm" >> set_env.sh
+            - echo "export ENV=preprod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-cmacgm-preprod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-cmacgm-preprod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-cmacgm-preprod" >> set_env.sh
+            - echo "export TAG=front-admin.cmacgm.preprod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.cmacgm.preprod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+    "CMA-PROD-R*":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=cmacgm" >> set_env.sh
+            - echo "export ENV=prod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-cmacgm-prod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-cmacgm-prod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-cmacgm-prod" >> set_env.sh
+            - echo "export TAG=front-admin.cmacgm.prod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.cmacgm.prod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+          trigger: manual
+    "MYMULTI-PREPROD-RC*":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=total" >> set_env.sh
+            - echo "export ENV=preprod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-total-preprod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-total-preprod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-total-preprod" >> set_env.sh
+            - echo "export TAG=front-admin.total.preprod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.total.preprod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+          deployment: Preproduction
+    "MYMULTI-PROD-R*":
+      - step:
+          name: Set Environment
+          artifacts:
+            - set_env.sh
+          script:
+            - echo "export AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID" >> set_env.sh
+            - echo "export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" >> set_env.sh
+            - echo "export CLIENT=total" >> set_env.sh
+            - echo "export ENV=prod" >> set_env.sh
+            - echo "export ECS_REGISTRY=162690609563.dkr.ecr.eu-west-3.amazonaws.com" >> set_env.sh
+            - echo "export ECS_CLUSTER=ecs-total-prod" >> set_env.sh
+            - echo "export ECS_SERVICE=front-admin-total-prod" >> set_env.sh
+            - echo "export ECR_REPOSITORY=ecr-total-prod" >> set_env.sh
+            - echo "export TAG=front-admin.total.prod" >> set_env.sh
+            - echo "export TAG_VERSION=front-admin.total.prod.$BITBUCKET_BUILD_NUMBER" >> set_env.sh
+      - step: *push-ecr
+      - step:
+          <<: *deploy-ecs
+          trigger: manual
+          deployment: Production
