@@ -1,0 +1,13 @@
+/* FILENAME: src/styles/topbar.css */
+.topbar-link {
+  transition: all 0.2s ease;
+}
+
+.topbar-link:hover {
+  background-color: rgba(26, 82, 116, 0.08); /* bleu très léger */
+  color: #1a5274;
+}
+
+.topbar-link:active {
+  background-color: rgba(26, 82, 116, 0.15);
+}

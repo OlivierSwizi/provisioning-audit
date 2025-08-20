@@ -20,6 +20,9 @@ import { useWorkDispatch } from "@/services/features/UISlice";
 import { useState } from "react";
 import config from "@/config";
 import { useAuth } from "react-oidc-context";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import "@/styles/topbar.css";
+import TopbarLink from "@/components/TopbarLink";
 
 const TopBar = () => {
   const auth = useAuth();
@@ -191,14 +194,14 @@ const TopBar = () => {
       {isAdmin && (
         <>
           <Col>
-            <Button size={"middle"} onClick={() => navigate("/admin/audience")}>
+            <TopbarLink onClick={() => navigate("/admin/audience")}>
               {t("header.global-tenant-audience")}
-            </Button>
+            </TopbarLink>
           </Col>
           <Col>
-            <Button size={"middle"} onClick={() => navigate("/admin")}>
+            <TopbarLink onClick={() => navigate("/admin")}>
               {t("header.provisioning-users-management")}
-            </Button>
+            </TopbarLink>
           </Col>
         </>
       )}
@@ -206,6 +209,9 @@ const TopBar = () => {
         <Dropdown key="links" menu={menuLinks}>
           <Button size={"middle"}>Liens</Button>
         </Dropdown>
+      </Col>
+      <Col>
+        <LanguageSwitcher />
       </Col>
       <Col>
         <Dropdown key="more" menu={menuProps}>
